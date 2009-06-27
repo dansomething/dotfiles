@@ -1,0 +1,32 @@
+EDITOR="vim"
+SVN_EDITOR="vim --noplugin"
+LSCOLORS="Exfxcxdxbxegedabagacad"
+
+GWT_EXTERNAL_BROWSER="firefox"
+
+LOCAL="$HOME/Local"
+
+ANT_HOME="$LOCAL/ant"
+GIT_HOME="/usr/local/git"
+GRAILS_HOME="$LOCAL/grails"
+GROOVY_HOME="$LOCAL/groovy"
+JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home"
+M2_HOME="$LOCAL/maven"
+MYSQL_HOME="/usr/local/mysql"
+POSTGRESQL_HOME="/usr/local/postgresql"
+SCALA_HOME="$LOCAL/scala"
+SVN_HOME="/opt/subversion"
+
+PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:/usr/local/sbin:$PATH"
+PATH="$LOCAL/bin:$ANT_HOME/bin:$M2_HOME/bin:$GROOVY_HOME/bin:$PATH"
+PATH="$GRAILS_HOME/bin:$SVN_HOME/bin:$SCALA_HOME/bin:$PATH"
+MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
+
+MAVEN_OPTS="-Xmx512m"
+
+export HISTFILE EDITOR SVN_EDITOR LSCOLORS JAVA_HOME M2_HOME
+export GROOVY_HOME GRAILS_HOME SCALA_HOME MAVEN_OPTS
+
+## Needed for compiling WSO2
+#CPPFLAGS="-I/usr/local/include"
+#LDFLAGS="-L/usr/local/lib"
