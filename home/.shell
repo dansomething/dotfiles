@@ -1,0 +1,17 @@
+##
+# Detect OS Specific aliases
+##
+unamestr=`uname`
+case "$unamestr" in
+	Darwin) PLATFORM='osx' ;;
+	Linux) PLATFORM='linux' ;;
+	*) PLATFORM='unkown' ;;
+esac
+
+if [ -f $HOME/.shell_exports ]; then
+	. $HOME/.shell_exports
+fi
+
+if [ -f $HOME/.shell_aliases ]; then
+	. $HOME/.shell_aliases
+fi
