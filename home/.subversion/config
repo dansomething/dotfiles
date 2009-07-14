@@ -29,10 +29,12 @@
 ###   This will override the compile-time default, which is to use
 ###   Subversion's internal diff implementation.
 # diff-cmd = diff_program (diff, gdiff, etc.)
+diff-cmd = fmdiff
 ### Set diff3-cmd to the absolute path of your 'diff3' program.
 ###   This will override the compile-time default, which is to use
 ###   Subversion's internal diff3 implementation.
 # diff3-cmd = diff3_program (diff3, gdiff3, etc.)
+diff3-cmd = fmdiff3
 ### Set diff3-has-program-arg to 'true' or 'yes' if your 'diff3'
 ###   program accepts the '--diff-program' option.
 # diff3-has-program-arg = [true | false]
@@ -145,5 +147,6 @@ Makefile = svn:eol-style=native;svn:keywords=Date Author Id Revision HeadURL
 *.jsp = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
 *.txt = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
 *.java = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
+*.groovy = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
 *.properties = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
 *.sql = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
