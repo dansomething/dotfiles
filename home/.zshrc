@@ -13,9 +13,6 @@ compinit
 # End of lines added by compinstall
 
 #autoload -U promptinit
-#promptinit
-#prompt redhat
-#PROMPT="[%W%@ $USERNAME@%m %3~]%# "
 PROMPT="[%W%@ $USERNAME %3~]%# "
 
 HISTSIZE=100000
@@ -30,10 +27,6 @@ case $TERM in (xterm*|rxvt)
     ;;
 esac
 
-if [ -f ~/.shell_exports ]; then
-	. ~/.shell_exports
-fi
-
-if [ -f ~/.shell_aliases ]; then
-	. ~/.shell_aliases
+if [ -f $HOME/.shell ]; then
+	. $HOME/.shell
 fi
