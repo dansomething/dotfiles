@@ -1,12 +1,12 @@
 ##
 # MISC 
 ##
-alias ls="ls -aG"
+alias ls="ls -a --color=auto"
 alias ll="ls -lh"
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
-alias top="top -ocpu -O+rsize -s 5 -n 20"
+alias top="sudo atop"
 alias gv="mvim"
 alias vi="vim"
 
@@ -19,9 +19,9 @@ alias mysqldump="mysqldump -p"
 ##
 # SVN
 ##
-alias svnm="svn st -u -q"           # Show all locally modified items
-alias svns="svn st -u -q -v"        # Show status of all items
-alias svnl="svn log -r 1:HEAD -v"   # Show log messages
+alias svnm="svn st -u"  	        # Show all locally modified items
+alias svns="svn st -u -v"   	  	# Show status of all items
+alias svnl="svn log -r 1:HEAD -v"	# Show log messages
 alias nosvn="grep -v .svn"
 
 ##
@@ -39,27 +39,9 @@ alias waiting="ps ax | sed '1p;/ [U] /!d'"
 alias post-review="post-review --server=https://codereview.beatportcorp.net"
 
 ##
-# PHPMAVEN
+# OS specific aliases
 ##
-alias phpmvnweb="mvn archetype:generate \
--DarchetypeGroupId=org.phpmaven \
--DarchetypeArtifactId=php5-web-archetype \
--DarchetypeVersion=1.0-SNAPSHOT"
-#-DarchetypeRepository=http://repo1.php-maven.org/snapshot"
-
-alias phpmvnlib="mvn archetype:generate \
--DarchetypeGroupId=org.phpmaven \
--DarchetypeArtifactId=php5-lib-archetype \
--DarchetypeVersion=1.0-SNAPSHOT"
-#-DarchetypeRepository=http://repo1.php-maven.org/release"
-
-##
-# MTOP
-##
-#alias mtop-bpdbmasater001="mtop --host=127.0.0.1 --dbport=1234 --seconds=1"
-#alias mtop-bpdbapp001="mtop --host=127.0.0.1 --dbport=1237 --seconds=1"
-#alias mtop-bpdbsearch001="mtop --host=127.0.0.1 --dbport=1236 --seconds=1"
-#alias mtop-bpmdbcache001="mtop --host=127.0.0.1 --dbport=1230 --seconds=1"
-#alias mtop-bpsdbcache001="mtop --host=127.0.0.1 --dbport=1235 --seconds=1"
-#alias mtop-bprdb001="mtop --host=127.0.0.1 --dbport=1239 --seconds=1"
-#alias mtop-bpdbadmintools001="mtop --host=127.0.0.1 --dbport=1232 --seconds=1"
+if [[ "$PLATFORM" == 'osx' ]]; then
+	alias ls="ls -aG"
+	alias top="top -ocpu -O+rsize -s 5 -n 20"
+fi
