@@ -1,0 +1,34 @@
+#!/bin/bash
+
+VERIFIED_PATH="./verified"
+
+digest[0]="md5"
+digest[1]="sha1"
+
+if [ ! -e $VERIFIED_PATH ]; then
+	mkdir $VERIFIED_PATH
+fi
+
+for file in `ls .`; do
+	for d in ${digest[*]}; do
+		if [ -e "$file.$d" ]; then
+			hash=`grep -e "[a-f0-9]\{32,40\}" $file.$d`
+			
+			if [ -z "$hash" ]; then
+				echo "Validation failed for: $file"
+			else
+
+				match=`openssl $d $file | grep "$hash"`
+			
+				if [ -z "$match" ]; then
+					echo "Validation failed for: $file"
+				else
+					echo $match
+					dl $file.$d
+					mv $file $VERIFIED_PATH
+					break
+				fi
+			fi
+		fi
+	done
+done

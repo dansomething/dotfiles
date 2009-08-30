@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SIZESPEC='40G'
+MACHINENAME='lucky'
+MACADDRESS='00236c7cfa15'
+
+hdiutil create -size $SIZESPEC -fs HFS+J -type SPARSEBUNDLE -volname "Backup of $MACHINENAME" {$MACHINENAME}_{$MACADDRESS}.sparsebundle
