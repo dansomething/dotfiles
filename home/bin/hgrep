@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep --color=auto -R $@ $HOME/.zsh_history
