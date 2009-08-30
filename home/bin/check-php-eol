@@ -1,12 +1,12 @@
 #!/usr/bin/perl
 ## ---------------------------------------------------------------------------
-## -checkphp- make sure extra space isn't at the end of PHP files
-## Sample Usage: find . -name '*.php' | xargs ./checkphp.pl >checked_files.txt
+## -check-php-eol- make sure extra space isn't at the end of PHP files
+## Sample Usage: find . -name '*.php' | xargs ./check-php-eol >checked_files.txt
 ## ---------------------------------------------------------------------------
 
 if (@ARGV < 1)
 {
-	print "checkphp: need file(s) to check\n";
+	print "check-php-eol: need file(s) to check\n";
 	exit;
 }
 
