@@ -18,6 +18,8 @@ POSTGRESQL_HOME="/usr/local/postgresql"
 SCALA_HOME="$LOCAL/scala"
 SVN_HOME="/opt/subversion"
 
+MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+
 ##
 # OS specific exports
 ##
@@ -33,8 +35,6 @@ PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:/usr/local/sbin:$PATH"
 PATH="$LOCAL/bin:$ANT_HOME/bin:$M2_HOME/bin:$GROOVY_HOME/bin:$PATH"
 PATH="$GRAILS_HOME/bin:$SVN_HOME/bin:$SCALA_HOME/bin:$PHP_HOME/bin:$PATH"
 MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
-
-MAVEN_OPTS="-Xmx512m"
 
 export HISTFILE EDITOR SVN_EDITOR LSCOLORS JAVA_HOME M2_HOME
 export GROOVY_HOME GRAILS_HOME SCALA_HOME MAVEN_OPTS

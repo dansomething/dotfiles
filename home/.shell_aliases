@@ -44,4 +44,5 @@ alias post-review="post-review --server=https://codereview.beatportcorp.net"
 if [[ "$PLATFORM" == 'osx' ]]; then
 	alias ls="ls -aG"
 	alias top="top -ocpu -O+rsize -s 5 -n 20"
+	alias gvim="mvim"
 fi
