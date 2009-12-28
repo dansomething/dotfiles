@@ -18,7 +18,7 @@ for file in `ls .`; do
 				echo "Validation failed for: $file"
 			else
 
-				match=`openssl $d $file | grep "$hash"`
+				match=`openssl $d "$file" | grep "$hash"`
 			
 				if [ -z "$match" ]; then
 					echo "Validation failed for: $file"
