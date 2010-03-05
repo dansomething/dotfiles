@@ -33,10 +33,11 @@ alias cvsu="cvs log -d '>2006/06/01' | cgrep -B2 -A4 'author: dan' > updates.txt
 ##
 # MISC
 ##
-alias findphp="find -type f -name '*.php'"
+alias findphp="find . -type f -name '*.php'"
+alias findgroovy="find . -type f -name '*.groovy'"
 alias flushcache="sudo dscacheutil -flushcache"
 alias waiting="ps ax | sed '1p;/ [U] /!d'"
-alias post-review="post-review --server=https://codereview.beatportcorp.net"
+alias post-review="post-review --server=http://localhost"
 
 ##
 # OS specific aliases
@@ -45,4 +46,5 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 	alias ls="ls -aG"
 	alias top="top -ocpu -O+rsize -s 5 -n 20"
 	alias gvim="mvim"
+	alias tab="term -t"
 fi

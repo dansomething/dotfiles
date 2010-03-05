@@ -15,10 +15,6 @@ compinit
 #autoload -U promptinit
 PROMPT="[%W%@ $USERNAME %3~]%# "
 
-HISTSIZE=100000
-SAVEHIST=100000
-HISTFILE=$HOME/.zsh_history
-
 # Set the xterm prompt
 # make sure we're in an xterm!
 case $TERM in (xterm*|rxvt)
