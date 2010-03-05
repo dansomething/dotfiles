@@ -39,4 +39,7 @@ MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
 export HISTFILE EDITOR SVN_EDITOR LSCOLORS JAVA_HOME M2_HOME
 export GROOVY_HOME GRAILS_HOME SCALA_HOME MAVEN_OPTS
 
+export HISTSIZE=100000
+export HISTFILE=$HOME/.shell_history
+
 function mvn() { ( export GRAILS_HOME= ; $M2_HOME/bin/mvn "$@" ;  ) }
