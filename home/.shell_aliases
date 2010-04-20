@@ -9,6 +9,7 @@ alias mv="mv -i"
 alias top="sudo atop"
 alias gv="mvim"
 alias vi="vim"
+alias grep="grep -n --color=auto"
 
 ##
 # MySQL
