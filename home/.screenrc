@@ -8,7 +8,7 @@
  defscrollback 5000
 # set the caption on the bottom line
  hardstatus on
- caption always "%{= bw}%-w%{= rW}%n %t%{-}%+w %-= %H  %Lm/%d  %l  %C%a"
+ caption always "%{= Bw}%-w%{= RW}%n %t%{-}%+w %-= %H  %Lm/%d  %l  %C%a"
  
  bindkey -k k1 prev
  bindkey -k k2 next
