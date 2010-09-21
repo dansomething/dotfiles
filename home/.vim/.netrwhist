@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/dhansen/local/src/php/wso2-wsf-php-src-2.0.0/scripts/wsdl2php'
+let g:netrw_dirhist_2='/Users/dhansen/Documents/workspace/maven-eclipse-examples/android-maven-eclipse'
+let g:netrw_dirhist_3='/Users/dhansen/Documents/workspace/twitterep/src/it/twitter-mock/direct_messages'
+let g:netrw_dirhist_4='/Users/dhansen/Documents/workspace/hello-spock/src/test/groovy'

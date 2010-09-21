@@ -7,9 +7,10 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias top="sudo atop"
-alias gv="mvim"
+alias gv="gvim"
 alias vi="vim"
 alias grep="grep -n --color=auto"
+alias ctree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
 ##
 # MySQL
@@ -39,12 +40,12 @@ alias findgroovy="find . -type f -name '*.groovy'"
 alias flushcache="sudo dscacheutil -flushcache"
 alias waiting="ps ax | sed '1p;/ [U] /!d'"
 alias post-review="post-review --server=http://localhost"
+alias zf="zf.sh"
 
 ##
 # OS specific aliases
 ##
 if [[ "$PLATFORM" == 'osx' ]]; then
-	alias ls="ls -aG"
 	alias top="top -ocpu -O+rsize -s 5 -n 20"
 	alias gvim="mvim"
 	alias tab="term -t"
