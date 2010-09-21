@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find . -type f -iname "*.$1" | xargs grep -ni --color=auto "$2"
