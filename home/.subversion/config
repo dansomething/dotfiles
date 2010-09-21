@@ -145,8 +145,8 @@ Makefile = svn:eol-style=native;svn:keywords=Date Author Id Revision HeadURL
 *.css = svn:mime-type=text/css;svn:eol-style=native;svn:keywords=Date Revision
 *.js = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
 *.jsp = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
-*.txt = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
-*.java = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
-*.groovy = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
+*.txt = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Author Date Id Revision
+*.java = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Author Date Id Revision
+*.groovy = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Author Date Id Revision
 *.properties = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
 *.sql = svn:mime-type=text/plain;svn:eol-style=native;svn:keywords=Date Revision
