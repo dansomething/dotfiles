@@ -17,7 +17,6 @@ PHP_HOME="$LOCAL/php"
 ZF_HOME="$HOME/Documents/workspace/ZendFramework-1.10.4"
 POSTGRESQL_HOME="/usr/local/postgresql"
 SCALA_HOME="$LOCAL/scala"
-SVN_HOME="/opt/subversion"
 ANDROID_HOME="$LOCAL/android-sdk"
 
 MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
@@ -42,9 +41,21 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 	export CFLAGS
 fi
 
-PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="$LOCAL/bin:$ANT_HOME/bin:$M2_HOME/bin:$GROOVY_HOME/bin:$PATH"
-PATH="$GRAILS_HOME/bin:$SVN_HOME/bin:$SCALA_HOME/bin:$ANDROID_HOME/tools:$PHP_HOME/bin:$ZF_HOME/bin:$PATH"
+# PHP paths
+PATH="$PHP_HOME/bin:$ZF_HOME/bin:$PATH"
+
+# Database paths
+PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:$PATH"
+
+# JVM dev paths
+PATH="$GROOVY_HOME/bin:$GRAILS_HOME/bin:$SCALA_HOME/bin:$ANDROID_HOME/tools:$PATH"
+
+# Build tool paths
+PATH="$ANT_HOME/bin:$M2_HOME/bin:$PATH"
+
+# Local install paths
+PATH="$LOCAL/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
 MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
 
 export HISTFILE EDITOR SVN_EDITOR LSCOLORS JAVA_HOME M2_HOME
