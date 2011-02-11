@@ -87,7 +87,7 @@ vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
 " Map <CTRL>-a to alignment function
 vnoremap <C-a> :call PhpAlign()<CR>
 
-" Map <CTRL>-a to (un-)comment function
+" Map <CTRL>-c to (un-)comment function
 vnoremap <C-c> :call PhpUnComment()<CR>
 
 " Generate @uses tag based on inheritance info
