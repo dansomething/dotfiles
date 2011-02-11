@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TIMEOUT=5
+
+if [ -z "$1" ]; then
+	echo "Specify a process name"
+	exit 1
+fi
+
+while true; do	
+	pid=$(pidof $1)
+	if [ -n "$pid" ]; then
+		#ps -o ppid,nice,user -p476
+		renice 20 $pid
+	fi
+	sleep $TIMEOUT
+done

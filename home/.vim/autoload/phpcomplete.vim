@@ -1,11 +1,9 @@
 " Vim completion script
 " Language:	PHP
 " Maintainer:	Mikolaj Machowski ( mikmach AT wp DOT pl )
-" Last Change:	2006 May 9
+" Maintainer:	Shawn Biddle ( shawn AT shawnbiddle DOT com )
 "
 "   TODO:
-"   - Class aware completion:
-"      a) caching?
 "   - Switching to HTML (XML?) completion (SQL) inside of phpStrings
 "   - allow also for XML completion <- better do html_flavor for HTML
 "     completion
@@ -134,7 +132,7 @@ function! phpcomplete#CompletePHP(findstart, base)
 		" few not so subtle differences as not appending of $ and addition
 		" of 'kind' tag (not necessary in regular completion)
 
-		if scontext =~ '->$' && scontext !~ '\$this->$'
+		if scontext =~ '->$' || scontext =~ '::'
 
 			" Get name of the class
 			let classname = phpcomplete#GetClassName(scontext)
@@ -167,17 +165,15 @@ function! phpcomplete#CompletePHP(findstart, base)
 				let classcontent .= "\n".phpcomplete#GetClassContents(classfile, classname)
 				let sccontent = split(classcontent, "\n")
 
-				" YES, YES, YES! - we have whole content including extends!
-				" Now we need to get two elements: public functions and public
-				" vars
-				" NO, NO, NO! - third separate filtering looking for content
-				" :(, but all of them have differences. To squeeze them into
-				" one implementation would require many additional arguments
-				" and ifs. No good solution
-				" Functions declared with public keyword or without any
-				" keyword are public
-				let functions = filter(deepcopy(sccontent),
-						\ 'v:val =~ "^\\s*\\(static\\s\\+\\|public\\s\\+\\)*function"')
+				" limit based on context to static or normal public methods
+				if scontext =~ '::'
+					let functions = filter(deepcopy(sccontent),
+							\ 'v:val =~ "^\\s*\\(\\(public\\s\\+static\\|static\\)\\s\\+\\)*function"')
+				elseif scontext =~ '->$'
+					let functions = filter(deepcopy(sccontent),
+							\ 'v:val =~ "^\\s*\\(public\\s\\+\\)*function"')
+				endif
+
 				let jfuncs = join(functions, ' ')
 				let sfuncs = split(jfuncs, 'function\s\+')
 				let c_functions = {}
@@ -205,9 +201,26 @@ function! phpcomplete#CompletePHP(findstart, base)
 					endif
 				endfor
 
+
+				let constants = filter(deepcopy(sccontent),
+						\ 'v:val =~ "^\\s*const\\s\\+"')
+
+				let jcons = join(constants, ' ')
+				let scons = split(jcons, 'const')
+
+				let c_constants = {}
+				for i in scons
+					let c_con = matchstr(i,
+							\ '^\s*\zs[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*\ze')
+					if c_con != ''
+						let c_constants[c_con] = ''
+					endif
+				endfor
+
 				let all_values = {}
 				call extend(all_values, c_functions)
 				call extend(all_values, c_variables)
+				call extend(all_values, c_constants)
 
 				for m in sort(keys(all_values))
 					if m =~ '^'.a:base && m !~ '::'
@@ -572,36 +585,90 @@ function! phpcomplete#GetClassName(scontext) " {{{
 	" line above
 	" or line in tags file
 
-	let object = matchstr(a:scontext, '\zs[a-zA-Z_0-9\x7f-\xff]\+\ze->')
-	let i = 1
-	while i < line('.')
-		let line = getline(line('.')-i)
-		if line =~ '^\s*\*\/\?\s*$'
-			let i += 1
-			continue
-		else
-			if line =~ '@var\s\+\$'.object.'\s\+[a-zA-Z_0-9\x7f-\xff]\+'
-				let classname = matchstr(line, '@var\s\+\$'.object.'\s\+\zs[a-zA-Z_0-9\x7f-\xff]\+')
+	if a:scontext =~ '\$this->' || a:scontext =~ '\(self\|static\)::'
+		let i = 1
+		while i < line('.')
+			let line = getline(line('.')-i)
+
+			" Don't complete self:: or $this if outside of a class
+			" (assumes correct indenting)
+			if line =~ '^}'
+				return ''
+			endif
+
+			if line !~ '^class'
+				let i += 1
+				continue
+			else
+				let classname = matchstr(line, '^class \zs[a-zA-Z]\w\+\ze\(\s*\|$\)')
+				return classname
+			endif
+		endwhile
+	else
+		let object = matchstr(a:scontext, '\zs[a-zA-Z_0-9\x7f-\xff]\+\ze->')
+		let i = 1
+		while i < line('.')
+			let line = getline(line('.')-i)
+			if line =~ '^\s*\*\/\?\s*$'
+				let i += 1
+				continue
+			else
+				if line =~ '@var\s\+\$'.object.'\s\+[a-zA-Z_0-9\x7f-\xff]\+'
+					let classname = matchstr(line, '@var\s\+\$'.object.'\s\+\zs[a-zA-Z_0-9\x7f-\xff]\+')
+					return classname
+				else
+					break
+				endif
+			endif
+		endwhile
+
+		" do in-file lookup of $var = new Class
+		let i = 1
+		while i < line('.')
+			let line = getline(line('.')-i)
+			if line =~ '^\s*\$'.object.'\s*=\s*new\s\+[a-zA-Z_0-9\x7f-\xff]\+'
+
+				let classname = matchstr(line, '\$'.object.'\s*=\s*new \zs[a-zA-Z_0-9\x7f-\xff]\+')
 				return classname
 			else
-				break
+				let i += 1
+				continue
 			endif
+		endwhile
+
+		" do in-file lookup for Class::getInstance()
+		let i = 1
+		while i < line('.')
+			let line = getline(line('.')-i)
+			if line =~ '^\s*\$'.object.'\s*=&\?\s*\s\+[a-zA-Z_0-9\x7f-\xff]\+::getInstance\+'
+
+				let classname = matchstr(line, '\$'.object.'\s*=&\?\s*\zs[a-zA-Z_0-9\x7f-\xff]\+\ze::getInstance\+')
+				return classname
+			else
+				let i += 1
+				continue
+			endif
+		endwhile
+
+		" check Constant lookup
+		let constant_object = matchstr(a:scontext, '\zs[a-zA-Z_0-9\x7f-\xff]\+\ze::')
+		if constant_object != ''
+			return constant_object
 		endif
-	endwhile
 
-	" OK, first way failed, now check tags file(s)
-	let fnames = join(map(tagfiles(), 'escape(v:val, " \\#%")'))
-	exe 'silent! vimgrep /^'.object.'.*\$'.object.'.*=\s*new\s\+.*\tv\(\t\|$\)/j '.fnames
-	let qflist = getqflist()
-	if len(qflist) == 0
-		return ''
-	else
-		" In all properly managed projects it should be one item list, even if it
-		" *is* longer we cannot solve conflicts, assume it is first element
-		let classname = matchstr(qflist[0]['text'], '=\s*new\s\+\zs[a-zA-Z_0-9\x7f-\xff]\+\ze')
-		return classname
+		" OK, first way failed, now check tags file(s)
+		let fnames = join(map(tagfiles(), 'escape(v:val, " \\#%")'))
+		exe 'silent! vimgrep /^'.object.'.*\$'.object.'.*=\s*new\s\+.*\tv\(\t\|$\)/j '.fnames
+		let qflist = getqflist()
+		if len(qflist) == 0
+			return ''
+		else
+			" In all properly managed projects it should be one item list, even if it
+			" *is* longer we cannot solve conflicts, assume it is first element
+			let classname = matchstr(qflist[0]['text'], '=\s*new\s\+\zs[a-zA-Z_0-9\x7f-\xff]\+\ze')
+			return classname
+		endif
 	endif
-
 endfunction
 " }}}
 function! phpcomplete#GetClassLocation(classname) " {{{
@@ -615,6 +682,19 @@ function! phpcomplete#GetClassLocation(classname) " {{{
 	if has_key(g:php_omni_bi_classes, a:classname)
 		return 'VIMPHP_BUILTINOBJECT'
 	endif
+
+
+	" do in-file lookup for class definition
+	let i = 1
+	while i < line('.')
+		let line = getline(line('.')-i)
+		if line =~ '^\s*class ' . a:classname  . '\(\s\+\|$\)'
+			return expand('%')
+		else
+			let i += 1
+			continue
+		endif
+	endwhile
 
 	" Get class location
 	for fname in tagfiles()
@@ -663,8 +743,9 @@ function! phpcomplete#GetClassContents(file, name) " {{{
 	endif
 	call search('{')
 	normal! %
+
 	let classc = getline(cfline, ".")
-	let classcontent = join(classc, "\n")
+	let classcontent = cfile
 
 	bw! %
 	if extends_class != ''
