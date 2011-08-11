@@ -11,6 +11,7 @@ alias gv="gvim"
 alias vi="vim"
 alias grep="grep -n --color=auto"
 alias ctree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias screen="screen -S dhansen -T xterm -s /bin/bash"
 
 ##
 # MySQL
