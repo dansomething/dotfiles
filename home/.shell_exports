@@ -6,20 +6,23 @@ GWT_EXTERNAL_BROWSER="firefox"
 
 LOCAL="$HOME/Local"
 
-ANT_HOME="$LOCAL/ant"
-APPENGINE_HOME="$LOCAL/appengine-java-sdk"
-GRAILS_HOME="$LOCAL/grails"
-GROOVY_HOME="$LOCAL/groovy"
-JAVA_HOME="/usr/lib/jvm/java-6-sun"
-M2_HOME="$LOCAL/maven"
-MYSQL_HOME="/usr/local/mysql"
-PHP_HOME="$LOCAL/php"
-ZF_HOME="$HOME/Documents/workspace/ZendFramework-1.10.4"
-POSTGRESQL_HOME="/usr/local/postgresql"
-SCALA_HOME="$LOCAL/scala"
-ANDROID_HOME="$LOCAL/android-sdk"
+if [[ "$PLATFORM" != 'unknown' ]]; then
+	JAVA_HOME="/usr/lib/jvm/java-6-sun"
+	GROOVY_HOME="$LOCAL/groovy"
 
-MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+	ANT_HOME="$LOCAL/ant"
+	APPENGINE_HOME="$LOCAL/appengine-java-sdk"
+	GRAILS_HOME="$LOCAL/grails"
+	M2_HOME="$LOCAL/maven"
+	MYSQL_HOME="/usr/local/mysql"
+	PHP_HOME="$LOCAL/php"
+	ZF_HOME="$HOME/Documents/workspace/ZendFramework-1.10.4"
+	POSTGRESQL_HOME="/usr/local/postgresql"
+	SCALA_HOME="$LOCAL/scala"
+	ANDROID_HOME="$LOCAL/android-sdk"
+
+	MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+fi
 
 ##
 # Git
@@ -35,35 +38,39 @@ GIT_AUTHOR_EMAIL="dan@planettelex.net"
 ##
 if [[ "$PLATFORM" == 'osx' ]]; then
 	JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home"
-	PATH="/Library/Application Support/VMware Fusion:$PATH"
+	PATH="/opt/local/bin:/opt/local/sbin:/Library/Application Support/VMware Fusion:$PATH"
+	#MANPATH="/opt/local/share/man"
 
 	CFLAGS="-arch x86_64"
 	export CFLAGS
 fi
 
-# PHP paths
-PATH="$PHP_HOME/bin:$ZF_HOME/bin:$PATH"
+if [[ "$PLATFORM" != 'unknown' ]]; then
+	# PHP paths
+	PATH="$PHP_HOME/bin:$ZF_HOME/bin:$PATH"
 
-# Database paths
-PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:$PATH"
+	# Database paths
+	PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:$PATH"
 
-# JVM dev paths
-PATH="$GROOVY_HOME/bin:$GRAILS_HOME/bin:$SCALA_HOME/bin:$ANDROID_HOME/tools:$PATH"
+	# JVM dev paths
+	PATH="$GROOVY_HOME/bin:$GRAILS_HOME/bin:$SCALA_HOME/bin:$ANDROID_HOME/tools:$PATH"
 
-# Build tool paths
-PATH="$ANT_HOME/bin:$M2_HOME/bin:$PATH"
+	# Build tool paths
+	PATH="$ANT_HOME/bin:$M2_HOME/bin:$PATH"
 
-# Local install paths
-PATH="$LOCAL/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+	# Local install paths
+	PATH="$LOCAL/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
-MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
+	#MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
 
-export HISTFILE EDITOR SVN_EDITOR LSCOLORS JAVA_HOME M2_HOME
-export APPENGINE_HOME ANDROID_HOME GROOVY_HOME GRAILS_HOME SCALA_HOME MAVEN_OPTS
+	export MANPATH HISTFILE EDITOR SVN_EDITOR LSCOLORS M2_HOME
+	export APPENGINE_HOME ANDROID_HOME JAVA_HOME GROOVY_HOME GRAILS_HOME SCALA_HOME MAVEN_OPTS
+fi
 
 export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTFILE=$HOME/.shell_history
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls'
 export GIT_COMMITTER_NAME GIT_COMMITTER_EMAIL GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL
 
 function mvn() { ( export GRAILS_HOME= ; $M2_HOME/bin/mvn "$@" ;  ) }
