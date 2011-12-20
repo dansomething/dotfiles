@@ -33,6 +33,9 @@ GIT_COMMITTER_EMAIL="dan@planettelex.net"
 GIT_AUTHOR_NAME="Dan Hansen"
 GIT_AUTHOR_EMAIL="dan@planettelex.net"
 
+
+PATH="$LOCAL/bin:$PATH"
+
 ##
 # OS specific exports
 ##
@@ -59,7 +62,7 @@ if [[ "$PLATFORM" != 'unknown' ]]; then
 	PATH="$ANT_HOME/bin:$M2_HOME/bin:$PATH"
 
 	# Local install paths
-	PATH="$LOCAL/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+	PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 	#MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
 

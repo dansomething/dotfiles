@@ -1,3 +1,5 @@
+set guifont=Menlo:h12
+
 "set the window size
 set co=100
 set lines=50

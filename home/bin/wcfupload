@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+filename=$1
+filenameEncoded="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$filename")"
+filesize=`stat -c%s "$1"`
+
+curl -v -X POST -H "Content-Type: application/octet-stream" -H "Content-Length: $filesize" --data-binary @"$filename" "http://66.185.98.236/Service1.svc/UploadFile/$filenameEncoded"
