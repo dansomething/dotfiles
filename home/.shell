@@ -5,7 +5,7 @@ unamestr=`uname`
 case "$unamestr" in
 	Darwin) PLATFORM='osx' ;;
 	Linux) PLATFORM='linux' ;;
-	*) PLATFORM='unknown' ;;
+	*) PLATFORM='windows' ;;
 esac
 
 if [ -f $HOME/.shell_exports ]; then
