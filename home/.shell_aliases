@@ -1,7 +1,7 @@
 ##
 # MISC 
 ##
-alias ls="ls -aG"
+alias ls="ls -a --color=auto"
 alias ll="ls -lh"
 alias rm="rm -i"
 alias cp="cp -i"

@@ -6,7 +6,7 @@ GWT_EXTERNAL_BROWSER="firefox"
 
 LOCAL="$HOME/Local"
 
-if [[ "$PLATFORM" != 'unknown' ]]; then
+if [[ "$PLATFORM" != 'windows' ]]; then
 	JAVA_HOME="/usr/lib/jvm/java-6-sun"
 	GROOVY_HOME="$LOCAL/groovy"
 
@@ -48,7 +48,7 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 	export CFLAGS
 fi
 
-if [[ "$PLATFORM" != 'unknown' ]]; then
+if [[ "$PLATFORM" != 'windows' ]]; then
 	# PHP paths
 	PATH="$PHP_HOME/bin:$ZF_HOME/bin:$PATH"
 
