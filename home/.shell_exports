@@ -42,7 +42,6 @@ PATH="$LOCAL/bin:$PATH"
 if [[ "$PLATFORM" == 'osx' ]]; then
 	JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home"
 	PATH="/opt/local/bin:/opt/local/sbin:/Library/Application Support/VMware Fusion:$PATH"
-	#MANPATH="/opt/local/share/man"
 
 	CFLAGS="-arch x86_64"
 	export CFLAGS
@@ -64,12 +63,11 @@ if [[ "$PLATFORM" != 'windows' ]]; then
 	# Local install paths
 	PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-	#MANPATH="/usr/local/man:/usr/local/share/man:$MYSQL_HOME/man:$MANPATH"
-
-	export MANPATH HISTFILE EDITOR SVN_EDITOR LSCOLORS M2_HOME
+	export LSCOLORS M2_HOME
 	export APPENGINE_HOME ANDROID_HOME JAVA_HOME GROOVY_HOME GRAILS_HOME SCALA_HOME MAVEN_OPTS
 fi
 
+export EDITOR SVN_EDITOR
 export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTFILE=$HOME/.shell_history

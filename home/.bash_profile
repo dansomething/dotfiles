@@ -47,7 +47,7 @@ if [ $? = 2 ]; then
 	. /tmp/.ssh-script
 	echo $SSH_AGENT_PID >/tmp/.ssh-agent-pid
 
-	ssh-add ~/.ssh/id_rsa.planettelex
+	#ssh-add ~/.ssh/id_rsa.planettelex
 fi
 
 
