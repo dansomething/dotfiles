@@ -4,5 +4,5 @@ DOTFILES="dansomething/dotfiles"
 DOTVIM="http://github.com/gmarik/vundle.git"
 
 # Install dotfiles
-homesick pull $DOTFILES
+homesick pull -f $DOTFILES
 homesick symlink $DOTFILES
