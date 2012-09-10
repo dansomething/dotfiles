@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+find . -maxdepth 3 -type d -print0 | xargs -0 -I{} sh -c 'cd "{}"; if [ -d .git ]; then echo {} && git pull && echo; fi'
