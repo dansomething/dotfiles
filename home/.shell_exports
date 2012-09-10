@@ -4,7 +4,7 @@ LSCOLORS="Exfxcxdxbxegedabagacad"
 
 GWT_EXTERNAL_BROWSER="firefox"
 
-LOCAL="$HOME/Local"
+LOCAL="$HOME/.local"
 
 if [[ "$PLATFORM" != 'windows' ]]; then
 	JAVA_HOME="/usr/lib/jvm/java-6-sun"
@@ -19,7 +19,8 @@ if [[ "$PLATFORM" != 'windows' ]]; then
 	ZF_HOME="$HOME/Documents/workspace/ZendFramework-1.10.4"
 	POSTGRESQL_HOME="/usr/local/postgresql"
 	SCALA_HOME="$LOCAL/scala"
-	ANDROID_HOME="$LOCAL/android-sdk"
+	#ANDROID_HOME="$LOCAL/android/android-sdk-r18"
+	ANDROID_HOME="$LOCAL/android/android-sdks"
 
 	MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 fi
@@ -42,6 +43,7 @@ PATH="$LOCAL/bin:$PATH"
 if [[ "$PLATFORM" == 'osx' ]]; then
 	JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home"
 	PATH="/opt/local/bin:/opt/local/sbin:/Library/Application Support/VMware Fusion:$PATH"
+	M2_HOME="/opt/local/share/java/maven3"
 
 	CFLAGS="-arch x86_64"
 	export CFLAGS
@@ -50,12 +52,13 @@ fi
 if [[ "$PLATFORM" != 'windows' ]]; then
 	# PHP paths
 	PATH="$PHP_HOME/bin:$ZF_HOME/bin:$PATH"
+	export PHP_INI_SCAN_DIR="/etc/php.d"
 
 	# Database paths
 	PATH="$MYSQL_HOME/bin:$POSTGRESQL_HOME/bin:$PATH"
 
 	# JVM dev paths
-	PATH="$GROOVY_HOME/bin:$GRAILS_HOME/bin:$SCALA_HOME/bin:$ANDROID_HOME/tools:$PATH"
+	PATH="$GROOVY_HOME/bin:$GRAILS_HOME/bin:$SCALA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 
 	# Build tool paths
 	PATH="$ANT_HOME/bin:$M2_HOME/bin:$PATH"
