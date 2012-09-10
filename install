@@ -3,8 +3,23 @@
 DOTFILES="dansomething/dotfiles"
 DOTVIM="http://github.com/gmarik/vundle.git"
 
+# Install required gems
+GEMS=( homesick )
+for gem in "${GEMS[@]}"; do
+  found=`gem list $gem | grep -i $gem`
+  if [ "$found" != "" ]; then
+    parts=( $found )
+    echo "Found ${parts[0]} ${parts[1]}"
+    continue
+  fi
+
+  echo "---------------------------"
+  echo "Installing $gem"
+  sudo gem install $gem -y
+  echo "---------------------------"
+done
+
 # Install dotfiles
-sudo gem install homesick
 homesick clone $DOTFILES
 homesick symlink $DOTFILES
 
