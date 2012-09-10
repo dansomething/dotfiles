@@ -12,9 +12,10 @@ alias vi="vim"
 alias grep="grep -n --color=auto"
 alias ctree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 alias screen="screen -S dhansen -T xterm -s /bin/bash"
+alias p4="/Users/dan/Applications/p4merge.app/Contents/Resources/launchp4merge"
 
 ##
-## Cassandra
+# Cassandra
 ##
 alias ccli="cassandra-cli -host localhost -port 9160"
 alias cqlsh="cqlsh localhost 9160"
@@ -53,6 +54,7 @@ alias zf="zf.sh"
 # OS specific aliases
 ##
 if [[ "$PLATFORM" == 'osx' ]]; then
+	alias ls="ls -aG"
 	alias top="top -ocpu -O+rsize -s 5 -n 20"
 	alias gvim="mvim"
 	alias tab="term -t"
