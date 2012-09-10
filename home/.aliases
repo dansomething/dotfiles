@@ -41,7 +41,7 @@ alias la="ls -la ${colorflag}"
 alias lsd='ls -l ${colorflag} | grep "^d"'
 
 # List with readable file sizes
-alias ll="ls -lh ${colorflag}"
+alias ll="ls -alh ${colorflag}"
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
