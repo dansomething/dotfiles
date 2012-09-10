@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+DOTFILES="dansomething/dotfiles"
+DOTVIM="http://github.com/gmarik/vundle.git"
+
+# Install dotfiles
+sudo gem install homesick
+homesick clone $DOTFILES
+homesick symlink $DOTFILES
+
+# Install dot_vim + vundle
+cd ~/.vim
+git clone $DOTVIM bundle/vundle
+rake vim:link
+vim +BundleInstall +qall
