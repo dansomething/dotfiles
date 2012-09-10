@@ -1,0 +1,14 @@
+<ivysettings>
+        <properties file="${ivy.settings.dir}/ivysettings-file.properties" />
+        <settings defaultCache="${cache.dir}" defaultResolver="ibiblio" checkUpToDate="false" />
+        <resolvers>
+                <ibiblio name="ibiblio" />
+                <filesystem name="internal">
+                        <ivy pattern="${repository.dir}/[module]/ivy-[revision].xml" />
+                        <artifact pattern="${repository.dir}/[module]/[artifact]-[revision].[ext]" />
+                </filesystem>
+        </resolvers>
+        <modules>
+                <module organisation="jayasoft" name=".*" resolver="internal" />
+        </modules>
+</ivysettings>
