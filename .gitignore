@@ -1,0 +1,14 @@
+# It's a better practice to ignore everything (/*) and then explicitly
+# specify files and folders that should be included. Yes it's much more
+# legwork, but the idea is to prevent the repository becoming polluted.
+/*
+
+# Must allow ourselves
+!.gitignore
+
+# Files
+!install
+!update
+
+# Directories
+!home
