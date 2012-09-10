@@ -2,7 +2,13 @@
 	user = dansomething
 	token = 34181c2b4e7e4c7709976d7f11c51f9f
 [core]
-	excludesfile = /Users/dhansen/.gitignore_global
+	excludesfile = /Users/dan/.gitignore_global
 [user]
 	name = Dan Hansen
 	email = dan@planettelex.net
+[difftool "sourcetree"]
+	cmd = /Users/dan/Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/dan/Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	trustExitCode = true
