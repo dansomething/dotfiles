@@ -26,8 +26,8 @@ case "$TERM" in
 xterm)
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ '
     ;;
-xterm-color)
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ '
+xterm-color|xterm-256color)
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
     ;;
 *)
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -57,7 +57,6 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
     alias ls='ls --color=auto'
     #alias dir='ls --color=auto --format=vertical'
     #alias vdir='ls --color=auto --format=long'
@@ -68,6 +67,10 @@ fi
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+elif [ -f /opt/local/etc/bash_completion ]; then
+	. /opt/local/etc/bash_completion
 fi
 
-source $HOME/.shell
+if [ -f $HOME/.shell ]; then
+	source $HOME/.shell
+fi
