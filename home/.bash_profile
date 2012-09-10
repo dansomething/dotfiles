@@ -1,59 +1,44 @@
-# base-files version 3.9-3
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH"
 
-# To pick up the latest recommended .bash_profile content,
-# look in /etc/defaults/etc/skel/.bash_profile
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you donÕt want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && source "$file"
+done
+unset file
 
-# Modifying /etc/skel/.bash_profile directly will prevent
-# setup from updating it.
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
 
-# The copy in your home directory (~/.bash_profile) is yours, please
-# feel free to customise it to create a shell
-# environment to your liking.  If you feel a change
-# would be benifitial to all, please feel free to send
-# a patch to the cygwin mailing list.
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
 
-# ~/.bash_profile: executed by bash for login shells.
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
 
-# source the system wide bashrc if it exists
-if [ -e /etc/bash.bashrc ] ; then
-  source /etc/bash.bashrc
-fi
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+	shopt -s "$option" 2> /dev/null
+done
 
-# source the users bashrc if it exists
-if [ -e "${HOME}/.bashrc" ] ; then
-  source "${HOME}/.bashrc"
-fi
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
 
-# Set PATH so it includes user's private bin if it exists
-# if [ -d "${HOME}/bin" ] ; then
-#   PATH=${HOME}/bin:${PATH}
-# fi
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
-# Set MANPATH so it includes users' private man if it exists
-# if [ -d "${HOME}/man" ]; then
-#   MANPATH=${HOME}/man:${MANPATH}
-# fi
+# Add tab completion for `defaults read|write NSGlobalDomain`
+# You could just use `-g` instead, but I like being explicit
+complete -W "NSGlobalDomain" defaults
 
-# Set INFOPATH so it includes users' private info if it exists
-# if [ -d "${HOME}/info" ]; then
-#   INFOPATH=${HOME}/info:${INFOPATH}
-# fi
+# Add `killall` tab completion for common apps
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
-ssh-add -l >/dev/null 2>&1
-if [ $? = 2 ]; then
-	# Exit status 2 means couldn't connect to ssh-agent; start one now
-	rm -rf /tmp/.ssh-*
-	ssh-agent -a $SSH_AUTH_SOCK >/tmp/.ssh-script
-	. /tmp/.ssh-script
-	echo $SSH_AGENT_PID >/tmp/.ssh-agent-pid
-
-	#ssh-add ~/.ssh/id_rsa.planettelex
-fi
-
-
-function kill-agent {
-	pid=`cat /tmp/.ssh-agent-pid`
-	kill $pid
-}
-
-export SSL_CERT_FILE=/opt/local/etc/openssl/cert.pem
+# If possible, add tab completion for many more commands
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+[ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
