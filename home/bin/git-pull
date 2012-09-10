@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+GIT=/opt/local/bin/git
+
+cd "$1"
+$GIT fetch origin
+$GIT pull
