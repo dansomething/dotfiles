@@ -171,7 +171,7 @@ alias mysqldump="mysqldump -p"
 
 if [[ "$PLATFORM" == 'osx' ]]; then
 	alias top="top -ocpu -O+rsize -s 5 -n 20"
-	alias gv="mvim"
-	alias gvim="mvim"
+	alias gv="o -a macvim"
+	alias gvim="gv"
 	alias tab="term -t"
 fi
