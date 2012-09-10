@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+/Users/dan/Applications/p4merge.app/Contents/Resources/launchp4merge $*
