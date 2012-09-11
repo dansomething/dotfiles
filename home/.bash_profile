@@ -3,7 +3,7 @@ export PATH="$HOME/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
+# * ~/.extra can be used for other settings you don't want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
@@ -41,4 +41,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-[ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
+
+# Macports bash completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi
