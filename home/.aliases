@@ -7,9 +7,11 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias p="cd ~/Projects"
+alias cl="cd ~/PT/Clients"
+alias d="cd ~/Google\ Drive"
+alias p="cd ~/PT"
 alias g="git"
+alias gv="gvim"
 alias h="history"
 alias j="jobs"
 alias v="vim"
@@ -17,7 +19,7 @@ alias m="mate ."
 alias s="subl ."
 alias o="open"
 alias oo="open ."
-alias gv="gvim"
+alias se="sudo -e"
 
 # Add safety prompts
 alias rm="rm -i"
@@ -170,8 +172,9 @@ alias mysql="mysql -p"
 alias mysqldump="mysqldump -p"
 
 if [[ "$PLATFORM" == 'osx' ]]; then
+	alias e="open -a macvim"
 	alias top="top -ocpu -O+rsize -s 5 -n 20"
-	alias gv="o -a macvim"
-	alias gvim="gv"
+	alias gvim="open -a macvim"
+	alias gv="gvim"
 	alias tab="term -t"
 fi
