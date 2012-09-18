@@ -41,6 +41,9 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 	# Macports Maven 3
 	export M2_HOME="/opt/local/share/java/maven3"
 
+    # Make brew installed libraries available.
+    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+
 	# Default compiler flags
 	export CFLAGS="-arch x86_64"
 fi
