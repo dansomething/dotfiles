@@ -17,33 +17,33 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
 # Detect the OS platform
 unamestr=`uname`
 case "$unamestr" in
-	Darwin) PLATFORM='osx' ;;
-	Linux) PLATFORM='linux' ;;
-	*) PLATFORM='windows' ;;
+    Darwin) PLATFORM='osx' ;;
+    Linux) PLATFORM='linux' ;;
+    *) PLATFORM='windows' ;;
 esac
 
 # Exports for all *nix platforms
 if [[ "$PLATFORM" != 'windows' ]]; then
-	# Make PHP look for additional ini files so php.ini doesn't have to be modified directly.
-	export PHP_INI_SCAN_DIR="/etc/php.d"
+    # Make PHP look for additional ini files so php.ini doesn't have to be modified directly.
+    export PHP_INI_SCAN_DIR="/etc/php.d"
 
-	# Give Maven more memory (mostly for Android compilations)
-	export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+    # Give Maven more memory (mostly for Android compilations)
+    export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 fi
 
 # Exports for OS X
 if [[ "$PLATFORM" == 'osx' ]]; then
-	# Add Macports and VMware to the path.
-	PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Library/Application Support/VMware Fusion:$PATH"
+    # Add Macports and VMware to the path.
+    PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Library/Application Support/VMware Fusion:$PATH"
 
-	export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
-	# Macports Maven 3
-	export M2_HOME="/opt/local/share/java/maven3"
+    # Macports Maven 3
+    export M2_HOME="/opt/local/share/java/maven3"
 
     # Make brew installed libraries available.
     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
-	# Default compiler flags
-	export CFLAGS="-arch x86_64"
+    # Default compiler flags
+    export CFLAGS="-arch x86_64"
 fi
