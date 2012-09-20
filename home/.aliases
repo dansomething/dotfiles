@@ -23,7 +23,7 @@ alias o="open"
 alias oo="open ."
 alias se="sudo -e"
 
-# Add safety prompts
+# Add safety nets
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
