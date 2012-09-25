@@ -3,5 +3,9 @@
 GIT=/opt/local/bin/git
 
 cd "$1"
+
+echo "$GIT fetch origin"
 $GIT fetch origin
+
+echo "$GIT pull"
 $GIT pull
