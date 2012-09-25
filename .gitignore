@@ -12,3 +12,6 @@
 
 # Directories
 !home
+
+# Specfic excludes
+*.history
