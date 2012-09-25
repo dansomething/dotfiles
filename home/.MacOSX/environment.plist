@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ANDROID_HOME</key>
+	<string>/Users/dan/.local/android/android-sdks</string>
 	<key>CVS_RSH</key>
 	<string>ssh</string>
 	<key>GIT_SSH</key>
 	<string>/usr/bin/ssh</string>
-	<key>ANDROID_HOME</key>
-	<string>/Users/dan/.local/android/android-sdks</string>
 </dict>
 </plist>
