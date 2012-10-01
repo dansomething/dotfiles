@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 DOTFILES="dansomething/dotfiles"
-DOTVIM="http://github.com/gmarik/vundle.git"
+DOTVIM="https://github.com/dansomething/dot_vim.git"
+VUNDLE="http://github.com/gmarik/vundle.git"
 
 # Check for required commands...
 CMDS="/usr/local/bin/gem"
@@ -33,8 +34,8 @@ homesick symlink $DOTFILES
 if [ -e ".vim" ]; then
     mv .vim .vim.original
 fi
-git clone https://github.com/dansomething/dot_vim.git .vim
+git clone $DOTVIM .vim
 cd ~/.vim
-git clone $DOTVIM bundle/vundle
+git clone $VUNDLE bundle/vundle
 rake vim:link
 vim +BundleInstall +qall
