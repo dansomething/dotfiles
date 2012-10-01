@@ -1,22 +1,28 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 DOTFILES="dansomething/dotfiles"
 DOTVIM="http://github.com/gmarik/vundle.git"
 
-# Install required gems
-GEMS=( homesick )
-for gem in "${GEMS[@]}"; do
-  found=`gem list $gem | grep -i $gem`
-  if [ "$found" != "" ]; then
-    parts=( $found )
-    echo "Found ${parts[0]} ${parts[1]}"
-    continue
-  fi
+# Check for required commands...
+CMDS="/usr/local/bin/gem"
+for cmd in $CMDS; do
+    type -P $cmd &>/dev/null && continue || { echo "$cmd command not found. Please install $cmd."; exit 1; }
+done
 
-  echo "---------------------------"
-  echo "Installing $gem"
-  sudo gem install $gem -y
-  echo "---------------------------"
+# Install required gems...
+GEMS="rake json homesick"
+for gem in $GEMS; do
+    found=`gem list $gem | grep -i $gem`
+    if [ "$found" != "" ]; then
+        parts=( $found )
+        echo "Found ${parts[0]} ${parts[1]}"
+        continue
+    fi
+
+    echo "---------------------------"
+    echo "Installing $gem"
+    sudo gem install $gem -y
+    echo "---------------------------"
 done
 
 # Install dotfiles
@@ -24,6 +30,10 @@ homesick clone $DOTFILES
 homesick symlink $DOTFILES
 
 # Install dot_vim + vundle
+if [ -e ".vim" ]; then
+    mv .vim .vim.original
+fi
+git clone https://github.com/dansomething/dot_vim.git .vim
 cd ~/.vim
 git clone $DOTVIM bundle/vundle
 rake vim:link
