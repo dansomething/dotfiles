@@ -5,7 +5,7 @@ DOTVIM="https://github.com/dansomething/dot_vim.git"
 VUNDLE="http://github.com/gmarik/vundle.git"
 
 # Check for required commands...
-CMDS="/usr/local/bin/gem"
+CMDS="gem"
 for cmd in $CMDS; do
     type -P $cmd &>/dev/null && continue || { echo "$cmd command not found. Please install $cmd."; exit 1; }
 done
@@ -31,10 +31,7 @@ homesick clone $DOTFILES
 homesick symlink $DOTFILES
 
 # Install dot_vim + vundle
-if [ -e ".vim" ]; then
-    mv .vim .vim.original
-fi
-git clone $DOTVIM .vim
+# .vim should be pulled as a submodule of the dotfiles
 cd ~/.vim
 git clone $VUNDLE bundle/vundle
 rake vim:link
