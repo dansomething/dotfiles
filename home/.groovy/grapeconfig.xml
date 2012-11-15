@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <ivysettings>
     <settings defaultResolver="downloadGrapes"/>
+    <property name="ivy.cache.ttl.default" value="12h"/>
     <resolvers>
         <chain name="downloadGrapes">
             <!-- todo add 'endorsed groovy extensions' resolver here -->
