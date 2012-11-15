@@ -16,3 +16,4 @@
 # Specfic excludes
 *.history
 home/.groovy/grapes
+home/.subversion/auth
