@@ -7,11 +7,8 @@ if [ -d "$1/.git" ]; then
     echo $1
     cd "$1"
 
-    echo "$GIT fetch origin"
-    $GIT fetch origin
-
-    echo "$GIT pull"
-    $GIT pull
+    echo "$GIT push -v"
+    $GIT push -v
 
     echo ""
 

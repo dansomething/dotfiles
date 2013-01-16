@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+GIT=/usr/local/bin/git
+
+if [ -d "$1/.git" ]; then
+
+    echo $1
+    cd "$1"
+
+    echo "$GIT checkout $2"
+    $GIT checkout $2
+
+    echo "$GIT submodule update --init --recursive"
+    $GIT submodule update --init --recursive
+
+    echo ""
+
+fi
+
