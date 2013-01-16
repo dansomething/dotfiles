@@ -58,7 +58,7 @@
 
 [difftool "sourcetree"]
 	cmd = ~/Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 
 [github]
 	user = dansomething
@@ -95,3 +95,5 @@
 	email = dan@planettelex.net
 
 
+[push]
+	default = matching
