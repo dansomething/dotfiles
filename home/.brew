@@ -11,8 +11,13 @@ brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install findutils
+
 # Install Bash 4
 brew install bash
+# Make Brew's bash the default shell
+chsh -s /usr/local/bin/bash
+sudo cat "/usr/local/bin/bash" >> /etc/shells
+
 
 # Install wget with IRI support
 brew install wget --enable-iri
@@ -34,15 +39,28 @@ brew install php54
 
 # Install everything else
 brew install ack
-#brew install exiv2
 brew install git
-#brew install imagemagick
 brew install lynx
+
+# Install Maven
+brew install maven
+# Add Maven to the OS X environment
+defaults write ~/.MacOSX/environment.plist M2_HOME `brew --prefix maven`/libexec
+defaults write ~/.MacOSX/environment.plist M2 `brew --prefix maven`/libexec/bin
+
+# Install MySQL
+brew install mysql
+unset TMPDIR
+mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+
 brew install node
 brew install rename
 brew install rhino
 brew install tree
 brew install webkit2png
+
+# Colorize everything! Well, many things.
+brew install grc
 
 # Remove outdated versions from the cellar
 brew cleanup
