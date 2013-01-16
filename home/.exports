@@ -38,8 +38,9 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
-    # Macports Maven 3
-    export M2_HOME="/opt/local/share/java/maven3"
+    # Maven Home
+    export M2_HOME=`brew --prefix maven`/libexec
+    export M2=`brew --prefix maven`/libexec/bin
 
     # Make brew installed libraries available.
     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
