@@ -22,6 +22,11 @@ case "$unamestr" in
     *) PLATFORM='windows' ;;
 esac
 
+# Add RVM to PATH for scripting
+if [ -s $HOME/.rvm/bin ]; then
+    PATH=$PATH:$HOME/.rvm/bin
+fi
+
 # Exports for all *nix platforms
 if [[ "$PLATFORM" != 'windows' ]]; then
     # Make PHP look for additional ini files so php.ini doesn't have to be modified directly.
