@@ -40,9 +40,18 @@ complete -W "NSGlobalDomain" defaults
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
 # If possible, add tab completion for many more commands
-[ -f /etc/bash_completion ] && source /etc/bash_completion
+[[ -s "/etc/bash_completion" ]] && source "/etc/bash_completion"
 
-# Macports bash completion
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-    . /opt/local/etc/profile.d/bash_completion.sh
-fi
+# Brew Bash Completion
+[[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+
+# Macports Bash Completion
+[[ -s "/opt/local/etc/profile.d/bash_completion.sh" ]] && source "/opt/local/etc/profile.d/bash_completion.sh"
+
+# Enable Colourify
+GRC_BASHRC=$(brew --prefix)/etc/grc.bashrc
+[[ -s $GRC_BASHRC ]] && source $GRC_BASHRC
+unset GRC_BASHRC
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
