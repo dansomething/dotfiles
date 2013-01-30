@@ -42,16 +42,27 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # If possible, add tab completion for many more commands
 [[ -s "/etc/bash_completion" ]] && source "/etc/bash_completion"
 
-# Brew Bash Completion
-[[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+# These require Brew
+command -v brew >/dev/null 2>&1 && {
+    # Brew Bash Completion
+    [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+
+    # Enable Colourify
+    GRC_BASHRC=$(brew --prefix)/etc/grc.bashrc
+    [[ -s $GRC_BASHRC ]] && source $GRC_BASHRC
+    unset GRC_BASHRC
+}
 
 # Macports Bash Completion
 [[ -s "/opt/local/etc/profile.d/bash_completion.sh" ]] && source "/opt/local/etc/profile.d/bash_completion.sh"
 
-# Enable Colourify
-GRC_BASHRC=$(brew --prefix)/etc/grc.bashrc
-[[ -s $GRC_BASHRC ]] && source $GRC_BASHRC
-unset GRC_BASHRC
-
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Load Grails autocomplete
+command -v gawk >/dev/null 2>&1 && {
+    [[ -s "$HOME/.bash_completion.d/grails" ]] && source "$HOME/.bash_completion.d/grails"
+}
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "$HOME/.gvm/bin/gvm-init.sh"
