@@ -5,7 +5,7 @@ DOTVIM="https://github.com/dansomething/dot_vim.git"
 VUNDLE="http://github.com/gmarik/vundle.git"
 
 # Check for required commands...
-CMDS="gem"
+CMDS="gem git vim"
 for cmd in $CMDS; do
     type -P $cmd &>/dev/null && continue || { echo "$cmd command not found. Please install $cmd."; exit 1; }
 done
@@ -22,7 +22,7 @@ for gem in $GEMS; do
 
     echo "---------------------------"
     echo "Installing $gem"
-    sudo gem install $gem -y
+    sudo gem install $gem
     echo "---------------------------"
 done
 
