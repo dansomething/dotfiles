@@ -21,10 +21,17 @@ case "$unamestr" in
     Linux) PLATFORM='linux' ;;
     *) PLATFORM='windows' ;;
 esac
+unset unamestr
 
 # Add RVM to PATH for scripting
 if [ -s $HOME/.rvm/bin ]; then
     PATH=$PATH:$HOME/.rvm/bin
+fi
+
+# Add NPM binaries to the PATH
+NPM_HOME=/usr/local/share/npm
+if [ -s $NPM_HOME ]; then
+    PATH=$PATH:$NPM_HOME/bin
 fi
 
 # Exports for all *nix platforms
