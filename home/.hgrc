@@ -1,5 +1,5 @@
 [ui]
-username=Dan Hansen <dan@planettelex.net>
+username=Dan Hansen <hansen.danr@gmail.com>
 ignore=/Users/dan/.hgignore_global
 [merge-tools]
 sourcetreemerge.gui=False
