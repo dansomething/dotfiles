@@ -45,8 +45,11 @@ fi
 
 # Exports for OS X
 if [[ "$PLATFORM" == 'osx' ]]; then
-    # Add Macports and VMware to the path.
-    PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Library/Application Support/VMware Fusion:$PATH"
+    # Add Homebrew and VMware to the path.
+    PATH="/usr/local/bin:/usr/local/sbin:usr/local/opt/coreutils/libexec/gnubin:/Library/Application Support/VMware Fusion:$PATH"
+
+    # Add Homebrew coreutils man pages
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
