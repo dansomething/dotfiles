@@ -15,32 +15,25 @@ brew install findutils
 # Install Bash 4
 brew install bash
 # Make Brew's bash the default shell
+sudo su - root -c 'echo "/usr/local/bin/bash\n" >> /etc/shells'
 chsh -s /usr/local/bin/bash
-sudo cat "/usr/local/bin/bash" >> /etc/shells
 
 
 # Install wget with IRI support
 brew install wget --enable-iri
 
-# Install RingoJS and Narwhal
-# Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
-
 # Install more recent versions of some OS X tools
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
-brew install php54
-
-# These two formulae didn’t work well last time I tried them:
-#brew install homebrew/dupes/vim
-#brew install homebrew/dupes/screen
 
 # Install everything else
 brew install ack
+brew install cmake
 brew install git
 brew install lynx
+brew install macvim
+sudo ln -s /usr/local/bin/mvim /usr/local/bin/vim
 
 # Install Maven
 brew install maven
@@ -53,11 +46,10 @@ brew install mysql
 unset TMPDIR
 mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 
+brew install jsl
 brew install node
 brew install rename
-brew install rhino
 brew install tree
-brew install webkit2png
 
 # Colorize everything! Well, many things.
 brew install grc
