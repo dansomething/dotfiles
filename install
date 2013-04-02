@@ -5,13 +5,15 @@ DOTVIM="https://github.com/dansomething/dot_vim.git"
 VUNDLE="http://github.com/gmarik/vundle.git"
 
 # Check for required commands...
+# TODO Remove the dependency on gem
 CMDS="gem git vim"
 for cmd in $CMDS; do
     type -P $cmd &>/dev/null && continue || { echo "$cmd command not found. Please install $cmd."; exit 1; }
 done
 
 # Install required gems...
-GEMS="rake json homesick"
+# TODO Remove the dependency on rake
+GEMS="rake"
 for gem in $GEMS; do
     found=`gem list $gem | grep -i $gem`
     if [ "$found" != "" ]; then
@@ -26,9 +28,11 @@ for gem in $GEMS; do
     echo "---------------------------"
 done
 
+curl -sL https://raw.github.com/andsens/homeshick/master/install.sh | bash
+
 # Install dotfiles
-homesick clone $DOTFILES
-homesick symlink $DOTFILES
+~/.homeshick clone $DOTFILES
+~/.homeshick symlink dotfiles
 
 # Install dot_vim + vundle
 # .vim should be pulled as a submodule of the dotfiles

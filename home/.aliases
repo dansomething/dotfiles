@@ -206,3 +206,5 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 	alias gvim="e"
 	alias tab="term -t"
 fi
+
+alias homesick="$HOME/.homeshick"
