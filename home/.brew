@@ -29,6 +29,7 @@ brew tap josegonzalez/homebrew-php
 
 # Install everything else
 brew install ack
+brew install the_silver_searcher
 brew install cmake
 brew install git
 brew install lynx
