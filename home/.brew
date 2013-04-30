@@ -14,6 +14,7 @@ brew install findutils
 
 # Install Bash 4
 brew install bash
+brew install bash-completion
 # Make Brew's bash the default shell
 sudo su - root -c 'echo "/usr/local/bin/bash\n" >> /etc/shells'
 chsh -s /usr/local/bin/bash
