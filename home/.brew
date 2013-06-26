@@ -30,13 +30,20 @@ brew tap josegonzalez/homebrew-php
 
 # Install everything else
 brew install ack
-brew install the_silver_searcher
+brew install autojump
 brew install cmake
 brew install git
+brew install grc
+brew install jsl
 brew install lynx
+brew install multimarkdown
+brew install node
+brew install rename
+brew install the_silver_searcher
+brew install tree
+
 brew install macvim
 sudo ln -s /usr/local/bin/mvim /usr/local/bin/vim
-brew install multimarkdown
 
 # Install Maven
 brew install maven
@@ -48,14 +55,6 @@ defaults write ~/.MacOSX/environment.plist M2 `brew --prefix maven`/libexec/bin
 brew install mysql
 unset TMPDIR
 mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
-
-brew install jsl
-brew install node
-brew install rename
-brew install tree
-
-# Colorize everything! Well, many things.
-brew install grc
 
 # Remove outdated versions from the cellar
 brew cleanup
