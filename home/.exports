@@ -1,3 +1,18 @@
+#------------------------
+# Detect the OS platform
+#------------------------
+unamestr=$(uname)
+case "$unamestr" in
+    Darwin) PLATFORM='osx' ;;
+    Linux) PLATFORM='linux' ;;
+    *) PLATFORM='windows' ;;
+esac
+unset unamestr
+
+#---------
+# Exports
+#---------
+
 # Make vim the default editor
 export EDITOR="vim"
 # Don’t clear the screen after quitting a manual page
@@ -14,14 +29,6 @@ export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
 
-# Detect the OS platform
-unamestr=`uname`
-case "$unamestr" in
-    Darwin) PLATFORM='osx' ;;
-    Linux) PLATFORM='linux' ;;
-    *) PLATFORM='windows' ;;
-esac
-unset unamestr
 
 # Add RVM to PATH for scripting
 if [ -s $HOME/.rvm/bin ]; then
