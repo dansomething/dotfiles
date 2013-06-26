@@ -4,6 +4,30 @@ DOTFILES="dansomething/dotfiles"
 DOTVIM="https://github.com/dansomething/dot_vim.git"
 VUNDLE="http://github.com/gmarik/vundle.git"
 
+# Detect the OS platform
+unamestr=$(uname)
+case "$unamestr" in
+    Darwin) PLATFORM='osx' ;;
+    Linux) PLATFORM='linux' ;;
+    *) PLATFORM='windows' ;;
+esac
+unset unamestr
+
+if [[ "$PLATFORM" == 'osx' ]]; then
+  # Check for Homebrew
+  if test ! $(which brew); then
+    echo " Installing Homebrew"
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
+    if test ! $(which git); then
+      echo " Installing git"
+      brew install git
+    fi
+  else
+    echo " + Homebrew found."
+  fi
+fi
+
 # Check for required commands...
 # TODO Remove the dependency on gem
 CMDS="gem git vim"
@@ -28,6 +52,7 @@ for gem in $GEMS; do
     echo "---------------------------"
 done
 
+# Install Homeshick
 curl -sL https://raw.github.com/andsens/homeshick/master/install.sh | bash
 
 # Install dotfiles
