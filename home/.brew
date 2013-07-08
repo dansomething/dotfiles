@@ -33,6 +33,7 @@ brew install ack
 brew install autojump
 brew install cmake
 brew install git
+brew install git-flow
 brew install grc
 brew install jsl
 brew install lynx
@@ -55,6 +56,9 @@ defaults write ~/.MacOSX/environment.plist M2 `brew --prefix maven`/libexec/bin
 brew install mysql
 unset TMPDIR
 mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+
+# Link apps to the Applications folder
+brew linkapps
 
 # Remove outdated versions from the cellar
 brew cleanup
