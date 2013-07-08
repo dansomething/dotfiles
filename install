@@ -35,9 +35,9 @@ for cmd in $CMDS; do
     type -P $cmd &>/dev/null && continue || { echo "$cmd command not found. Please install $cmd."; exit 1; }
 done
 
-# Install required gems...
 # TODO Remove the dependency on rake
-GEMS="rake"
+# Install required gems...
+GEMS="rake json"
 for gem in $GEMS; do
     found=`gem list $gem | grep -i $gem`
     if [ "$found" != "" ]; then
@@ -53,7 +53,9 @@ for gem in $GEMS; do
 done
 
 # Install Homeshick
-curl -sL https://raw.github.com/andsens/homeshick/master/install.sh | bash
+echo "Installing Homeshick..."
+git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+ln -s $HOME/.homesick/repos/homeshick/home/.homeshick $HOME/.homeshick
 
 # Install dotfiles
 ~/.homeshick clone $DOTFILES
