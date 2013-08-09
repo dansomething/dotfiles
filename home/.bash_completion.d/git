@@ -1,2 +1,4 @@
 # Enable git command  autocompletion for 'g' as well
-complete -o default -o nospace -F _git g
+hash git >/dev/null 2>&1 && {
+  complete -o default -o nospace -F _git g
+}

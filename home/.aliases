@@ -10,11 +10,11 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Google\ Drive"
 alias g="git"
 alias gv="gvim"
 alias h="history"
 alias v="vim"
+hash fasd >/dev/null 2>&1 && alias v='f -t -e vim -b viminfo'
 alias vi="vim"
 alias m="mate ."
 alias s="subl ."
@@ -28,7 +28,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 # Colorize diff output
-command -v colordiff > /dev/null && alias diff="colordiff"
+hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 
 # Prettier date and time
 alias now='date +"%T'
@@ -37,9 +37,9 @@ alias nowdate='date +"%d-%m-%Y"'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
+  colorflag="--color"
 else # OS X `ls`
-	colorflag="-G"
+  colorflag="-G"
 fi
 
 # List all files colorized in long format
@@ -92,13 +92,13 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias ports='netstat -tulanp'
 
 # Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
+hash fasd >/dev/null 2>&1 || alias hd="hexdump -C"
 
 # OS X has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
+hash md5sum >/dev/null 2>&1 || alias md5sum="md5"
 
 # OS X has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum > /dev/null || alias sha1sum="shasum"
+hash sha1sum >/dev/null 2>&1 || alias sha1sum="shasum"
 alias sha1="sha1sum"
 
 # Break out each path on a new line
@@ -151,7 +151,7 @@ alias badge="tput bel"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
+  alias "$method"="lwp-request -m '$method'"
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
@@ -191,9 +191,9 @@ alias cvss="cvs -q status | grep File | cgrep -v Up-to"
 alias cvsu="cvs log -d '>2006/06/01' | cgrep -B2 -A4 'author: dan' > updates.txt"
 
 # SVN
-alias svnm="svn st -u"  	        # Show all locally modified items
-alias svns="svn st -u -v"   	  	# Show status of all items
-alias svnl="svn log -r 1:HEAD -v"	# Show log messages
+alias svnm="svn st -u"            # Show all locally modified items
+alias svns="svn st -u -v"         # Show status of all items
+alias svnl="svn log -r 1:HEAD -v" # Show log messages
 alias nosvn="grep -v .svn"
 
 # MySQL
@@ -201,10 +201,10 @@ alias mysql="mysql -p"
 alias mysqldump="mysqldump -p"
 
 if [[ "$PLATFORM" == 'osx' ]]; then
-	alias e="open -a macvim"
-	alias top="top -ocpu -O+rsize -s 5 -n 20"
-	alias gvim="e"
-	alias tab="term -t"
+  alias e="open -a macvim"
+  alias top="top -ocpu -O+rsize -s 5 -n 20"
+  alias gvim="e"
+  alias tab="term -t"
 fi
 
 alias homesick="$HOME/.homeshick"

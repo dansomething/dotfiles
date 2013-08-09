@@ -29,6 +29,9 @@ done
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
+# Initialize fasd if available
+hash fasd >/dev/null 2>&1 && eval "$(fasd --init auto)"
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
@@ -43,7 +46,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 [[ -s "/etc/bash_completion" ]] && source "/etc/bash_completion"
 
 # These require Brew
-command -v brew >/dev/null 2>&1 && {
+hash brew >/dev/null 2>&1 && {
     # Brew Bash Completion
     [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
 
@@ -54,9 +57,6 @@ command -v brew >/dev/null 2>&1 && {
 
     [[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
 }
-
-# Macports Bash Completion
-[[ -s "/opt/local/etc/profile.d/bash_completion.sh" ]] && source "/opt/local/etc/profile.d/bash_completion.sh"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

@@ -19,7 +19,6 @@ brew install bash-completion
 sudo su - root -c 'echo "/usr/local/bin/bash\n" >> /etc/shells'
 chsh -s /usr/local/bin/bash
 
-
 # Install wget with IRI support
 brew install wget --enable-iri
 
@@ -30,7 +29,7 @@ brew tap josegonzalez/homebrew-php
 
 # Install everything else
 brew install ack
-brew install autojump
+brew install fasd
 brew install cmake
 brew install git
 brew install git-flow

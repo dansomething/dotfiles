@@ -1,5 +1,5 @@
-command -v gawk >/dev/null 2>&1 || {
-  exit 1
+hash gawk >/dev/null 2>&1 || {
+  exit 0
 }
 
 if [ -e $HOME/.grails ]; then
