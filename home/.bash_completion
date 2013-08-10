@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+BASH_COMPLETION_D=$HOME/.bash_completion.d/
+files=`find $BASH_COMPLETION_D -type f`
+for file in $files; do
+  source $file
+done
+
