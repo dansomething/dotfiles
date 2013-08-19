@@ -1,6 +1,4 @@
-hash gawk >/dev/null 2>&1 || {
-  exit 0
-}
+hash gawk >/dev/null 2>&1 && {
 
 if [ -e $HOME/.grails ]; then
   export GRAILS_VERSION="$(ls -lhr $HOME/.grails | egrep -i '1\.' | head -1 | gawk '{print $9 }')"
@@ -126,3 +124,4 @@ _grails_comp(){
 }
  
 complete -F _grails_comp grails
+}
