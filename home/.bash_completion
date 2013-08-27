@@ -1,8 +1,9 @@
 #!/usr/bin/bash
 
-BASH_COMPLETION_D=$HOME/.bash_completion.d/
-files=`find $BASH_COMPLETION_D -type f`
+BASH_COMPLETION_D=$HOME/.bash_completion.d
+files=$(LC_ALL=C command ls "$BASH_COMPLETION_D");
 for file in $files; do
+  file=$BASH_COMPLETION_D/$file
   source $file
 done
 
