@@ -1,0 +1,4 @@
+#!/bin/bash
+# For non-OS X systems, a placeholder for the program from
+# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8
+exec "$@"
