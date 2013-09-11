@@ -92,7 +92,7 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias ports='netstat -tulanp'
 
 # Canonical hex dump; some systems have this symlinked
-hash fasd >/dev/null 2>&1 || alias hd="hexdump -C"
+hash hexdump >/dev/null 2>&1 || alias hd="hexdump -C"
 
 # OS X has no `md5sum`, so use `md5` as a fallback
 hash md5sum >/dev/null 2>&1 || alias md5sum="md5"
@@ -161,7 +161,6 @@ alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 # Find all PHP files
 alias fphp="find . -type f -name '*.php'"
-
 # Find all Groovy files
 alias fgroovy="find . -type f -name '*.groovy'"
 
@@ -172,6 +171,9 @@ alias waiting="ps ax | sed '1p;/ [U] /!d'"
 alias grep="grep -n --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
+
+# Grep running processes
+alias pg="pgrep -fl"
 
 # Nicer directory tree view
 alias ctree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
