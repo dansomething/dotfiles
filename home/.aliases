@@ -104,6 +104,9 @@ alias sha1="sha1sum"
 # Break out each path on a new line
 alias path='echo -e ${PATH//:/\\n}'
 
+# Sort env variables for readability
+alias env='env | sort'
+
 # Stop after sending count ECHO_REQUEST packets
 alias ping='ping -c 5'
 # Do not wait interval 1 second, go fast
@@ -210,3 +213,10 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 fi
 
 alias homesick="$HOME/.homeshick"
+
+_ssh_auth_save() {
+  ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
+}
+alias screen='_ssh_auth_save ; export HOSTNAME=$(hostname) ; screen'
+alias tmux='_ssh_auth_save ; export HOSTNAME=$(hostname) ; tmux'
+

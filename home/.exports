@@ -29,13 +29,6 @@ export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
 
-# SSH_AUTH_SOCK support for tmux
-if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/ssh_auth_sock" ] ; then
-    unlink "$HOME/.ssh/ssh_auth_sock" 2>/dev/null
-    ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh_auth_sock"
-    export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
-fi
-
 # Add RVM to PATH for scripting
 if [ -s $HOME/.rvm/bin ]; then
     PATH=$PATH:$HOME/.rvm/bin
