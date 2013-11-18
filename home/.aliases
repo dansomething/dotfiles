@@ -212,8 +212,6 @@ if [[ "$PLATFORM" == 'osx' ]]; then
   alias tab="term -t"
 fi
 
-alias homesick="$HOME/.homeshick"
-
 _ssh_auth_save() {
   ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
 }

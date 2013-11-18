@@ -58,6 +58,13 @@ hash brew >/dev/null 2>&1 && {
     [[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
 }
 
+HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh" 
+[[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
+  source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+  source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+  homeshick --quiet refresh
+}
+
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
