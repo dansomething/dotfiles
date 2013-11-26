@@ -1,0 +1,21 @@
+#!/usr/bin/env groovy
+
+def cli = new CliBuilder(usage:"base36 [option]... [data]")
+cli.with {
+  h longOpt:'help', 'Show usage information'
+  d longOpt:'decode', 'Decode the input data'
+}
+def options = cli.parse(args)
+if (!options || options.h) {
+  cli.usage()
+  return
+}
+def data = options.arguments()[0]
+if (data) {
+  if (options.d)
+    println Long.parseLong(data, 36)
+  else
+    println Long.toString(Long.parseLong(data), 36)
+  return
+}
+cli.usage()
