@@ -1,5 +1,10 @@
 #!/bin/bash
 
+hash brew >/dev/null 2>&1 || {
+  echo "Installing Homebrew..."
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+}
+
 # Make sure we’re using the latest Homebrew
 brew update
 
