@@ -4,12 +4,14 @@
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	# View the current working tree status using the short format
 	s = status -s
+  co = checkout
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 	# Pull in remote changes for the current repository and all its submodules
-	p = !"git pull; git submodule foreach git pull origin master"
+	u = !"git pull; git submodule foreach git pull origin master"
+	p = !"git push"
 	# Clone a repository including all submodules
 	c = clone --recursive
 	# Commit all changes
@@ -34,7 +36,7 @@
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore_global
-	attributesfile = ~/.gitattributes_global
+  #attributesfile = ~/.gitattributes_global
     autocrlf = input
     # Treat spaces before tabs, lines that are indented with 4 or more spaces, and all kinds of trailing whitespace as an error
     whitespace = space-before-tab,indent-with-non-tab,trailing-space,tabwidth=4
@@ -59,7 +61,7 @@
 	untracked = cyan
 
 [difftool "sourcetree"]
-	cmd = ~/Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	cmd = /Users/dhansen/Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
 	path = 
 
 [github]
@@ -70,7 +72,7 @@
 	log = true
 
 [mergetool "sourcetree"]
-	cmd = ~/Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	cmd = /Users/dhansen/Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	trustExitCode = true
 
 # Use `origin` as the default remote on the `master` branch in all cases
@@ -94,7 +96,7 @@
 
 [user]
 	name = Dan Hansen
-	email = hansen.danr@gmail.com
+	email = dan.hansen@readytalk.com
 
 
 [push]
