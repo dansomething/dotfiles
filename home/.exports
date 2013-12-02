@@ -57,11 +57,13 @@ if [[ "$PLATFORM" == 'osx' ]]; then
     # Add Homebrew coreutils man pages
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+    hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
     # Maven Home
-    export M2_HOME=`brew --prefix maven`/libexec
-    export M2=`brew --prefix maven`/libexec/bin
+    hash brew >/dev/null 2>&1 && {
+      export M2_HOME=`brew --prefix maven`/libexec
+      export M2=`brew --prefix maven`/libexec/bin
+    }
 
     # Make brew installed libraries available.
     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
