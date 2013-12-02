@@ -32,7 +32,19 @@ brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
 
-# Install everything else
+# Applications distributed as binaries
+brew tap phinze/homebrew-cask
+brew install brew-cask
+brew cask install adium
+brew cask install caffeine
+brew cask install firefox
+brew cask install google-chrome
+brew cask install google-drive
+brew cask install iterm2
+brew cask install p4merge
+brew cask install sourcetree
+
+# Install utils
 brew install ack
 brew install fasd
 brew install cmake
