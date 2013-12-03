@@ -38,10 +38,14 @@ brew install brew-cask
 brew cask install adium
 brew cask install caffeine
 brew cask install firefox
+brew cask install gitifier
 brew cask install google-chrome
 brew cask install google-drive
 brew cask install iterm2
+brew cask install macvim
+brew cask install mono-mre
 brew cask install p4merge
+brew cask install xquartz
 brew cask install sourcetree
 
 # Install utils
@@ -53,7 +57,6 @@ brew install git-flow
 brew install grc
 brew install jsl
 brew install lynx
-brew install macvim --override-system-vim
 brew install multimarkdown
 brew install node
 brew install reattach-to-user-namespace
