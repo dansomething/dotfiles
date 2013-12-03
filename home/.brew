@@ -16,6 +16,7 @@ brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install findutils
+ln -s /usr/local/bin/gfind /usr/local/bin/find
 
 # Install Bash 4
 brew install bash
@@ -47,6 +48,7 @@ brew cask install mono-mre
 brew cask install p4merge
 brew cask install xquartz
 brew cask install sourcetree
+brew cask install tinkertool
 
 # Install utils
 brew install ack
