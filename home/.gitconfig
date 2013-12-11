@@ -1,103 +1,100 @@
 [alias]
-	# View the SHA, description, and history graph of the latest 20 commits
-	ld = log --pretty=oneline -n 20 --graph
-	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	# View the current working tree status using the short format
-	s = status -s
+  # View the SHA, description, and history graph of the latest 20 commits
+  ld = log --pretty=oneline -n 20 --graph
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  # View the current working tree status using the short format
+  s = status -s
+  # Show the diff between the latest commit and the current state
+  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+  # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+  di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+  # Pull in remote changes for the current repository and all its submodules
+  u = !"git pull; git submodule foreach git pull origin master"
+  p = !"git push"
+  # Clone a repository including all submodules
+  c = clone --recursive
+  # Commit all changes
+  ca = !git add -A && git commit -av
+  # Alias for commit
+  ci = commit
+  # Switch to a branch, creating it if necessary
+  go = checkout -B
+  # Alias for checkout
   co = checkout
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	# Pull in remote changes for the current repository and all its submodules
-	u = !"git pull; git submodule foreach git pull origin master"
-	p = !"git push"
-	# Clone a repository including all submodules
-	c = clone --recursive
-	# Commit all changes
-	ca = !git add -A && git commit -av
-	# Switch to a branch, creating it if necessary
-	go = checkout -B
-	# Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
-	# Credit an author on the latest commit
-	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-	# Interactive rebase with the given number of latest commits
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
-	# Undo a `git push`
-	undopush = push -f origin HEAD^:master
+  # Show verbose output about tags, branches or remotes
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
+  # Credit an author on the latest commit
+  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+  # Interactive rebase with the given number of latest commits
+  reb = "!r() { git rebase -i HEAD~$1; }; r"
+  # Find branches containing commit
+  fb = "!f() { git branch -a --contains $1; }; f"
+  # Find tags containing commit
+  ft = "!f() { git describe --always --contains $1; }; f"
+  # Find commits by source code
+  fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+  # Find commits by commit message
+  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
 [apply]
-    # Detect whitespace errors when applying a patch
-    whitespace = fix
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
 
 [core]
-	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.gitignore_global
+  # Use custom `.gitignore` and `.gitattributes`
+  excludesfile = ~/.gitignore_global
   #attributesfile = ~/.gitattributes_global
-    autocrlf = input
-    # Treat spaces before tabs, lines that are indented with 4 or more spaces, and all kinds of trailing whitespace as an error
-    whitespace = space-before-tab,indent-with-non-tab,trailing-space,tabwidth=4
-
+  autocrlf = input
+  # Treat spaces before tabs, lines that are indented with 4 or more spaces, and all kinds of trailing whitespace as an error
+  whitespace = space-before-tab,indent-with-non-tab,trailing-space,tabwidth=4
 
 [color]
-	# Use colors in Git commands that are capable of colored output when outputting to the terminal
-	ui = auto
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+  ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
-
-[difftool "sourcetree"]
-	cmd = /Users/dhansen/Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[github]
-	user = dansomething
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [merge]
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
-
-[mergetool "sourcetree"]
-	cmd = /Users/dhansen/Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-	trustExitCode = true
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
 
 # Use `origin` as the default remote on the `master` branch in all cases
 [branch "master"]
-	remote = origin
-	merge = refs/heads/master
+  remote = origin
+  merge = refs/heads/master
 
 # URL shorthands
 [url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
-	insteadOf = "github:"
+  insteadOf = "github:"
 [url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
-	insteadOf = "gist:"
+  insteadOf = "gist:"
 
 [user]
-	name = Dan Hansen
-	email = dan.hansen@readytalk.com
+  name = Dan Hansen
+  email = dan.hansen@readytalk.com
 
 
 [push]
-	default = current
+  default = matching 
