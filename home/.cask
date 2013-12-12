@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Install applications distributed as binaries
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+brew cask install adium
+brew cask install caffeine
+brew cask install firefox
+brew cask install gitifier
+brew cask install google-chrome
+brew cask install google-drive
+brew cask install iterm2
+brew cask install macvim
+brew cask install mono-mre
+brew cask install p4merge
+brew cask install xquartz
+brew cask install sourcetree
+brew cask install tinkertool
