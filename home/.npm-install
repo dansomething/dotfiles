@@ -1,0 +1,9 @@
+npm update npm -g
+npm update -g
+npm install -g bower
+npm install -g coffeelint
+npm install -g grunt-cli
+npm install -g jsonlint
+npm install -g js2coffee
+npm install -g recess
+npm install -g yeoman
