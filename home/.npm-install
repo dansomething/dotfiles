@@ -1,6 +1,7 @@
 npm update npm -g
 npm update -g
 npm install -g bower
+npm install -g coffee-script
 npm install -g coffeelint
 npm install -g grunt-cli
 npm install -g jsonlint
