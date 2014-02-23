@@ -62,7 +62,10 @@ HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
 [[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
   source "$HOME/.homesick/repos/homeshick/homeshick.sh"
   source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
-  homeshick --quiet refresh
+
+  hash git >/dev/null 2>&1 && {
+    homeshick --quiet refresh
+  }
 }
 
 # Load RVM into a shell session *as a function*

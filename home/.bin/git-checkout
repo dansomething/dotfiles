@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-GIT=/usr/local/bin/git
+GIT="/usr/bin/env git"
 
 if [ -d "$1/.git" ]; then
 
