@@ -1,4 +1,3 @@
-# Clojure
 --langdef=Clojure
 --langmap=Clojure:.clj
 --regex-clojure=/\([ \t]*create-ns[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/n,namespace/
@@ -14,7 +13,6 @@
 --regex-clojure=/\([ \t]*ns[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/n,namespace/
 
 
-# CoffeeScript
 --langdef=coffee
 --langmap=coffee:.coffee
 --regex-coffee=/(^|=[ \t])*class ([A-Za-z_][A-Za-z0-9_]+\.)*([A-Za-z_][A-Za-z0-9_]+)( extends ([A-Za-z][A-Za-z0-9_.]*)+)?$/\3/c,class/
@@ -37,7 +35,11 @@
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
 
 
-# Groovy
+--langdef=cucumber
+--langmap=cucumber:.feature
+--regex-cucumber=/Scenario[ \tA-Za-z]*: (.+)/\1/d,definition/
+
+
 --langdef=groovy
 --langmap=groovy:.groovy
 --regex-groovy=/^[ \t][(private|public|protected) ( \t)][A-Za-z0-9<>]+[ \t]+([A-Za-z0-9]+)[ \t](.)[ \t]{/\1/f,function,functions/
@@ -46,8 +48,3 @@
 --regex-groovy=/^[ \t]def[ \t]+([A-Za-z0-9_]+)[ \t]/\1/u,public,public variables/
 --regex-groovy=/^[ \t][abstract ( \t)][(private|public) ( \t)]class[ \t]+([A-Za-z0-9_]+)[ \t]/\1/c,class,classes/
 --regex-groovy=/^[ \t][abstract ( \t)][(private|public) ( \t)]enum[ \t]+([A-Za-z0-9_]+)[ \t]/\1/c,class,classes/
-
-
-# PHP
---langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v
-
