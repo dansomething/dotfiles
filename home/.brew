@@ -41,7 +41,7 @@ brew install git
 brew install git-flow
 brew install grc
 brew install jsl
-brew install node
+brew install nvm
 brew install reattach-to-user-namespace
 brew install rename
 brew install the_silver_searcher

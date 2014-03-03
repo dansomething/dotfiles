@@ -47,15 +47,13 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # These require Brew
 hash brew >/dev/null 2>&1 && {
-    # Brew Bash Completion
-    [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+  [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
 
-    # Enable Colourify
-    GRC_BASHRC=$(brew --prefix)/etc/grc.bashrc
-    [[ -s $GRC_BASHRC ]] && source $GRC_BASHRC
-    unset GRC_BASHRC
+  [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
 
-    [[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
+  [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
+
+  [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 }
 
 HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh" 
