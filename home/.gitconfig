@@ -5,11 +5,13 @@
   # View the current working tree status using the short format
   s = status -s
   # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+  dt = difftool
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
   # Pull in remote changes for the current repository and all its submodules
-  u = !"git pull; git submodule foreach git pull origin master"
+  um = !"git pull; git submodule foreach git pull origin master"
+  # Prune branches removed from remote and update fast-forward only
+  u = "!git remote update -p; git merge --ff-only @{u}"
   p = !"git push"
   # Clone a repository including all submodules
   c = clone --recursive
@@ -71,6 +73,7 @@
 [merge]
   # Include summaries of merged commits in newly created merge commit messages
   log = true
+  tool = diffconflicts
 
 # Use `origin` as the default remote on the `master` branch in all cases
 [branch "master"]
@@ -93,8 +96,15 @@
 
 [user]
   name = Dan Hansen
-  email = dan.hansen@readytalk.com
-
+  email = hansendanr+git@gmail.com
 
 [push]
-  default = matching 
+  default = matching
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
+[mergetool "diffconflicts"]
+  cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+  trustExitCode = true
+  keepBackup = false
