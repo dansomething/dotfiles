@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+ 
+require 'fileutils'
+ 
+APP = __FILE__.split('/').last
+pwd = Dir.pwd
+ 
+if ARGV.include? '--enable'
+  post_commit = File.join(pwd,'.git/hooks/post-commit')
+  abort('post commit hook already exist!') if File.exists?(post_commit)
+  File.open(post_commit,'w') do |file|
+    file.puts '#!/bin/sh', __FILE__
+    file.chmod(0755)
+  end
+else
+  project = pwd.split('/').last
+  dir = File.join(ENV['HOME'], ".#{APP}", project)
+  FileUtils.mkdir_p dir
+  file_name = File.join(dir, "#{Time.now.to_i}.jpg")
+  system "imagesnap -q -w 2 #{file_name}"
+  puts "#{APP} saved your picture to #{file_name}"
+end
