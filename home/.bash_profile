@@ -56,7 +56,7 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 }
 
-HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh" 
+HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
 [[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
   source "$HOME/.homesick/repos/homeshick/homeshick.sh"
   source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
