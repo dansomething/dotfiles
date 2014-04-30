@@ -7,4 +7,4 @@ npm install -g grunt-cli
 npm install -g jsonlint
 npm install -g js2coffee
 npm install -g recess
-npm install -g yeoman
+npm install -g yo
