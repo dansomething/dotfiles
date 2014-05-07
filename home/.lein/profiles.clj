@@ -9,4 +9,4 @@
                   [lein-ring "0.8.10"]
                   [lein-try "0.4.1"]]
         :search-page-size 30
-        :repl-options {:prompt (fn [ns] (str "your command, master? "))}}}
+        :repl-options {:prompt (fn [ns] (str "[" ns "] " "your command, master? "))}}}
