@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES="https://github.com/dansomething/dotfiles.git"
-CMDS="git vim"
+CMDS="git"
 
 # Check for necessary commands
 for cmd in $CMDS; do
