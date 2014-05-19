@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+hash nvm >/dev/null 2>&1 || {
+  return 0
+}
+
 # bash completion for Node Version Manager (NVM)
 
 __nvm_generate_completion()
