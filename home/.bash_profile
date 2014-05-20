@@ -53,7 +53,10 @@ hash brew >/dev/null 2>&1 && {
 
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
 
-  [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+  [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
+    export NVM_DIR=~/.nvm
+    source $(brew --prefix nvm)/nvm.sh
+  }
 }
 
 HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
