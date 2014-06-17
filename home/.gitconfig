@@ -4,6 +4,12 @@
   l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   # View the current working tree status using the short format
   s = status -s
+  sl = stash list
+  ss = stash save
+  so = stash show
+  sp = !sh -c 'git stash show -p stash@{$1}' -
+  sa = !sh -c 'git stash apply stash@{$1}' -
+  sd = !sh -c 'git stash drop stash@{$1}' -
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   dt = difftool
