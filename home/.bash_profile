@@ -54,7 +54,7 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
 
   [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
-    export NVM_DIR=~/.nvm
+    export NVM_DIR="$HOME/.nvm"
     source $(brew --prefix nvm)/nvm.sh
   }
 }
