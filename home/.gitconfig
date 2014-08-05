@@ -20,6 +20,8 @@
   um = !"git pull; git submodule foreach git pull origin master"
   # Prune branches removed from remote and update fast-forward only
   u = "!git remote update -p; git merge --ff-only @{u}"
+  # rebase pull, auto prune remote branches, and list pulled commits
+  urb = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
   p = !"git push"
   # Clone a repository including all submodules
   c = clone --recursive
