@@ -1,4 +1,3 @@
-npm update npm -g
 npm update -g
 npm install -g bower
 npm install -g coffee-script
