@@ -47,16 +47,16 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # These require Brew
 hash brew >/dev/null 2>&1 && {
+  [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
+    export NVM_DIR="$HOME/.nvm"
+    source $(brew --prefix nvm)/nvm.sh
+  }
+
   [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
 
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
 
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
-
-  [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
-    export NVM_DIR="$HOME/.nvm"
-    source $(brew --prefix nvm)/nvm.sh
-  }
 }
 
 HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
