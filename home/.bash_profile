@@ -70,7 +70,7 @@ HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
 }
 
 # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+hash brew >/dev/null 2>&1 && { eval "$(rbenv init -)"; }
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "$HOME/.gvm/bin/gvm-init.sh"
