@@ -65,7 +65,7 @@ alias mkdir='mkdir -pv'
 alias sudo='sudo '
 
 # Colourify Curl
-alias curl='colourify curl'
+alias ccurl='colourify curl'
 
 # Gzip-enabled `curl`
 alias gurl="curl --compressed"
