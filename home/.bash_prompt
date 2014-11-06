@@ -11,6 +11,17 @@ GIT_PROMPT_FETCH_REMOTE_STATUS=1   # uncomment to avoid fetching remote status
 GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 
-if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
-fi
+hash brew >/dev/null 2>&1 && {
+  if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+    return 0
+  fi
+}
+
+[ -s "$HOME/.bash-git-prompt/gitprompt.sh" ] && {
+  source "$HOME/.bash-git-prompt/gitprompt.sh"
+  return 0
+}
+
+# Fallback to custom bash prompt if necesary
+source "$HOME/.bash_prompt_git"
