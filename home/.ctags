@@ -16,7 +16,7 @@
 --langdef=coffee
 --langmap=coffee:.coffee
 --regex-coffee=/\$scope[A-Za-z1-9._$]*\.([A-Za-z0-9._$]+)[ \t]*[:=]/\1/t,ng-scope-variable/
---regex-coffee=/\.(controller|factory|service)[ \(]'([A-Za-z0-9._$]+)'/\2/n,ng-component/
+--regex-coffee=/\.(constant|controller|decorator|factory|provider|service|value)[ \(]'([A-Za-z0-9._$]+)'/\2/n,ng-component/
 --regex-coffee=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*new[ \t]+Object\(/\1/o,object/
 --regex-coffee=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
 --regex-coffee=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*new[ \t]+Array\(/\1/a,array/
