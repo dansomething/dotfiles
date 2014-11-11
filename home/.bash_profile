@@ -57,6 +57,9 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
 
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
+
+  # Load RVM into a shell session *as a function*
+  [[ -s $(brew --prefix)/rbenv ]] && eval "$(rbenv init -)";
 }
 
 HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
@@ -68,9 +71,6 @@ HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
     homeshick --quiet refresh
   }
 }
-
-# Load RVM into a shell session *as a function*
-hash brew >/dev/null 2>&1 && { eval "$(rbenv init -)"; }
 
 # Load Travis CI if available
 [ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
