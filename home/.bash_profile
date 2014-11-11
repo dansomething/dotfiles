@@ -30,7 +30,10 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
 # Initialize fasd if available
-hash fasd >/dev/null 2>&1 && eval "$(fasd --init auto)"
+hash fasd >/dev/null 2>&1 && {
+  eval "$(fasd --init auto)"
+  _fasd_bash_hook_cmd_complete v m j o
+}
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
@@ -59,7 +62,7 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
 
   # Load RVM into a shell session *as a function*
-  [[ -s $(brew --prefix)/rbenv ]] && eval "$(rbenv init -)";
+  [[ -s $(brew --prefix)/rbenv ]] && eval "$(rbenv init -)"
 }
 
 HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
