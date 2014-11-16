@@ -1,8 +1,8 @@
 # These are the defaults from the "Default" theme
 
 # Only show username/host if not default
-default_usernames=("dan", "dan.hansen")
-default_hostnames=("MC02LL4LVFH00" "lucky")
+default_usernames=("dan" "dan.hansen")
+default_hostnames=("MC02LL4LVFH00" "lucky" "pearly")
 
 function get_username() {
   for user in "${default_usernames[@]}"; do
