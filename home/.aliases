@@ -16,6 +16,7 @@ alias h="history"
 alias v="vim"
 hash fasd >/dev/null 2>&1 && alias v='f -e vim'
 alias vi="vim"
+alias vis="vim -S Session.vim"
 alias m="mate ."
 alias s="subl ."
 alias o="open"
