@@ -19,3 +19,6 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 # Install dotfiles
 homeshick clone $DOTFILES
 homeshick symlink dotfiles
+
+# Install tmux plugins manager
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
