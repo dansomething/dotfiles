@@ -36,5 +36,5 @@ case $TERM in (xterm*|rxvt)
 esac
 
 if [ -f $HOME/.shell ]; then
-	. $HOME/.shell
+  $HOME/.shell
 fi
