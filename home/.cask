@@ -11,9 +11,8 @@ brew cask install gitifier
 brew cask install google-chrome
 brew cask install google-drive
 brew cask install iterm2
+brew cask install keepassx
 brew cask install macvim
-brew cask install mono-mre
 brew cask install p4merge
-brew cask install xquartz
 brew cask install sourcetree
 brew cask install tinkertool
