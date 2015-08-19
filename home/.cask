@@ -5,14 +5,16 @@ brew tap phinze/homebrew-cask
 brew install brew-cask
 
 brew cask install adium
+brew cask install appcleaner
 brew cask install caffeine
+brew cask install coconutbattery
 brew cask install firefox
-brew cask install gitifier
 brew cask install google-chrome
 brew cask install google-drive
+brew cask install growlnotify
 brew cask install iterm2
 brew cask install keepassx
 brew cask install macvim
-brew cask install p4merge
+brew cask install spectacle
 brew cask install sourcetree
 brew cask install tinkertool
