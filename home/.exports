@@ -51,7 +51,7 @@ if [[ "$PLATFORM" == 'osx' ]]; then
     # Add Homebrew coreutils man pages
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-    hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+    hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
     # Maven Home
     hash brew >/dev/null 2>&1 && {
