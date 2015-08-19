@@ -171,11 +171,6 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
-# Find all PHP files
-alias fphp="find . -type f -name '*.php'"
-# Find all Groovy files
-alias fgroovy="find . -type f -name '*.groovy'"
-
 # Find processes in waiting
 alias waiting="ps ax | sed '1p;/ [U] /!d'"
 
@@ -190,19 +185,9 @@ alias pg="pgrep -fl"
 # Nicer directory tree view
 alias ctree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
-# Start screen with bash shell
-alias screen="screen -S dhansen -T xterm -s /bin/bash"
-
-# Make P4 Merge avaialble from the shell.
-alias p4="/Users/dan/Applications/p4merge.app/Contents/Resources/launchp4merge"
-
 # Cassandra
 alias ccli="cassandra-cli -host localhost -port 9160"
 alias cqlsh="cqlsh localhost 9160"
-
-# CVS
-alias cvss="cvs -q status | grep File | cgrep -v Up-to"
-alias cvsu="cvs log -d '>2006/06/01' | cgrep -B2 -A4 'author: dan' > updates.txt"
 
 # SVN
 alias svnm="svn st -u"            # Show all locally modified items
@@ -226,4 +211,3 @@ _ssh_auth_save() {
 }
 alias screen='_ssh_auth_save ; export HOSTNAME=$(hostname) ; screen'
 alias tmux='_ssh_auth_save ; export HOSTNAME=$(hostname) ; tmux'
-
