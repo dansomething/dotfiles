@@ -6799,20 +6799,20 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>198</string>
+		<string>302</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1537 237 445 270 0 0 2560 1440 </string>
+	<string>617 140 445 136 0 0 1680 1050 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>151 391 924 485 0 0 1280 1024 </string>
+	<string>321 410 924 485 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>648 675 384 129 0 0 1680 1028 </string>
+	<string>648 691 384 129 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 201 1410 826 0 0 1680 1027 </string>
+	<string>0 157 1410 826 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>3335 264 766 906 2560 197 1680 1028 </string>
 	<key>NeverWarnAboutShortLivedSessions_5C419932-54CF-4BF9-9525-A4A19A36E88D</key>
@@ -8818,11 +8818,11 @@
 			<key>Name</key>
 			<string>tmux</string>
 			<key>Non Ascii Font</key>
-			<string>SauceCodePowerline-Regular 12</string>
+			<string>Hack 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>SauceCodePowerline-Regular 12</string>
+			<string>Hack 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -8997,6 +8997,10 @@
 			<string>/Users/dhansen</string>
 		</dict>
 	</array>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453222348.36979598</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>462722825.10875702</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -9061,7 +9065,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-11-12T15:35:50Z</date>
+	<date>2015-08-31T14:06:40Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -9104,7 +9108,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>.Lucida Grande UI</string>
+	<string>.Helvetica Neue DeskInterface</string>
 	<key>Window Arrangements</key>
 	<dict>
 		<key>Dev</key>
@@ -11430,6 +11434,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.0.0.20141103</string>
+	<string>2.1.1</string>
 </dict>
 </plist>
