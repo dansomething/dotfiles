@@ -114,7 +114,7 @@ alias sha1="sha1sum"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Sort env variables for readability
-alias env='env | sort'
+alias envs='env | sort'
 
 # Stop after sending count ECHO_REQUEST packets
 alias ping='ping -c 5'
