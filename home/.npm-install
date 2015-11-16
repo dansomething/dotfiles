@@ -8,5 +8,6 @@ npm install -g js2coffee
 npm install -g less
 npm install -g npm-check-updates
 npm install -g recess
+npm install -g tsd
 npm install -g typescript
 npm install -g underscore-cli
