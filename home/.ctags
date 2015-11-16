@@ -43,6 +43,19 @@
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
 
 
+--langdef=css
+--langmap=css:.css
+--langmap=css:+.scss
+--langmap=css:+.sass
+--langmap=css:+.styl
+--langmap=css:+.less
+--regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/\1/c,class,classes/
+--regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
+--regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+){/\1/t,tag,tags/
+--regex-css=/^[ \t]*@media[ \t]+([A-Za-z0-9_-]+)/\1/m,media,medias/
+--regex-css=/^[ \t]*@([A-Za-z0-9_-]+):/\1/v,var,variables/
+
+
 --langdef=cucumber
 --langmap=cucumber:.feature
 --regex-cucumber=/Scenario[ \tA-Za-z]*: (.+)/\1/d,definition/
@@ -58,13 +71,20 @@
 --regex-groovy=/^[ \t][abstract ( \t)][(private|public) ( \t)]enum[ \t]+([A-Za-z0-9_]+)[ \t]/\1/c,class,classes/
 
 
---langdef=less
---langmap=less:.less
---regex-less=/^[ \t]*\.([A-Za-z0-9_-]+)/\1/c,class,classes/
---regex-less=/^[ \t]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
---regex-less=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+){/\1/t,tag,tags/
---regex-less=/^[ \t]*@media[ \t]+([A-Za-z0-9_-]+)/\1/m,media,medias/
---regex-less=/^[ \t]*@([A-Za-z0-9_-]+):/\1/v,var,variables/
+--langdef=html
+--langmap=html:.html
+--regex-html=/[ \t]+id[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-controller[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-click[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-change[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-hide[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-show[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-if[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-blur[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-focus[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-disabled[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
+--regex-html=/[ \t]+ng-repeat[ \t]*=[ \t]*['"][^'"]+ in \([^'"]+\)['"]/\1/o,object/
+
 
 --langdef=typescript
 --langmap=typescript:.ts
