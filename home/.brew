@@ -56,11 +56,6 @@ brew install maven
 defaults write ~/.MacOSX/environment.plist M2_HOME `brew --prefix maven`/libexec
 defaults write ~/.MacOSX/environment.plist M2 `brew --prefix maven`/libexec/bin
 
-# Install MySQL
-brew install mysql
-unset TMPDIR
-mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
-
 # Link apps to the Applications folder
 brew linkapps
 
