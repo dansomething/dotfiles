@@ -4,6 +4,7 @@
    [lein-difftest "2.0.0"]
    [lein-kibit "0.0.8"]
    [lein-try "0.4.3"]
+   [cider/cider-nrepl "0.8.2"]
    [lein-drip "0.1.1-SNAPSHOT"]
    [lein-pprint "1.1.2" :exclusions [org.clojure/clojure]]
    [lein-cljfmt "0.1.10"]
