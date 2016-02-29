@@ -6780,10 +6780,14 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSColorPanelMode</key>
+	<string>13370000</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 1</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Documents</string>
+	<string>~/Downloads</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -6812,6 +6816,8 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>427 412 256 325 0 0 1680 1050 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>944 175 589 77 0 0 1680 1050 </string>
 	<key>NSWindow Frame Preferences</key>
@@ -6819,7 +6825,7 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>648 691 384 129 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 35 1410 826 0 0 1680 1027 </string>
+	<string>0 14 1410 876 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>3335 264 766 906 2560 197 1680 1028 </string>
 	<key>NeverWarnAboutShortLivedSessions_5C419932-54CF-4BF9-9525-A4A19A36E88D</key>
@@ -8436,11 +8442,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.070588238537311554</real>
+				<real>0.029130265116691589</real>
 				<key>Green Component</key>
-				<real>0.070588238537311554</real>
+				<real>0.029142022132873535</real>
 				<key>Red Component</key>
-				<real>0.070588238537311554</real>
+				<real>0.029131948947906494</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -9009,7 +9015,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>477612713.67455202</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>477612704.75973499</real>
+	<real>477850963.80763203</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -9074,7 +9080,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-19T22:10:43Z</date>
+	<date>2016-02-22T16:22:38Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -9085,6 +9091,8 @@
 	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
+	<key>SkalaPickerTextColourFormat</key>
+	<integer>4</integer>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
