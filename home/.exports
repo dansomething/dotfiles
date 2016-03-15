@@ -29,10 +29,6 @@ export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
 
-# Exports for all *nix platforms
-if [[ "$PLATFORM" != 'windows' ]]; then
-fi
-
 # Exports for OS X
 if [[ "$PLATFORM" == 'osx' ]]; then
     # Add Homebrew and VMware to the path.
