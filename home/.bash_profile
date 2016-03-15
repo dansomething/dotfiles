@@ -60,9 +60,6 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
 
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
-
-  # Load RVM into a shell session *as a function*
-  [[ -s $(brew --prefix)/rbenv ]] && eval "$(rbenv init -)"
 }
 
 HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
