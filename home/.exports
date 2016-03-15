@@ -31,9 +31,6 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
 
 # Exports for all *nix platforms
 if [[ "$PLATFORM" != 'windows' ]]; then
-    # Make PHP look for additional ini files so php.ini doesn't have to be modified directly.
-    export PHP_INI_SCAN_DIR="/etc/php.d"
-
     # Give Maven more memory (mostly for Android compilations)
     export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 fi
