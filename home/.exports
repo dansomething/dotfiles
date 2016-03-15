@@ -31,8 +31,6 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
 
 # Exports for all *nix platforms
 if [[ "$PLATFORM" != 'windows' ]]; then
-    # Give Maven more memory (mostly for Android compilations)
-    export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 fi
 
 # Exports for OS X
@@ -44,13 +42,7 @@ if [[ "$PLATFORM" == 'osx' ]]; then
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
     hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
-    # Maven Home
-    hash brew >/dev/null 2>&1 && {
-      export M2_HOME=`brew --prefix maven`/libexec
-      export M2=`brew --prefix maven`/libexec/bin
-    }
-
+ 
     # Make brew installed libraries available.
     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
