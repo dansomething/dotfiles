@@ -37,6 +37,9 @@
   tags = tag -l
   branches = branch -a
   remotes = remote -v
+  # Delete already merged branches
+  rm-merged = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
+  ;rm-merged-remote = !sh -c 'git branch -r --merged master | grep -v master | cut -d \/ -f2 | xargs -n 1 git push origin --delete'
   # Credit an author on the latest commit
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
   # Interactive rebase with the given number of latest commits
@@ -49,6 +52,9 @@
   fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
   # Find commits by commit message
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+  # Clean with out removing my local config files
+  xclean = clean -fdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
+  nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
 
 [apply]
   # Detect whitespace errors when applying a patch
@@ -109,7 +115,7 @@
   email = hansendanr+git@gmail.com
 
 [push]
-  default = matching
+  default = simple
 [diff]
   tool = vimdiff
 [difftool]
