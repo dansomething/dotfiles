@@ -59,7 +59,6 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
 }
 
-HOMESHICK_HOME="$HOME/.homesick/repos/homeshick/homeshick.sh"
 [[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
   source "$HOME/.homesick/repos/homeshick/homeshick.sh"
   source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
