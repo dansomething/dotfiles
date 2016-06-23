@@ -5,12 +5,12 @@ brew cask install caffeine
 brew cask install coconutbattery
 brew cask install google-chrome
 brew cask install google-drive
-brew cask install growlnotify
 brew cask install iterm2
 brew cask install karabiner
 brew cask install keepassx
 brew cask install macdown
 brew cask install macvim
 brew cask install onyx
+brew cask install slack
 brew cask install spectacle
 brew cask install sourcetree
