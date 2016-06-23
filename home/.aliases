@@ -10,7 +10,6 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias dl="cd ~/Downloads"
 alias g="git"
 alias h="history"
 hash fasd >/dev/null 2>&1 && alias v='f -e vim'
