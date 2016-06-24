@@ -34,6 +34,7 @@ brew install homebrew/dupes/grep
 
 # Install utils
 brew install bash-git-prompt
+brew install cmake
 brew install ctags
 brew install fasd
 brew install git
