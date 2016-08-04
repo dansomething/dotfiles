@@ -27,19 +27,19 @@
   c = clone --recursive
   # Commit all changes
   ca = !git add -A && git commit -av
-  # Alias for commit
   ci = commit
   # Switch to a branch, creating it if necessary
   go = checkout -B
-  # Alias for checkout
   co = checkout
   # Show verbose output about tags, branches or remotes
   tags = tag -l
   branches = branch -a
   remotes = remote -v
   # Delete already merged branches
+  merged = !sh -c 'git branch --merged master | grep -v master'
+  merged-remote = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2'
   rm-merged = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
-  ;rm-merged-remote = !sh -c 'git branch -r --merged master | grep -v master | cut -d \/ -f2 | xargs -n 1 git push origin --delete'
+  rm-merged-remote = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2 | xargs -n 1 git push origin --delete'
   # Credit an author on the latest commit
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
   # Interactive rebase with the given number of latest commits
@@ -56,10 +56,10 @@
   xclean = clean -fdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
   nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
   oldest-ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
+  pr = pull-request
 
 [apply]
-  # Detect whitespace errors when applying a patch
-  whitespace = fix
+  whitespace = warn
 
 [core]
   # Use custom `.gitignore` and `.gitattributes`
@@ -67,7 +67,7 @@
   #attributesfile = ~/.gitattributes_global
   autocrlf = input
   # Treat spaces before tabs, lines that are indented with 4 or more spaces, and all kinds of trailing whitespace as an error
-  whitespace = space-before-tab,indent-with-non-tab,trailing-space,tabwidth=4
+  whitespace = space-before-tab,trailing-space,tabwidth=4
 
 [color]
   # Use colors in Git commands that are capable of colored output when
