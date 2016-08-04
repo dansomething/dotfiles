@@ -9,7 +9,7 @@
             <filesystem name="cachedGrapes">
                 <ivy pattern="${user.home}/.groovy/grapes/[organisation]/[module]/ivy-[revision].xml"/>
                 <artifact pattern="${user.home}/.groovy/grapes/[organisation]/[module]/[type]s/[artifact]-[revision].[ext]"/>
-               </filesystem>
+            </filesystem>
             <ibiblio name="public" root="http://localhost:8081/nexus/content/groups/public/" m2compatible="true"/>
             <ibiblio name="codehaus" root="http://repository.codehaus.org/" m2compatible="true"/>
             <ibiblio name="ibiblio" m2compatible="true"/>
