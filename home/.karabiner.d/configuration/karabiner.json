@@ -1,0 +1,28 @@
+{
+  "profiles": [
+    {
+      "name": "Default",
+      "selected": true,
+      "simple_modifications": {
+        "caps_lock": "left_control"
+      },
+      "standalone_modifiers": {
+        "left_control": "escape"
+      }
+    },
+    {
+      "name": "Filco",
+      "selected": false,
+      "simple_modifications": {
+        "caps_lock": "left_control",
+        "left_command": "left_option",
+        "left_option": "left_command",
+        "right_command": "right_option",
+        "right_option": "right_command"
+      },
+      "standalone_modifiers": {
+        "left_control": "escape"
+      }
+    }
+  ]
+}
