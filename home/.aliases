@@ -65,6 +65,9 @@ alias lstz="tar -tzvf"
 # Create parent directories on demand
 alias mkdir='mkdir -pv'
 
+# Enable SQL syntax highlighting when using edit, \e
+alias mysql="EDITOR=\"vim -c 'set ft=sql'\" mysql "
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
