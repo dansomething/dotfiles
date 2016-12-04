@@ -61,14 +61,26 @@
 --regex-cucumber=/Scenario[ \tA-Za-z]*: (.+)/\1/d,definition/
 
 
---langdef=groovy
---langmap=groovy:.groovy
---regex-groovy=/^[ \t][(private|public|protected) ( \t)][A-Za-z0-9<>]+[ \t]+([A-Za-z0-9]+)[ \t](.)[ \t]\{/\1/f,function,functions/
---regex-groovy=/^[ \t]*def[ \t]+([A-Za-z0-9_]+)[ \t]\=[ \t]\{/\1/f,function,functions/
---regex-groovy=/^[ \t]*private def[ \t]+([A-Za-z0-9_]+)[ \t]/\1/v,private,private variables/
---regex-groovy=/^[ \t]def[ \t]+([A-Za-z0-9_]+)[ \t]/\1/u,public,public variables/
---regex-groovy=/^[ \t][abstract ( \t)][(private|public) ( \t)]class[ \t]+([A-Za-z0-9_]+)[ \t]/\1/c,class,classes/
---regex-groovy=/^[ \t][abstract ( \t)][(private|public) ( \t)]enum[ \t]+([A-Za-z0-9_]+)[ \t]/\1/c,class,classes/
+--langdef=Groovy
+--langmap=Groovy:.groovy
+--regex-Groovy=/^[ \t]*package[ \t]+([a-zA-Z0-9.-_]+)/\1/p,package/
+--regex-Groovy=/^[ \t]*(private|public)?[ \t]*(abstract|final|static)?[ \t]*class[ \t]+([A-Za-z0-9_]+)/\3/c,class/
+--regex-Groovy=/^[ \t]*(private|public)?[ \t]*interface[ \t]+([A-Za-z0-9_]+)/\2/i,interface/
+--regex-Groovy=/^[ \t]*(private|public)?[ \t]*trait[ \t]+([A-Za-z0-9_]+)/\2/t,trait/
+--regex-Groovy=/^[ \t]*(private|public)?[ \t]*enum[ \t]+([A-Za-z0-9_]+)/\2/e,enum/
+--regex-Groovy=/^[ \t]*public[ \t]+([a-zA-Z0-9_]+\([A-Za-z0-9 _,]*\))[ \t]+/+\1/r,public constructor/
+--regex-Groovy=/^[ \t]*protected[ \t]+([a-zA-Z0-9_]+\([A-Za-z0-9 _,]*\))[ \t]+/#\1/r,protected constructor/
+--regex-Groovy=/^[ \t]*([a-zA-Z0-9_]+\([A-Za-z0-9 _,]*\))[ \t]+/~\1/r,package constructor/
+--regex-Groovy=/^[ \t]*private[ \t]+([a-zA-Z0-9_]+\([A-Za-z0-9 _,]*\))[ \t]+/-\1/r,private constructor/
+--regex-Groovy=/^[ \t]*[(abstract|final|static) \t]*((def|void|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+)?([a-zA-Z0-9_]+\(.*\))[ \t]+/~\3/m,package method/
+--regex-Groovy=/^[ \t]*public[ \t]+[(abstract|final|static) \t]*((def|void|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+)?([a-zA-Z0-9_]+\(.*\))[ \t]+/+\3/m,public method/
+--regex-Groovy=/^[ \t]*protected[ \t]+[(abstract|final|static) \t]*((def|void|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+)?([a-zA-Z0-9_]+\(.*\))[ \t]+/#\3/m,protected method/
+--regex-Groovy=/^[ \t]*private[ \t]+[(abstract|final|static) \t]*((def|void|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+)?([a-zA-Z0-9_]+\(.*\))[ \t]+/-\3/m,private method/
+--regex-Groovy=/^[ \t]+def[ \t]+"(.*)"/\1/m,private method/
+--regex-Groovy=/^[ \t]*[(final|static|synchronized) \t]*(def|byte|int|short|long|float|double|boolean|char|[A-Z][A-Za-z0-9_]*)[ \t]+([a-zA-Z0-9_]+)([ \t]*[\/]+.*)?/~\2/f,property/
+--regex-Groovy=/^[ \t]*public[ \t]+[(final|static|synchronized) \t]*(def|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+([a-zA-Z0-9_]+)([ \t]*[\/]+.*)?/+\2/f,public field/
+--regex-Groovy=/^[ \t]*protected[ \t]+[(final|static|synchronized) \t]*(def|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+([a-zA-Z0-9_]+)([ \t]*[\/]+.*)?/#\2/f,protected field/
+--regex-Groovy=/^[ \t]*private[ \t]+[(final|static|synchronized) \t]*(def|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+([a-zA-Z0-9_]+)([ \t]*[\/]+.*)?/-\2/f,private field/
 
 
 --langdef=html
