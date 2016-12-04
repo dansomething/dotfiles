@@ -98,6 +98,13 @@
 --regex-html=/[ \t]+ng-repeat[ \t]*=[ \t]*['"][^'"]+ in \([^'"]+\)['"]/\1/o,object/
 
 
+--langdef=Markdown
+--langmap=Markdown:.md
+--regex-markdown=/^#[ \t]+(.*)/\1/h,Heading 1/
+--regex-markdown=/^##[ \t]+(.*)/\1/i,Heading 2/
+--regex-markdown=/^###[ \t]+(.*)/\1/k,Heading 3/
+--regex-markdown=/^####[ \t]+(.*)/\1/l,Heading 4/
+
 --langdef=typescript
 --langmap=typescript:.ts
 --regex-typescript=/^[ \t]*(export)?[ \t]*class[ \t]+([a-zA-Z0-9_]+)/\2/c,classes/
