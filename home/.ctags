@@ -133,3 +133,9 @@
 --regex-XSD=/^\s*<.*element.+name=["']([a-zA-Z0-9_-]+)["']/\1/e,element/
 --regex-XSD=/^\s*<.*complexType.+name=["']([a-zA-Z0-9_-]+)["']/\1/c,complexType/
 --regex-XSD=/^\s*<.*simpleType.+name=["']([a-zA-Z0-9_-]+)["']/\1/s,simpleType/
+
+
+--langdef=xslt
+--langmap=xslt:.xsl
+--regex-xslt=/<xsl:variable.*name="(\S+)".*>/\1/v,variable/
+--regex-xslt=/<xsl:template.*name="(\S+)".*>/\1/t,template/
