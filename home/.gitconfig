@@ -119,10 +119,14 @@
 
 [push]
   default = simple
+
 [diff]
   tool = vimdiff
+  compactionHeuristic = true
+
 [difftool]
   prompt = false
+
 [mergetool "diffconflicts"]
   cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
   trustExitCode = true
