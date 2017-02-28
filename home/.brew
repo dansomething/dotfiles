@@ -2,7 +2,7 @@
 
 hash brew >/dev/null 2>&1 || {
   echo "Installing Homebrew..."
-  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 # Make sure we’re using the latest Homebrew
