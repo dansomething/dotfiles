@@ -6,6 +6,7 @@ npm install -g grunt-cli
 npm install -g jsonlint
 npm install -g jshint
 npm install -g js2coffee
+npm install -g karabiner-profile-switch@1.0.3
 npm install -g less
 npm install -g npm-check-updates
 npm install -g recess
