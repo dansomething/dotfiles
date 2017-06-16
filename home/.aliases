@@ -188,9 +188,6 @@ alias waiting="ps ax | sed '1p;/ [U] /!d'"
 # Grep running processes
 alias pg="pgrep -fl"
 
-# Nicer directory tree view
-alias ctree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
-
 if [[ "$PLATFORM" == 'osx' ]]; then
   alias top="top -ocpu -O+rsize -s 5 -n 20"
 fi
