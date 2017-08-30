@@ -9,6 +9,6 @@ My .files for OS X, Linux, and Windows
 
 ## Installation by [Homeshick][0]
 
-`bash <(curl -s https://raw.github.com/dansomething/dotfiles/master/install)`
+`bash <(curl -s https://raw.githubusercontent.com/dansomething/dotfiles/master/install)`
 
 [0]: https://github.com/andsens/homeshick
