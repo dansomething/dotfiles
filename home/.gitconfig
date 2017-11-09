@@ -1,4 +1,5 @@
 [alias]
+  b = branch
   # View the SHA, description, and history graph of the latest 20 commits
   ld = log --pretty=oneline -n 20 --graph
   l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
