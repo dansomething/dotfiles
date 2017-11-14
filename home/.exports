@@ -39,9 +39,6 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 
     hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-    # Make brew installed libraries available.
-    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-
     # Default compiler flags
     export CFLAGS="-arch x86_64"
 fi
