@@ -1,5 +1,0 @@
-# Init tmuxifier
-hash tmuxifier >/dev/null 2>&1 && {
-  export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
-  eval "$(tmuxifier init -)"
-}
