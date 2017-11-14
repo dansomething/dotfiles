@@ -1,6 +1,7 @@
 npm install -g diff-so-fancy
 npm install -g jsonlint
 npm install -g jshint
+npm install -g tslint
 npm install -g tsd
 npm install -g typescript
 npm install -g js-beautify
