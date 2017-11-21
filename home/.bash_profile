@@ -63,8 +63,6 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
 
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
-
-  [[ -s $(brew --prefix)/etc/autojump.sh ]] && source $(brew --prefix)/etc/autojump.sh
 }
 
 [[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
