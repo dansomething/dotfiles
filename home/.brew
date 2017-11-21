@@ -37,6 +37,7 @@ brew install homebrew/dupes/grep
 brew install bash-git-prompt
 brew install cmake
 brew install ctags
+brew install diff-so-fancy
 brew install fasd
 brew install git
 brew install golang --cross-compile-all
