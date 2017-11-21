@@ -36,6 +36,8 @@ brew install wget --with-iri
 brew install ctags
 brew install git
 brew install vim --with-override-system-vi
+brew install grep
+brew install openssh
 
 # Install other useful binaries.
 brew install bash-git-prompt
