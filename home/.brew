@@ -39,11 +39,9 @@ brew install cmake
 brew install ctags
 brew install fasd
 brew install git
-brew install git-flow
 brew install golang --cross-compile-all
 brew install grc
 brew install hub
-brew install jsl
 brew install neovim
 brew install nvm
 brew install reattach-to-user-namespace
