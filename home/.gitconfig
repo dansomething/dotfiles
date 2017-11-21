@@ -1,8 +1,10 @@
 [alias]
   b = branch
-  # View the SHA, description, and history graph of the latest 20 commits
-  ld = log --pretty=oneline -n 20 --graph
+
+  # View abbreviated SHA, description, and history graph of the latest 20 commits
+  ld = log --pretty=oneline -n 20 --graph --abbrev-commit
   l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
   # View the current working tree status using the short format
   s = status -s
   sl = stash list
@@ -11,55 +13,80 @@
   sp = !sh -c 'git stash show -p stash@{$1}' -
   sa = !sh -c 'git stash apply stash@{$1}' -
   sd = !sh -c 'git stash drop stash@{$1}' -
+
   # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
   dt = difftool
+
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
   mt = mergetool
+
   # Pull in remote changes for the current repository and all its submodules
   um = !"git pull; git submodule foreach git pull origin master"
+
   # Prune branches removed from remote and update fast-forward only
   u = "!git remote update -p; git merge --ff-only @{u}"
+
   # rebase pull, auto prune remote branches, and list pulled commits
   urb = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+
   p = !"git push"
+
   # Clone a repository including all submodules
   c = clone --recursive
+
   # Commit all changes
   ca = !git add -A && git commit -av
   ci = commit
+
   # Switch to a branch, creating it if necessary
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
   co = checkout
+
   # Show verbose output about tags, branches or remotes
   tags = tag -l
   branches = branch -a
   remotes = remote -v
+
+  # List aliases
+  aliases = config --get-regexp alias
+
   # Delete already merged branches
-  merged = !sh -c 'git branch --merged master | grep -v master'
-  merged-remote = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2'
-  rm-merged = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
-  rm-merged-remote = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2 | xargs -n 1 git push origin --delete'
+  m = !sh -c 'git branch --merged master | grep -v master'
+  mr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2'
+  rmm = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
+  rmmr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2 | xargs -n 1 git push origin --delete'
+
   # Credit an author on the latest commit
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
   # Interactive rebase with the given number of latest commits
   reb = "!r() { git rebase -i HEAD~$1; }; r"
+
   # Find branches containing commit
   fb = "!f() { git branch -a --contains $1; }; f"
+
   # Find tags containing commit
   ft = "!f() { git describe --always --contains $1; }; f"
+
   # Find commits by source code
   fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
   # Find commits by commit message
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
   # Find deleted commits by source code
   fd = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -c -S$1 }; f"
+
   # Clean with out removing my local config files
   xclean = clean -fdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
   nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
   oldest-ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
+
   pr = pull-request
+
   # Prune stale local tags. https://demisx.github.io/git/2014/11/02/git-prune-local-tags-dont-exist-remote.html
   pt = !git tag -l | xargs git tag -d && git fetch -t
 
@@ -67,6 +94,7 @@
   whitespace = warn
 
 [core]
+
   # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore_global
   #attributesfile = ~/.gitattributes_global
@@ -75,60 +103,23 @@
   whitespace = space-before-tab,trailing-space,tabwidth=4
 
 [color]
+
   # Use colors in Git commands that are capable of colored output when
   # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
   ui = auto
+
 [color "branch"]
+
   current = yellow reverse
   local = yellow
   remote = green
+
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
   old = red bold
   new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
-
-[merge]
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
-  tool = diffconflicts
-
-# URL shorthands
-[url "git@github.com:"]
-  insteadOf = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-  insteadOf = "github:"
-[url "git@gist.github.com:"]
-  insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
-[url "git://gist.github.com/"]
-  insteadOf = "gist:"
-
-[user]
-  name = Dan Hansen
-  email = hansendanr+git@gmail.com
-
-[push]
-  default = simple
-
-[diff]
-  tool = vimdiff
-  compactionHeuristic = true
-
-[difftool]
-  prompt = false
-
-[mergetool "diffconflicts"]
-  cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
-  trustExitCode = true
-  keepBackup = false
+  commit = 227 bold
 
 [color "diff-highlight"]
   oldNormal = red bold
@@ -136,13 +127,69 @@
   newNormal = green bold
   newHighlight = green bold 22
 
+[color "status"]
+
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[diff]
+
+  tool = vimdiff
+  compactionHeuristic = true
+
+[difftool]
+
+  prompt = false
+
+
+
 [interactive]
   diffFilter = diff-so-fancy --patch-mode | less --tabs=4 -RFX
+
+[merge]
+
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+  tool = diffconflicts
+
+[mergetool "diffconflicts"]
+  cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+  trustExitCode = true
+  keepBackup = false
 
 [pager]
   ;log = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
   show = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
   diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 
+[push]
+  default = simple
+
 [rebase]
   autoStash = true
+
+# URL shorthands
+[url "git@github.com:"]
+
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+
+  insteadOf = "gist:"
+
+[user]
+  name = Dan Hansen
+  email = hansendanr+git@gmail.com
