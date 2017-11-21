@@ -39,6 +39,7 @@ brew install cmake
 brew install ctags
 brew install diff-so-fancy
 brew install fasd
+brew install fzf
 brew install git
 brew install golang --cross-compile-all
 brew install grc
