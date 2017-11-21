@@ -21,7 +21,7 @@ ln -s /usr/local/bin/gfind /usr/local/bin/find
 
 # Install Bash 4
 brew install bash
-brew install bash-completion
+brew install bash-completion2
 
 # Switch to using brew-installed bash as default shell.
 if ! grep -f -q '/usr/local/bin/bash' /etc/shells; then

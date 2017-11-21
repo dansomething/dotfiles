@@ -60,7 +60,7 @@ hash brew >/dev/null 2>&1 && {
     source $(brew --prefix nvm)/nvm.sh
   }
 
-  [[ -s $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+  [[ -s $(brew --prefix)/share/bash-completion/bash_completion ]] && source $(brew --prefix)/share/bash-completion/bash_completion
 
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
 }
