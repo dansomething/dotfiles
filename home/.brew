@@ -33,8 +33,6 @@ fi;
 brew install wget --with-iri
 
 # Install more recent versions of some OS X tools.
-brew tap homebrew/dupes
-brew install homebrew/dupes/grep
 
 # Install other useful binaries.
 brew install bash-git-prompt
