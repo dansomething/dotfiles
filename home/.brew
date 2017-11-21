@@ -22,9 +22,12 @@ ln -s /usr/local/bin/gfind /usr/local/bin/find
 # Install Bash 4
 brew install bash
 brew install bash-completion
-# Make Brew's bash the default shell
-sudo su - root -c 'echo "/usr/local/bin/bash\n" >> /etc/shells'
-chsh -s /usr/local/bin/bash
+
+# Switch to using brew-installed bash as default shell.
+if ! grep -f -q '/usr/local/bin/bash' /etc/shells; then
+  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+  chsh -s /usr/local/bin/bash;
+fi;
 
 # Install `wget` with IRI support.
 brew install wget --enable-iri
