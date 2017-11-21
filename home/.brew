@@ -46,6 +46,8 @@ brew install neovim
 brew install nvm
 brew install reattach-to-user-namespace
 brew install rename
+brew install shellcheck
+brew install sqlparse
 brew install the_silver_searcher
 brew install tmux
 brew install tmux-mem-cpu-load
