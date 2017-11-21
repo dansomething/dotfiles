@@ -17,19 +17,26 @@ unset unamestr
 
 # Make vim the default editor
 export EDITOR="vim"
-# Don’t clear the screen after quitting a manual page
-export MANPAGER="less -X"
-# Highlight section titles in manual pages
-export LESS_TERMCAP_md="$ORANGE"
 
 # Explcit history file (don't always use bash. want shared history.)
 export HISTFILE=~/.shell_history
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
+# Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help'
+
+# Prefer US English and use UTF-8
+export LANG="en_US"
+export LC_ALL="en_US.UTF-8"
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
 
 # Exports for OS X
 if [[ "$PLATFORM" == 'osx' ]]; then
@@ -39,7 +46,7 @@ if [[ "$PLATFORM" == 'osx' ]]; then
     # Add Homebrew coreutils man pages
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-    hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+    hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
     # Default compiler flags
     export CFLAGS="-arch x86_64"

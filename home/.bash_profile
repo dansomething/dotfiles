@@ -30,10 +30,6 @@ for option in autocd globstar; do
   shopt -s "$option" 2> /dev/null
 done
 
-# Prefer US English and use UTF-8
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US"
-
 # Initialize fasd if available
 hash fasd >/dev/null 2>&1 && {
   eval "$(fasd --init auto)"
