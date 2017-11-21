@@ -97,11 +97,6 @@
   log = true
   tool = diffconflicts
 
-# Use `origin` as the default remote on the `master` branch in all cases
-[branch "master"]
-  remote = origin
-  merge = refs/heads/master
-
 # URL shorthands
 [url "git@github.com:"]
   insteadOf = "gh:"
