@@ -5,17 +5,17 @@ hash brew >/dev/null 2>&1 || {
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-# Make sure we’re using the latest Homebrew
+# Make sure we’re using the latest Homebrew.
 brew update
 
-# Upgrade any already-installed formulae
+# Upgrade any already-installed formulae.
 brew upgrade
 
-# Install GNU core utilities (those that come with OS X are outdated)
+# Install GNU core utilities (those that come with OS X are outdated).
 brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
 brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 ln -s /usr/local/bin/gfind /usr/local/bin/find
 
@@ -26,14 +26,14 @@ brew install bash-completion
 sudo su - root -c 'echo "/usr/local/bin/bash\n" >> /etc/shells'
 chsh -s /usr/local/bin/bash
 
-# Install wget with IRI support
+# Install `wget` with IRI support.
 brew install wget --enable-iri
 
-# Install more recent versions of some OS X tools
+# Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 
-# Install utils
+# Install other useful binaries.
 brew install bash-git-prompt
 brew install cmake
 brew install ctags
@@ -56,8 +56,8 @@ brew install tmux-mem-cpu-load
 brew install tree
 brew install vim --override-system-vi
 
-# Link apps to the Applications folder
+# Link apps to the Applications folder.
 brew linkapps
 
-# Remove outdated versions from the cellar
+# Remove outdated versions from the cellar.
 brew cleanup
