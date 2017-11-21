@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-My .files for OS X, Linux, and Windows
+My .files for macOS, Linux, and Windows
 
 ## Dependencies
 

@@ -38,7 +38,7 @@ export LESS_TERMCAP_md="$ORANGE"
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
-# Exports for OS X
+# Exports for macOS
 if [[ "$PLATFORM" == 'osx' ]]; then
     # Add Homebrew and VMware to the path.
     export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:/Library/Application Support/VMware Fusion:$PATH"

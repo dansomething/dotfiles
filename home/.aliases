@@ -36,7 +36,7 @@ hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
   colorflag="--color"
-else # OS X `ls`
+else # macOS `ls`
   colorflag="-G"
 fi
 
@@ -80,7 +80,7 @@ alias ccurl='colourify curl'
 # Gzip-enabled `curl`
 alias gurl="curl --compressed"
 
-# Get OS X Software Updates, and update Homebrew, npm, and their installed packages
+# Get macOS Software Updates, and update Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew upgrade;'
 
 # IP addresses
@@ -110,10 +110,10 @@ alias ports='netstat -tulanp'
 # Canonical hex dump; some systems have this symlinked
 hash hexdump >/dev/null 2>&1 || alias hd="hexdump -C"
 
-# OS X has no `md5sum`, so use `md5` as a fallback
+# macOS has no `md5sum`, so use `md5` as a fallback
 hash md5sum >/dev/null 2>&1 || alias md5sum="md5"
 
-# OS X has no `sha1sum`, so use `shasum` as a fallback
+# macOS has no `sha1sum`, so use `shasum` as a fallback
 hash sha1sum >/dev/null 2>&1 || alias sha1sum="shasum"
 alias sha1="sha1sum"
 
