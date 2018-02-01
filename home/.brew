@@ -50,6 +50,7 @@ brew install grc
 brew install hub
 brew install neovim
 brew install nvm
+brew install ripgrep
 brew install reattach-to-user-namespace
 brew install rename
 brew install shellcheck
