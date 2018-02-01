@@ -30,7 +30,22 @@ for option in autocd globstar; do
   shopt -s "$option" 2> /dev/null
 done
 
-# Initialize fasd if available
+# https://github.com/junegunn/fzf
+hash fzf >/dev/null 2>&1 && {
+  export FZF_DEFAULT_OPTS='--bind ctrl-d:page-down,ctrl-u:page-up'
+  hash ag >/dev/null 2>&1 && {
+    export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+  }
+  hash rg >/dev/null 2>&1 && {
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+  }
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+  # shellcheck source=/dev/null
+  [ -s $HOME/.fzf.bash ] && source $HOME/.fzf.bash
+}
+
+# https://github.com/clvv/fasd
 hash fasd >/dev/null 2>&1 && {
   eval "$(fasd --init auto)"
   _fasd_bash_hook_cmd_complete v m j o
