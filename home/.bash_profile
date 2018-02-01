@@ -1,5 +1,7 @@
 if [ -f /etc/profile ]; then
+  # shellcheck disable=SC2123
   PATH=""
+  # shellcheck source=/dev/null
   source /etc/profile
 fi
 
@@ -7,6 +9,7 @@ fi
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don't want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+  # shellcheck source=/dev/null
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -42,7 +45,7 @@ hash fzf >/dev/null 2>&1 && {
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
   # shellcheck source=/dev/null
-  [ -s $HOME/.fzf.bash ] && source $HOME/.fzf.bash
+  [ -s "$HOME/.fzf.bash" ] && source $HOME/.fzf.bash
 }
 
 # https://github.com/clvv/fasd
@@ -62,22 +65,28 @@ complete -W "NSGlobalDomain" defaults
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
 # If possible, add tab completion for many more commands
+# shellcheck source=/dev/null
 [[ -s "/etc/bash_completion" ]] && source "/etc/bash_completion"
 
 # These require Brew
 hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
     export NVM_DIR="$HOME/.nvm"
+    # shellcheck source=/dev/null
     source $(brew --prefix nvm)/nvm.sh
   }
 
+  # shellcheck source=/dev/null
   [[ -s $(brew --prefix)/share/bash-completion/bash_completion ]] && source $(brew --prefix)/share/bash-completion/bash_completion
 
+  # shellcheck source=/dev/null
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
 }
 
 [[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
+  # shellcheck source=/dev/null
   source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+  # shellcheck source=/dev/null
   source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
   hash git >/dev/null 2>&1 && {
@@ -86,8 +95,10 @@ hash brew >/dev/null 2>&1 && {
 }
 
 # Load Travis CI if available
+# shellcheck source=/dev/null
 [ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
+# shellcheck source=/dev/null
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
