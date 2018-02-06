@@ -46,7 +46,10 @@ if [[ "$PLATFORM" == 'osx' ]]; then
     # Add Homebrew coreutils man pages
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-    hash /usr/libexec/java_home >/dev/null 2>&1 && export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+    hash /usr/libexec/java_home >/dev/null 2>&1 && {
+      JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+      export JAVA_HOME
+    }
 
     # Default compiler flags
     export CFLAGS="-arch x86_64"
