@@ -93,8 +93,3 @@ hash brew >/dev/null 2>&1 && {
     homeshick --quiet refresh
   }
 }
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-# shellcheck source=/dev/null
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
