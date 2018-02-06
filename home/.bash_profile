@@ -94,10 +94,6 @@ hash brew >/dev/null 2>&1 && {
   }
 }
 
-# Load Travis CI if available
-# shellcheck source=/dev/null
-[ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 # shellcheck source=/dev/null
