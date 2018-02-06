@@ -40,8 +40,9 @@ export MANPAGER="less -X"
 
 # Exports for macOS
 if [[ "$PLATFORM" == 'osx' ]]; then
-    # Add Homebrew and VMware to the path.
-    export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:/Library/Application Support/VMware Fusion:$PATH"
+    # Add coreutils to PATH
+    PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH
 
     # Add Homebrew coreutils man pages
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
