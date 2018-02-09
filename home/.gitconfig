@@ -81,8 +81,8 @@
   fd = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -c -S$1 }; f"
 
   # Clean with out removing my local config files
-  xclean = clean -fdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
-  nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore
+  xclean = clean -fdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore -e .settings -e .project -e .classpath -e rebel.xml
+  nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore -e .settings -e .project -e .classpath -e rebel.xml
   oldest-ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 
   pr = pull-request
