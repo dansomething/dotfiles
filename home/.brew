@@ -45,6 +45,8 @@ brew install cmake
 brew install diff-so-fancy
 brew install fasd
 brew install fzf
+# For vim mergetool diffconflicts script
+brew install gnu-sed
 brew install grc
 brew install hub
 brew install neovim
