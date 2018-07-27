@@ -151,6 +151,11 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1]);"'
+
+# File formatting
+alias jsonformat='python -m json.tool'
+alias xmlformat='tidy -xml -i -q'
 
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
