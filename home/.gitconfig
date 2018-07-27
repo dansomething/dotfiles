@@ -85,7 +85,7 @@
   nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore -e .settings -e .project -e .classpath -e rebel.xml
   oldest-ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 
-  pr = pull-request
+  cpr = pull-request -a dansomething
 
   # Prune stale local tags. https://demisx.github.io/git/2014/11/02/git-prune-local-tags-dont-exist-remote.html
   pt = !git tag -l | xargs git tag -d && git fetch -t
