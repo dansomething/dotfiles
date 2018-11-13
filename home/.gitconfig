@@ -102,6 +102,7 @@
   autocrlf = input
   # Treat spaces before tabs, lines that are indented with 4 or more spaces, and all kinds of trailing whitespace as an error
   whitespace = space-before-tab,trailing-space,tabwidth=4
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [color "branch"]
   current = yellow reverse
@@ -109,11 +110,12 @@
   remote = green
 
 [color "diff"]
-  meta = 227
+  meta = yellow
   frag = magenta bold
   old = red bold
   new = green bold
-  commit = 227 bold
+  commit = yellow bold
+  whitespace = red reverse
 
 [color "diff-highlight"]
   oldNormal = red bold
@@ -147,11 +149,6 @@
   cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
   trustExitCode = true
   keepBackup = false
-
-[pager]
-  ;log = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
-  show = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
-  diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 
 [push]
   default = simple
