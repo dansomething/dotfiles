@@ -15,7 +15,7 @@
   sd = !sh -c 'git stash drop stash@{$1}' -
 
   # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   dt = difftool
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
