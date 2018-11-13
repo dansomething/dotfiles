@@ -90,6 +90,8 @@
   # Prune stale local tags. https://demisx.github.io/git/2014/11/02/git-prune-local-tags-dont-exist-remote.html
   pt = !git tag -l | xargs git tag -d && git fetch -t
 
+  patch = !git --no-pager diff --no-color
+
 [apply]
   whitespace = warn
 
