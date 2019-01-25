@@ -3,17 +3,34 @@
 
 source ~/.mutt/credentials.muttrc
 
+# Basic Options
+# ----------------------------------------------------
+set wait_key = no         # shut up, mutt
+set timeout = 10          # idle time before scanning
+set mail_check = 60       # minimum time between scans
+unset move                # gmail does that
+unset mark_old            # read/new is good enough for me
+set beep = no             # no beep; notification instead
+set pipe_decode           # strip headers and eval mimes when piping
+set thorough_search       # strip headers and eval mimes before searching
+set net_inc = 5           # Display download progress every 5K
+set editor = "vim"
+set charset = "utf-8"
 set use_from = yes
 set envelope_from = yes
-
+set imap_check_subscribed # Automatically poll subscribed mailboxes
 set imap_keepalive = 900
 set smtp_authenticators = "gssapi:login"
+
+# https://www.neomutt.org/guide/reference search sleep_time for additional info
+set sleep_time = 0 # be faster
 
 # Ensure TLS is enforced
 set ssl_starttls = yes
 set ssl_force_tls = yes
 
-# Imap Gmail
+# Special Folders
+# ----------------------------------------------------
 set folder = "imaps://imap.gmail.com"
 set spoolfile = "+INBOX""
 set record = "+[Gmail]/Sent Mail"
@@ -21,34 +38,44 @@ set postponed = "+[Gmail]/Drafts"
 set trash = '+[Gmail]/Trash'
 
 # Directories
+# ----------------------------------------------------
 set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
-set move = no
 
-# UI
+# Index View Options
+# ----------------------------------------------------
+set date_format = "%Y-%m-%d"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+# set index_format = "%4C %Z %{%b %d %R} %-15.15L (%?l?%4l&%4c?) %s"
+set sort = threads                         # like gmail
+set sort_aux = reverse-last-date-received  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+unset collapse_unread
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Header Options
+# ----------------------------------------------------
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
+
+# Pager View Options ---------------------------------
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+# Other View Options
 # ----------------------------------------------------
 source ~/.mutt/colors/solarized-dark-256.muttrc
-
-set editor = "vim"
-set charset = "utf-8"
-
-set timeout = 30
-# https://www.neomutt.org/guide/reference search sleep_time for additional info
-set sleep_time = 0 # be faster
-set beep = no
-# set editor = "/Applications/MacVim.app/Contents/MacOS/Vim -c 'set tw = 74' -c 'set wrap'"
-auto_view text/html
-# set sort = reverse-date   # default sorting by date
-set sort = "threads"
-set strict_threads = "yes"
-set sort_browser = "reverse-date"
-unset collapse_unread
-# When sorting by threads, this variable controls how threads are sorted
-# in relation to other threads, and how the branches of the thread trees are sorted.
-set sort_aux = "last-date-received"
-# Index page format. Default "%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
-set index_format = "%4C %Z %{%b %d %R} %-15.15L (%?l?%4l&%4c?) %s"
 
 set sidebar_visible
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
@@ -58,8 +85,9 @@ set mail_check_stats
 set new_mail_command = "terminal-notifier -title '%v' -subtitle 'New Mail' \
 -message '%n new messages, %u unread.' -activate 'com.googlecode.iterm2' -sound 'new mail'"
 
+# Mailboxes to show in the sidebar.
 # You can use any gmail imap mailboxes
-mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
+# mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
 
 # Navigation
 # ----------------------------------------------------
@@ -124,7 +152,6 @@ macro attach,compose gx  "<pipe-entry>urlview<Enter>"                           
 
 bind editor \Cp history-up
 bind editor \Cn history-down
-
 
 # Sidebar
 # ----------------------------------------------------
