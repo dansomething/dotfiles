@@ -21,7 +21,7 @@ ln -s /usr/local/bin/gfind /usr/local/bin/find
 
 # Install Bash 4
 brew install bash
-brew install bash-completion2
+brew install bash-completion@2
 
 # Switch to using brew-installed bash as default shell.
 if ! grep -f -q '/usr/local/bin/bash' /etc/shells; then
@@ -41,25 +41,28 @@ brew install openssh
 
 # Install other useful binaries.
 brew install bash-git-prompt
+brew install bat
 brew install cmake
 brew install diff-so-fancy
 brew install fasd
 brew install fzf
-# For vim mergetool diffconflicts script
-brew install gnu-sed
+brew install gnu-sed # For vim mergetool diffconflicts script
 brew install grc
 brew install hub
+brew install htop
+brew install neomutt
 brew install neovim
 brew install nvm
 brew install ripgrep
 brew install reattach-to-user-namespace
-brew install rename
 brew install shellcheck
 brew install sqlparse
 brew install the_silver_searcher
 brew install tmux
 brew install tmux-mem-cpu-load
 brew install tree
+brew install urlview
+brew install yamllint
 
 # Link apps to the Applications folder.
 brew linkapps
