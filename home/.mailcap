@@ -1,0 +1,31 @@
+#  http://stevelosh.com/blog/2012/10/the-homely-mutt/
+
+# MS Excel
+application/x-msexcel; view-attachment %s
+application/ms-exc; view-attachment %s
+application/excel; view-attachment %s
+application/msexcel; view-attachment %s
+application/vnd.ms-exc; view-attachment %s
+application/vnd.ms-excel; view-attachment %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; view-attachment %s
+
+# MS Word
+application/msword; view-attachment %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; view-attachment %s
+
+# Images
+image/jpg; view-attachment %s jpg
+image/jpeg; view-attachment %s jpg
+image/pjpeg; view-attachment %s jpg
+image/png; view-attachment %s png
+image/gif; view-attachment %s gif
+image/webp; view-attachment %s webp
+
+# PDF
+application/pdf; view-attachment %s pdf
+
+# HTML
+text/html; view-attachment %s html
+
+# Unidentified.
+application/octet-stream; view-attachment %s "-"
