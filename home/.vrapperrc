@@ -1,9 +1,12 @@
+" vi: ft=vim
+
 " See .vim/config.vim
 " ---------------
 " UI
 " ---------------
 set number         " Line numbers on
 set nowrap         " Line wrapping off
+set textwidth=120  " 80 is too narrow anymore
 
 " ---------------
 " Text Format
@@ -88,14 +91,11 @@ nnoremap <silent> gx :wincmd x<CR>
 " Make line completion easier.
 inoremap <C-l> <C-x><C-l>
 
-" Easier Scrolling (think j/k with left hand)
-" All variations are mapped for now until I get used to one
-" C/M/D + d (page up)
-" C/M/D + f (page down)
-nnoremap <C-j> 15gjzz
-nnoremap <C-k> 15gkzz
-vnoremap <C-j> 15gjzz
-vnoremap <C-k> 15gkzz
+" Scroll larger amounts with g-j / g-k
+nnoremap gj 15gjzz
+nnoremap gk 15gkzz
+vnoremap gj 15gjzz
+vnoremap gk 15gkzz
 
 " ---------------
 " Insert Mode Mappings
@@ -110,12 +110,6 @@ inoremap jK <Esc>
 " ---------------
 " Leader Mappings
 " ---------------
-
-" Change to the directory of the currently open file
-nmap <silent> <leader>cd :cd %:p:h<CR>
-
-" Change the directory only for the current window
-nmap <silent> <leader>lcd :lcd %:p:h<CR>
 
 " Search and replace word under cursor
 nnoremap <leader>sr :%s/\<<c-r><c-w>\>//<left>
@@ -146,25 +140,17 @@ nnoremap <silent> <leader>uul :t.\|s/./=/\|:nohls<cr>
 "          # --------
 "          # Test 123
 "          # --------
-nnoremap <silent> <leader>cul :normal "lyy"lpwv$r-^"lyyk"lP<cr>
+nnoremap <silent> <leader>cul :normal "lyy"lpwvLr-^"lyyk"lP<cr>
 
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 
-" Wrap the current line
-nnoremap <leader>fl Vgq
-
-" Format a json file with underscore-cli
-" https://github.com/ddopson/underscore-cli
-nnoremap <leader>jt <Esc>:%!underscore print<CR><Esc>:set filetype=json<CR>
-nnoremap <leader>jts <Esc>:%!underscore print --strict<CR><Esc>:set filetype=json<CR>
-
 " Split window vertically or horizontally *and* switch to the new split!
-nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
-nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
+nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>:wincmd =<CR>
+nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>:wincmd =<CR>
 
 " Close the current window
-nnoremap <silent> <leader>sc :close<CR>
+nnoremap <silent> <m-w> :close<CR>
 
 " Open a new tab
 nnoremap <silent> <leader>tn :tabnew<CR>
@@ -173,13 +159,8 @@ nnoremap <silent> <leader>tn :tabnew<CR>
 " Typo Fixes
 " ---------------
 
-" Fixes common typos
-command! W w
-command! Q q
-
 noremap <F1> <Esc>
 inoremap <F1> <Esc>
-" Crazy flying pinky
 cnoremap w' w<CR>
 
 " Disable the ever-annoying Ex mode shortcut key. Type visual my ass. Instead,
