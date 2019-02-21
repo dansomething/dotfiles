@@ -133,7 +133,7 @@ macro index,pager gf "<change-folder>?"                             "open mailbo
 bind  index,pager    a   group-reply
 macro index          A   "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"    "mark all new as read"
 macro index,pager    dd  "<delete-message><sync-mailbox>y"                                "move message to trash"
-macro index,pager    dat "<delete-thread><sync-mailbox>"                                  "move thread to trash"
+macro index,pager    dat "<delete-thread><sync-mailbox>y"                                 "move thread to trash"
 macro index,pager    ss  "<save-message>=[Gmail]/All%20Mail<enter><enter><sync-mailbox>y" "save message to archive"
 macro index,pager    gx  "<pipe-message>urlview<Enter>"                                   "call urlview to extract URLs out of a message"
 macro attach,compose gx  "<pipe-entry>urlview<Enter>"                                     "call urlview to extract URLs out of a message"
