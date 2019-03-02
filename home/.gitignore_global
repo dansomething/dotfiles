@@ -35,6 +35,7 @@ Thumbs.db
 # Project specific config #
 ###########################
 project.properties
+.notags
 .vimrc
 Session.vim
 tags*
