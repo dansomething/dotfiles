@@ -23,5 +23,8 @@
 # change the escape key (` alone is used for other things)
  escape ``
 
+# Always start `screen` with UTF-8 enabled (`screen -U`)
+ defutf8 on
+
 unsetenv SSH_AUTH_SOCK
 setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-auth-sock.$HOSTNAME
