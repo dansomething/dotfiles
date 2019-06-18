@@ -83,21 +83,6 @@
 --regex-Groovy=/^[ \t]*private[ \t]+[(final|static|synchronized) \t]*(def|byte|int|short|long|float|double|boolean|char|[A-Z][a-zA-Z0-9_]*)[ \t]+([a-zA-Z0-9_]+)([ \t]*[\/]+.*)?/-\2/f,private field/
 
 
---langdef=html
---langmap=html:.html
---regex-html=/[ \t]+id[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-controller[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-click[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-change[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-hide[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-show[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-if[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-blur[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-focus[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-disabled[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
---regex-html=/[ \t]+ng-repeat[ \t]*=[ \t]*['"][^'"]+ in \([^'"]+\)['"]/\1/o,object/
-
-
 --langdef=Markdown
 --langmap=Markdown:.md
 --regex-markdown=/^#[ \t]+(.*)/\1/h,Heading 1/
