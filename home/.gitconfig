@@ -135,7 +135,11 @@
 [difftool]
   prompt = false
 
+[github]
+  user = dansomething
 
+[ghi]
+  token = !security find-internet-password -a dansomething -s github.com -l 'ghi token' -w
 
 [interactive]
   diffFilter = diff-so-fancy --patch-mode | less --tabs=4 -RFX
