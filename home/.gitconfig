@@ -146,9 +146,8 @@
   tool = diffconflicts
 
 [mergetool "diffconflicts"]
-  cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+  cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
   trustExitCode = true
-  keepBackup = false
 
 [push]
   default = simple
@@ -179,3 +178,7 @@
 [user]
   name = Dan Hansen
   email = hansendanr+git@gmail.com
+
+
+[mergetool]
+  keepBackup = false
