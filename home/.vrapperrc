@@ -59,37 +59,8 @@ noremap H ^
 noremap L $
 
 " ---------------
-" Window Movement
-" ---------------
-nnoremap <silent> gh :WriteBufferIfNecessary<CR>:wincmd h<CR>
-nnoremap <silent> gj :WriteBufferIfNecessary<CR>:wincmd j<CR>
-nnoremap <silent> gk :WriteBufferIfNecessary<CR>:wincmd k<CR>
-nnoremap <silent> gl :WriteBufferIfNecessary<CR>:wincmd l<CR>
-
-"   4 Window Splits
-"
-"   -----------------
-"   g1 | g2 | g3 | g4
-"   -----------------
-nnoremap <silent> g1 :WriteBufferIfNecessary<CR>:wincmd t<CR>
-nnoremap <silent> g2 :WriteBufferIfNecessary<CR>:wincmd t<bar>:wincmd l<CR>
-nnoremap <silent> g3 :WriteBufferIfNecessary<CR>:wincmd t<bar>:wincmd l<bar>
-      \:wincmd l<CR>
-nnoremap <silent> g4 :WriteBufferIfNecessary<CR>:wincmd b<CR>
-
-" Previous Window
-nnoremap <silent> gp :wincmd p<CR>
-" Equal Size Windows
-nnoremap <silent> g= :wincmd =<CR>
-" Swap Windows
-nnoremap <silent> gx :wincmd x<CR>
-
-" ---------------
 " Modifer Mappings
 " ---------------
-
-" Make line completion easier.
-inoremap <C-l> <C-x><C-l>
 
 " Scroll larger amounts with g-j / g-k
 nnoremap gj 15gjzz
@@ -170,10 +141,3 @@ nnoremap Q @@
 " Removes doc lookup mapping because it's easy to fat finger and never useful.
 nnoremap K k
 vnoremap K k
-
-"-------------------------------------------------------------------------------------
-" http://vim.wikia.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
-"-------------------------------------------------------------------------------------
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
