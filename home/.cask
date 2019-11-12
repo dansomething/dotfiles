@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
 brew cask install appcleaner
-brew cask install caffeine
 brew cask install coconutbattery
 brew cask install google-chrome
 brew cask install google-drive
+brew cask install hammerspoon
 brew cask install iterm2
-brew cask install karabiner
+brew cask install karabiner-elements
 brew cask install keepassx
+brew cask install keepingyouawake
 brew cask install macdown
 brew cask install macvim
 brew cask install onyx
 brew cask install slack
-brew cask install spectacle
 brew cask install sourcetree
+brew cask install spectacle
+brew cask install vlc
