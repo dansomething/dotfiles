@@ -76,8 +76,12 @@ hash brew >/dev/null 2>&1 && {
     source $(brew --prefix nvm)/nvm.sh
   }
 
+  [[ -s $(brew --prefix)/etc/bash_completion.d ]] && {
+    export BASH_COMPLETION_COMPAT_DIR=$(brew --prefix)/etc/bash_completion.d
+  }
+
   # shellcheck source=/dev/null
-  [[ -s $(brew --prefix)/share/bash-completion/bash_completion ]] && source $(brew --prefix)/share/bash-completion/bash_completion
+  [[ -s $(brew --prefix)/etc/profile.d/bash_completion.sh ]] && source $(brew --prefix)/etc/profile.d/bash_completion.sh
 
   # shellcheck source=/dev/null
   [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
