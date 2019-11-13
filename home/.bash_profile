@@ -94,6 +94,6 @@ hash brew >/dev/null 2>&1 && {
   source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
   hash git >/dev/null 2>&1 && {
-    homeshick --quiet refresh
+    homeshick --quiet refresh 2
   }
 }
