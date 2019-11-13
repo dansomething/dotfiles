@@ -45,7 +45,7 @@ hash fzf >/dev/null 2>&1 && {
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
   # shellcheck source=/dev/null
-  [ -s "$HOME/.fzf.bash" ] && source $HOME/.fzf.bash
+  [ -s "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 }
 
 # https://github.com/clvv/fasd
@@ -73,18 +73,19 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
     export NVM_DIR="$HOME/.nvm"
     # shellcheck source=/dev/null
-    source $(brew --prefix nvm)/nvm.sh
+    source "$(brew --prefix nvm)/nvm.sh"
   }
 
   [[ -s $(brew --prefix)/etc/bash_completion.d ]] && {
-    export BASH_COMPLETION_COMPAT_DIR=$(brew --prefix)/etc/bash_completion.d
+    BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
+    export BASH_COMPLETION_COMPAT_DIR
   }
 
   # shellcheck source=/dev/null
-  [[ -s $(brew --prefix)/etc/profile.d/bash_completion.sh ]] && source $(brew --prefix)/etc/profile.d/bash_completion.sh
+  [[ -s $(brew --prefix)/etc/profile.d/bash_completion.sh ]] && source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
   # shellcheck source=/dev/null
-  [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source $(brew --prefix)/etc/grc.bashrc
+  [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source "$(brew --prefix)/etc/grc.bashrc"
 }
 
 [[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
