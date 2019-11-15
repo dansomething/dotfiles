@@ -50,7 +50,12 @@ hash fzf >/dev/null 2>&1 && {
 
 # https://github.com/clvv/fasd
 hash fasd >/dev/null 2>&1 && {
-  eval "$(fasd --init auto)"
+  fasd_cache="$HOME/.fasd-init-bash"
+  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+  fi
+  source "$fasd_cache"
+  unset fasd_cache
   _fasd_bash_hook_cmd_complete v m j o
 }
 
@@ -73,7 +78,7 @@ hash brew >/dev/null 2>&1 && {
   [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
     export NVM_DIR="$HOME/.nvm"
     # shellcheck source=/dev/null
-    source "$(brew --prefix nvm)/nvm.sh"
+    source "$(brew --prefix nvm)/nvm.sh" --no-use
   }
 
   [[ -s $(brew --prefix)/etc/bash_completion.d ]] && {
