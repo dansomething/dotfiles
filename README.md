@@ -7,8 +7,14 @@ My .files for macOS, Linux, and Windows
 
 1. Git 1.7+
 
-## Installation by [Homeshick][0]
+## Installation via [Homeshick][0]
 
-`bash <(curl -s https://raw.githubusercontent.com/dansomething/dotfiles/master/install)`
+Note, on macOS you may need to install the Xcode command-line tools first.
+
+    sudo "/usr/bin/xcode-select", "--install"
+
+Finally, run the dotfiles installation script.
+
+    bash <(curl -s https://raw.githubusercontent.com/dansomething/dotfiles/master/install)
 
 [0]: https://github.com/andsens/homeshick
