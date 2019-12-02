@@ -45,6 +45,7 @@ brew install bat
 brew install diff-so-fancy
 brew install fasd
 brew install fzf
+$(brew --prefix)/opt/fzf/install
 brew install gnu-sed # For vim mergetool diffconflicts script
 brew install grc
 brew install hub
@@ -53,6 +54,7 @@ brew install jq
 brew install neomutt
 brew install neovim
 brew install nvm
+brew install nodejs
 brew install ripgrep
 brew install reattach-to-user-namespace
 brew install shellcheck
