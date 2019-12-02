@@ -11,7 +11,7 @@ brew cask install keepassx
 brew cask install keepingyouawake
 brew cask install macdown
 brew cask install macvim
-brew cask install onyx
+brew cask install font-hack-nerd-font
 brew cask install slack
 brew cask install sourcetree
 brew cask install spectacle
