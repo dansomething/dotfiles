@@ -46,7 +46,8 @@ brew install diff-so-fancy
 brew install fasd
 brew install fzf
 $(brew --prefix)/opt/fzf/install
-brew install gnu-sed # For vim mergetool diffconflicts script
+brew install gawk # for Morantron/tmux-fingers
+brew install gnu-sed # for vim mergetool diffconflicts script
 brew install grc
 brew install hub
 brew install htop
