@@ -44,12 +44,8 @@ export MANPAGER="less -X"
 
 # Exports for macOS
 if [[ "$PLATFORM" == 'osx' ]]; then
-    # Add coreutils to PATH
-    PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    PATH="/usr/local/sbin:$PATH"
     export PATH
-
-    # Add Homebrew coreutils man pages
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
     hash /usr/libexec/java_home >/dev/null 2>&1 && {
       JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
