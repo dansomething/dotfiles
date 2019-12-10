@@ -5,18 +5,6 @@
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.preferences.importModuleSpecifier": "relative",
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
-      }
-    }
-  },
   "snippets.extends": {
     "typescript": ["javascript", "javascript-jasmine-arrow"],
     "javascriptreact": ["javascript"]
