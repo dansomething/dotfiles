@@ -1,23 +1,20 @@
 {
-  "coc.source.omni.filetypes": ["java"],
   "diagnostic.errorSign": "✗",
   "diagnostic.infoSign": ">>",
   "diagnostic.warningSign": "⚠",
-  "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:/Users/dan/Documents/workspace/lombok.jar -Xbootclasspath/a:/Users/dan/Documents/workspace/lombok.jar",
-  "java.saveActions.organizeImports": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.preferences.importModuleSpecifier": "relative",
-   "languageserver": {
+  "languageserver": {
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         }
-       }
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
     }
   },
   "snippets.extends": {
