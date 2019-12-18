@@ -1,5 +1,11 @@
 -- First, be sure to install hs-knu.
 -- git clone https://github.com/knu/hs-knu.git ~/.hammerspoon/knu
+-- TODO Take a look at https://github.com/jasonrudolph/ControlEscape.spoon
+-- it will replace the knu config
+-- Then install miro-windows-manager
+-- https://github.com/miromannino/miro-windows-manager
+
+-- hs-knu modules
 knu = require("knu")
 -- Function to guard a given object from GC
 guard = knu.runtime.guard
@@ -29,3 +35,17 @@ knu.usb.onChange(function (device)
       end
     end
 end)
+
+-- Miro's windows manager
+local hyper = {"alt", "cmd"}
+
+hs.loadSpoon("MiroWindowsManager")
+
+hs.window.animationDuration = 0.3
+spoon.MiroWindowsManager:bindHotkeys({
+  up = {hyper, "up"},
+  right = {hyper, "right"},
+  down = {hyper, "down"},
+  left = {hyper, "left"},
+  fullscreen = {hyper, "f"}
+})
