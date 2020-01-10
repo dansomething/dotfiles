@@ -3,14 +3,13 @@
 brew cask install appcleaner
 brew cask install coconutbattery
 brew cask install google-chrome
-brew cask install google-drive
 brew cask install hammerspoon
 brew cask install iterm2
-brew cask install karabiner-elements
 brew cask install keepassx
 brew cask install keepingyouawake
 brew cask install macdown
 brew cask install macvim
+brew tap homebrew/cask-fonts
 brew cask install font-hack-nerd-font
 brew cask install slack
 brew cask install sourcetree
