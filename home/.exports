@@ -27,8 +27,6 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoreboth:erasedups
 # Make some commands not show up in history
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help:clear'
-# Add timestamps to history log
-export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
 # Save each command right after it has been executed.
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
