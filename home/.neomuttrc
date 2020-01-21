@@ -83,7 +83,7 @@ set mail_check_stats
 
 # https://neomutt.org/feature/new-mail
 set new_mail_command = "terminal-notifier -title '%v' -subtitle 'New Mail' \
--message '%n new messages, %u unread.' -activate 'com.googlecode.iterm2' -sound 'new mail'"
+-message '%n new messages, %u unread.' -activate 'io.alacritty' -sound 'new mail'"
 
 # Mailboxes to show in the sidebar.
 # You can use any gmail imap mailboxes
