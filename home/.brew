@@ -66,6 +66,7 @@ brew install tmux-mem-cpu-load
 brew install tree
 brew install urlview # for viewing attachements from mutt/neomutt
 brew install yamllint
+brew install yarn
 
 # Remove outdated versions from the cellar.
 brew cleanup
