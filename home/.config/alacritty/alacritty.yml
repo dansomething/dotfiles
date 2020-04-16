@@ -1,4 +1,5 @@
 # yamllint disable rule:colons
+# https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 ---
 # Colors (Jellybeans)
 colors:
@@ -77,3 +78,13 @@ font:
   # This is a global setting and will require a log out or restart to take
   # effect.
   use_thin_strokes: true
+
+shell:
+  program: /usr/local/bin/bash
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+
+window:
+  startup_mode: Fullscreen
