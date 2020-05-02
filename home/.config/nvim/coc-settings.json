@@ -1,6 +1,6 @@
 {
   "diagnostic.errorSign": "✗",
-  "diagnostic.infoSign": ">>",
+  "diagnostic.infoSign": "i",
   "diagnostic.warningSign": "⚠",
   "snippets.priority": 100,
   "suggest.autoTrigger": "trigger",
