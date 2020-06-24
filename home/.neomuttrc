@@ -138,6 +138,7 @@ macro index,pager    dat "<delete-thread><sync-mailbox>y"                       
 macro index,pager    ss  "<save-message>=[Gmail]/All%20Mail<enter><enter><sync-mailbox>y" "save message to archive"
 macro index,pager    gx  "<pipe-message>urlview<Enter>"                                   "call urlview to extract URLs out of a message"
 macro attach,compose gx  "<pipe-entry>urlview<Enter>"                                     "call urlview to extract URLs out of a message"
+bind  attach         <return>    view-mailcap
 
 # Command Line
 # ----------------------------------------------------
