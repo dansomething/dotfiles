@@ -1,5 +1,8 @@
 #  http://stevelosh.com/blog/2012/10/the-homely-mutt/
 
+# CSV
+text/csv; view-attachment %s csv
+
 # MS Excel
 application/x-msexcel; view-attachment %s
 application/ms-exc; view-attachment %s
