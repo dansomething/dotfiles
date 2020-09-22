@@ -33,28 +33,32 @@ hash bat >/dev/null 2>&1 && alias cat='bat'
 # https://www.colordiff.org/
 hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-  colorflag="--color"
-else # macOS `ls`
-  colorflag="-G"
-  export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+# https://github.com/ogham/exa
+if [ "$(command -v exa)" ]; then
+  alias ls='exa -G --color auto --icons -a -s type'
+  alias lsd='exa -G --color auto --icons -a -D'
+  alias ll='exa -l --color always --icons -a -s type'
+else
+  # Detect which `ls` flavor is in use
+  if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+  else # macOS `ls`
+    colorflag="-G"
+    export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+  fi
+
+  # List all files colorized in long format, excluding . and ..
+  alias la="ls -lAF ${colorflag}"
+
+  # List only directories
+  alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+  # List with readable file sizes
+  alias ll="ls -alFh ${colorflag}"
+
+  # Always use color output for `ls`
+  alias ls="command ls ${colorflag}"
 fi
-
-# List all files colorized in long format
-alias l="ls -lF ${colorflag}"
-
-# List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
-
-# List only directories
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-
-# List with readable file sizes
-alias ll="ls -alFh ${colorflag}"
-
-# Always use color output for `ls`
-alias ls="command ls ${colorflag}"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
