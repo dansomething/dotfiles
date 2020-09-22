@@ -75,12 +75,6 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # These require Brew
 hash brew >/dev/null 2>&1 && {
-  [[ -s $(brew --prefix nvm)/nvm.sh ]] && {
-    export NVM_DIR="$HOME/.nvm"
-    # shellcheck source=/dev/null
-    source "$(brew --prefix nvm)/nvm.sh" --no-use
-  }
-
   [[ -s $(brew --prefix)/etc/bash_completion.d ]] && {
     BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
     export BASH_COMPLETION_COMPAT_DIR
