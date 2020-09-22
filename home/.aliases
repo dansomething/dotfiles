@@ -27,7 +27,10 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 
-# Colorize diff output
+# https://github.com/sharkdp/bat
+hash bat >/dev/null 2>&1 && alias cat='bat'
+
+# https://www.colordiff.org/
 hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 
 # Detect which `ls` flavor is in use
