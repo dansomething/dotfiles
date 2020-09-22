@@ -42,11 +42,11 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # Install other useful binaries.
 brew install bash-git-prompt
 brew install bat
-brew install diff-so-fancy
 brew install fasd
 brew install fzf
 $(brew --prefix)/opt/fzf/install
 brew install gawk # for Morantron/tmux-fingers
+brew install git-delta
 brew install gnu-sed # for vim mergetool diffconflicts script
 brew install grc
 brew install hub
