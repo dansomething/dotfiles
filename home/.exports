@@ -45,11 +45,6 @@ if [[ "$PLATFORM" == 'osx' ]]; then
     PATH="/usr/local/sbin:$PATH"
     export PATH
 
-    hash /usr/libexec/java_home >/dev/null 2>&1 && {
-      JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-      export JAVA_HOME
-    }
-
     # Default compiler flags
     export CFLAGS="-arch x86_64"
 fi
