@@ -23,6 +23,7 @@ colours=yellow
 regexp=\d{4}-\d{2}-\d{2}
 colours=cyan
 -
+
 #time
 regexp=\d{1,2}:\d{2}:\d{2}
 colours=cyan
