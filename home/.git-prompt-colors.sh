@@ -2,7 +2,7 @@
 
 # Only show username/host if not default
 default_usernames=("dan" "dan.hansen")
-default_hostnames=("MC02LL4LVFH00" "lucky" "pearly")
+default_hostnames=("lucky" "pearly" "bloom.local")
 
 function get_username() {
   for user in "${default_usernames[@]}"; do
