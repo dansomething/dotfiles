@@ -30,5 +30,8 @@ application/pdf; view-attachment %s pdf
 # HTML
 text/html; view-attachment %s html
 
+# Plain Text
+text/plain; view-attachment %s txt
+
 # Unidentified.
 application/octet-stream; view-attachment %s "-"
