@@ -35,7 +35,7 @@ colours=cyan
 -
 
 #schema
-regexp=`\w+`
+regexp=`[\w\s]+`
 colours=yellow
 -
 
