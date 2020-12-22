@@ -9,7 +9,7 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias git="hub"
+hash hub >/dev/null 2>&1 && alias git="hub"
 alias g="git"
 alias h="history"
 hash fasd >/dev/null 2>&1 && alias v='f -e nvim'
