@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -f /etc/profile ]; then
   # shellcheck disable=SC2123
   PATH=""
@@ -45,7 +47,7 @@ hash fzf >/dev/null 2>&1 && {
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
   # shellcheck source=/dev/null
-  [ -s "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
+  [ -r "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 }
 
 # https://github.com/clvv/fasd
@@ -71,27 +73,22 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 # shellcheck source=/dev/null
-[[ -s "/etc/bash_completion" ]] && source "/etc/bash_completion"
+[[ -r "/etc/bash_completion" ]] && source "/etc/bash_completion"
 
 # These require Brew
 hash brew >/dev/null 2>&1 && {
-  [[ -s $(brew --prefix)/etc/bash_completion.d ]] && {
-    BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
-    export BASH_COMPLETION_COMPAT_DIR
-  }
+  HOMEBREW_PREFIX=$(brew --prefix)
 
-  # shellcheck source=/dev/null
-  [[ -s $(brew --prefix)/etc/profile.d/bash_completion.sh ]] && source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+  [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  [[ -r "${HOMEBREW_PREFIX}/etc/grc.bashrc" ]] && . "${HOMEBREW_PREFIX}/etc/grc.bashrc"
 
-  # shellcheck source=/dev/null
-  [[ -s $(brew --prefix)/etc/grc.bashrc ]] && source "$(brew --prefix)/etc/grc.bashrc"
+  unset HOMEBREW_PREFIX
 }
 
-[[ -s "$HOME/.homesick/repos/homeshick/homeshick.sh" ]] && {
-  # shellcheck source=/dev/null
-  source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-  # shellcheck source=/dev/null
-  source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+HOMESHICK="$HOME/.homesick/repos/homeshick"
+[[ -r "${HOMESHICK}/homeshick.sh" ]] && {
+  . "${HOMESHICK}/homeshick.sh"
+  . "${HOMESHICK}/completions/homeshick-completion.bash"
 
   hash git >/dev/null 2>&1 && {
     homeshick --quiet refresh 2
