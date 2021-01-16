@@ -4,7 +4,7 @@
 
 hash brew >/dev/null 2>&1 || {
   echo "Installing Homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  source <(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
 }
 
 # Make sure we’re using the latest Homebrew.
@@ -45,7 +45,7 @@ brew install bat
 brew install exa
 brew install fasd
 brew install fzf
-$(brew --prefix)/opt/fzf/install
+"${BREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
 brew install git-delta
 brew install gnu-sed # for vim mergetool diffconflicts script
@@ -79,3 +79,4 @@ brew install yarn
 
 # Remove outdated versions from the cellar.
 brew cleanup
+unset BREW_PREFIX
