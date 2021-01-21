@@ -77,6 +77,9 @@ brew install watchman
 brew install yamllint
 brew install yarn
 
+# Symlink bash-git-prompt for cross-platform convenience
+ln -s "${BREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt
+
 # Remove outdated versions from the cellar.
 brew cleanup
 unset BREW_PREFIX
