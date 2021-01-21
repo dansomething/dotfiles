@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
 if [ -f /etc/profile ]; then
-  # shellcheck disable=SC2123
-  PATH=""
+  # Prevent duplication of paths in tmux on macos
+  if [ -n "$TMUX" ] && [ "$(uname)" == 'Darwin' ]; then
+    # shellcheck disable=SC2123
+    PATH=""
+  fi
   # shellcheck source=/dev/null
   source /etc/profile
 fi
