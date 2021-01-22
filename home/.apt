@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -eou pipefail
+
+# Install Hack Nerd font
+mkdir -p ~/.local/share/fonts
+pushd ~/.local/share/fonts &>/dev/null || exit
+curl -sfLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
+fc-cache -f -v
+popd &>/dev/null || exit
+
+# Install git-delta
+mkdir -p ~/Downloads
+pushd ~/Downloads &>/dev/null || next
+curl -sfLo git-delta.deb https://github.com/dandavison/delta/releases/download/0.5.1/git-delta_0.5.1_amd64.deb
+sudo dpkg -i git-delta.deb
+popd &>/dev/null || exit
+
+# Install bash-git-prompt
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+
+# Install additional command-line tools using Apt.
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y \
+  bat \
+  build-essential \
+  cmake \
+  exa \
+  fasd \
+  fzf \
+  gawk \
+  grc \
+  gron \
+  htop \
+  hub \
+  jq \
+  ncdu \
+  neomutt \
+  neovim \
+  pv \
+  python3-sqlparse \
+  rename \
+  ripgrep \
+  shellcheck \
+  tidy \
+  tmux \
+  universal-ctags \
+  urlview \
+  vim \
+  watchman \
+  xclip \
+  yamllint \
+  yarnpkg
+
+sudo apt autoremove
+
+# Enable fzf bash completion and key bindings
+printf "source /usr/share/doc/fzf/examples/key-bindings.bash\nsource /usr/share/doc/fzf/examples/completion.bash\n" > ~/.fzf.bash
