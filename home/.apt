@@ -54,5 +54,8 @@ sudo apt install -y \
 
 sudo apt autoremove
 
+# Alias yarnpkg to be used as the standard yarn command.
+sudo ln -s /usr/bin/yarnpkg /usr/local/bin/yarn
+
 # Enable fzf bash completion and key bindings
 printf "source /usr/share/doc/fzf/examples/key-bindings.bash\nsource /usr/share/doc/fzf/examples/completion.bash\n" > ~/.fzf.bash
