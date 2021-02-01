@@ -2,16 +2,19 @@
 set -eou pipefail
 
 # Install Hack Nerd font
-mkdir -p ~/.local/share/fonts
-pushd ~/.local/share/fonts &>/dev/null || exit
-curl -sfLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
-fc-cache -f -v
-popd &>/dev/null || exit
+hash fc-cache >/dev/null 2>&1 && {
+  mkdir -p ~/.local/share/fonts
+  pushd ~/.local/share/fonts &>/dev/null || exit
+  curl -fsSLo "Hack Regular Nerd Font Complete.ttf" \
+    https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
+  fc-cache -f -v
+  popd &>/dev/null || exit
+}
 
 # Install git-delta
 mkdir -p ~/Downloads
 pushd ~/Downloads &>/dev/null || next
-curl -sfLo git-delta.deb https://github.com/dandavison/delta/releases/download/0.5.1/git-delta_0.5.1_amd64.deb
+curl -fsSLo git-delta.deb https://github.com/dandavison/delta/releases/download/0.5.1/git-delta_0.5.1_amd64.deb
 sudo dpkg -i git-delta.deb
 popd &>/dev/null || exit
 
@@ -19,9 +22,7 @@ popd &>/dev/null || exit
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 # Install additional command-line tools using Apt.
-sudo apt update
-sudo apt upgrade -y
-sudo apt install -y \
+sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   bat \
   build-essential \
   cmake \
@@ -52,7 +53,7 @@ sudo apt install -y \
   yamllint \
   yarnpkg
 
-sudo apt autoremove
+sudo apt-get autoremove
 
 # Alias yarnpkg to be used as the standard yarn command.
 sudo ln -s /usr/bin/yarnpkg /usr/local/bin/yarn
