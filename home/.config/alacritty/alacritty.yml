@@ -5,7 +5,7 @@
 colors:
   # Default colors
   primary:
-    background: '0x161616'
+    background: '0x151515'
     foreground: '0xe8e8d3'
 
   # Cursor volors
