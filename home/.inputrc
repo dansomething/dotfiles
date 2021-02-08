@@ -131,6 +131,10 @@ Control-l: clear-screen
 # Keymaps for when we're in insert (i.e., typing stuff in) mode
 set keymap vi-insert
 
+# Let's make escape better, together.
+"jk": vi-movement-mode
+"kj": vi-movement-mode
+
 # Option-up/option-down should also apply to insert mode
 "\e[A": history-search-backward
 "\e[B": history-search-forward
