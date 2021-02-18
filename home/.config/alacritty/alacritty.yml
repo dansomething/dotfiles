@@ -94,9 +94,8 @@ font:
   use_thin_strokes: true
 
 shell:
-  program: /usr/bin/env
+  program: /usr/local/bin/bash
   args:
-    - bash
     - -l
     - -c
     - "tmux attach || tmux"
