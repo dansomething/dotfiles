@@ -3,6 +3,9 @@
 # CSV
 text/csv; view-attachment %s csv
 
+# iCal
+application/ics; view-attachment %s
+
 # MS Excel
 application/x-msexcel; view-attachment %s
 application/ms-exc; view-attachment %s
