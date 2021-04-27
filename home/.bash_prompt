@@ -22,6 +22,11 @@ if [ -f "${HOME}/.bash-git-prompt/gitprompt.sh" ]; then
       echo -nE "${Yellow}${ret}${ResetColor}"
   }
 
+  # Set a default user for windows
+  if [[ -z "${USER}" ]]; then
+    USER="dan"
+  fi
+
   # shellcheck source=/dev/null
   source "${HOME}/.bash-git-prompt/gitprompt.sh"
 else
