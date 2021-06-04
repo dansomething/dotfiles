@@ -30,6 +30,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   fasd \
   fzf \
   gawk \
+  gnome-tweak-tool \
   grc \
   gron \
   htop \
@@ -49,6 +50,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   urlview \
   vim \
   watchman \
+  xcape \
   xclip \
   yamllint \
   yarnpkg
