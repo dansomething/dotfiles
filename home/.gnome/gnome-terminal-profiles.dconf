@@ -1,0 +1,19 @@
+[/]
+default='d86daa51-e66d-426d-88ea-a49ec265e613'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'd86daa51-e66d-426d-88ea-a49ec265e613']
+
+[:d86daa51-e66d-426d-88ea-a49ec265e613]
+background-color='rgb(22,22,22)'
+bold-is-bright=false
+cursor-background-color='rgb(255,185,100)'
+cursor-blink-mode='on'
+cursor-foreground-color='rgb(232,232,211)'
+font='Hack Nerd Font 9'
+foreground-color='rgb(232,232,211)'
+highlight-background-color='rgb(89,99,162)'
+highlight-foreground-color='rgb(246,246,246)'
+palette=['rgb(136,136,136)', 'rgb(207,106,76)', 'rgb(153,173,106)', 'rgb(250,208,122)', 'rgb(129,151,191)', 'rgb(240,160,192)', 'rgb(198,182,238)', 'rgb(232,232,211)', 'rgb(200,200,200)', 'rgb(255,178,176)', 'rgb(200,226,185)', 'rgb(255,225,175)', 'rgb(189,223,247)', 'rgb(252,226,255)', 'rgb(11,189,182)', 'rgb(254,255,255)']
+scroll-on-keystroke=false
+scrollback-unlimited=true
+scrollbar-policy='never'
+visible-name='Jellybeans'

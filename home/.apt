@@ -60,3 +60,16 @@ sudo ln -s /usr/bin/yarnpkg /usr/local/bin/yarn
 
 # Enable fzf bash completion and key bindings
 printf "source /usr/share/doc/fzf/examples/key-bindings.bash\nsource /usr/share/doc/fzf/examples/completion.bash\n" > ~/.fzf.bash
+
+# Enable python3 for nvim
+python3 -m pip install --user --upgrade pynvim
+
+# Enable node.js for nvim
+yarn global add neovim
+
+# Gnome Terminal Jellybeans profile
+dconf load /org/gnome/terminal/legacy/profiles:/ < .gnome/gnome-terminal-profiles.dconf
+
+# Symlink batcat as cat
+mkdir -p ~/.bin
+ln -s /usr/bin/batcat ~/.bin/cat
