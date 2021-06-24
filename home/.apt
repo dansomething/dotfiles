@@ -14,7 +14,7 @@ hash fc-cache >/dev/null 2>&1 && {
 # Install git-delta
 mkdir -p ~/Downloads
 pushd ~/Downloads &>/dev/null || next
-curl -fsSLo git-delta.deb https://github.com/dandavison/delta/releases/download/0.5.1/git-delta_0.5.1_amd64.deb
+curl -fsSLo git-delta.deb https://github.com/dandavison/delta/releases/download/0.8.0/git-delta_0.8.0_amd64.deb
 sudo dpkg -i git-delta.deb
 popd &>/dev/null || exit
 
