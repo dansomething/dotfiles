@@ -19,6 +19,14 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
+# ---------------
+# General Options
+# ---------------
+
+# Prevent file overwrite on stdout redirection
+# Use `>|` to force redirection to an existing file
+set -o noclobber
+
 # Enable VI mode
 set -o vi
 
@@ -37,6 +45,23 @@ shopt -s cdspell
 for option in autocd globstar; do
   shopt -s "$option" 2> /dev/null
 done
+
+# ------------------------------------------
+# SMARTER TAB-COMPLETION (Readline bindings)
+# ------------------------------------------
+
+# Perform file completion in a case insensitive fashion
+bind "set completion-ignore-case on"
+
+# Display matches for ambiguous patterns at first tab press
+bind "set show-all-if-ambiguous on"
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+bind "set mark-symlinked-directories on"
+
+# ----------------
+# Additional Tools
+# ----------------
 
 # https://github.com/junegunn/fzf
 hash fzf >/dev/null 2>&1 && {

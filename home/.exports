@@ -24,7 +24,7 @@ export HISTFILE=~/.shell_history
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 # Omit duplicates and commands that begin with a space from history.
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL="ignoreboth:erasedups"
 # Make some commands not show up in history
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help:clear'
 # Save each command right after it has been executed.
