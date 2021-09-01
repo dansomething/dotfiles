@@ -3,3 +3,6 @@
 hash pmset >/dev/null 2>&1 && {
   pmset -g batt | grep -Eo "\d+%" | cut -f1 -d';'
 }
+hash upower >/dev/null 2>&1 && {
+  upower -i "$(upower -e | grep '/battery')" | grep --color=never -E percentage | xargs | cut -d' ' -f2
+}
