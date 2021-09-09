@@ -26,7 +26,7 @@ export HISTFILESIZE=$HISTSIZE
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL="ignoreboth:erasedups"
 # Make some commands not show up in history
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd:cd -:pwd:exit:date:* --help:clear'
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:cd:cd -:..:pwd:exit:date:* --help:clear:vis:nvs:tmux'
 # Save each command right after it has been executed.
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
