@@ -37,7 +37,7 @@ hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 if [ "$(command -v exa)" ]; then
   alias ls='exa -G --color auto --icons -a -s type'
   alias lsd='exa -G --color auto --icons -a -D'
-  alias ll='exa -l --color always --icons -a -s type'
+  alias ll='exa -l -g --color always --icons -a -s type'
 else
   # Detect which `ls` flavor is in use
   if ls --color > /dev/null 2>&1; then # GNU `ls`
