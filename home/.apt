@@ -37,6 +37,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   hub \
   jq \
   ncdu \
+  nodejs \
   neomutt \
   neovim \
   pv \
@@ -55,7 +56,6 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   xcape \
   xclip \
   yamllint \
-  yarnpkg
 
 sudo apt-get autoremove
 
@@ -68,8 +68,11 @@ printf "source /usr/share/doc/fzf/examples/key-bindings.bash\nsource /usr/share/
 # Enable python3 for nvim
 python3 -m pip install --user --upgrade pynvim
 
+# Install yarn for coc.nvim
+sudo npm install --global yarn
+
 # Enable node.js for nvim
-yarn global add neovim
+sudo npm install --global neovim
 
 # Gnome Terminal Jellybeans profile
 dconf load /org/gnome/terminal/legacy/profiles:/ < .gnome/gnome-terminal-profiles.dconf
