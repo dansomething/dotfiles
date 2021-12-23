@@ -105,10 +105,12 @@
   pager = delta
 
 [delta]
+  navigate = true
   side-by-side = true
 
 [diff]
   tool = vimdiff
+  colorMoved = default
   compactionHeuristic = true
 
 [difftool]
