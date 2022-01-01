@@ -11,7 +11,7 @@ My .files for macOS, Linux, and Windows
 
 Note, on macOS you may need to install the Xcode command-line tools first.
 
-    sudo "/usr/bin/xcode-select", "--install"
+    xcode-select --install
 
 Finally, run the dotfiles installation script.
 
