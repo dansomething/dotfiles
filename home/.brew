@@ -58,7 +58,6 @@ brew install ncdu
 brew install neomutt
 brew install neovim
 brew install nodejs
-brew install nvm
 brew install pv
 brew install reattach-to-user-namespace
 brew install rename
@@ -66,7 +65,6 @@ brew install ripgrep
 brew install shellcheck
 brew install sqlparse
 brew install terminal-notifier
-brew install the_silver_searcher
 brew install tidy-html5
 brew install tmux
 brew install tree
