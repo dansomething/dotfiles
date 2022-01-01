@@ -2,16 +2,14 @@
 
 brew tap homebrew/cask-fonts
 
-brew cask install alacritty
-brew cask install appcleaner
-brew cask install coconutbattery
-brew cask install font-hack-nerd-font
-brew cask install google-chrome
-brew cask install hammerspoon
-brew cask install keepassxc
-brew cask install keepingyouawake
-brew cask install macdown
-brew cask install macvim
-brew cask install slack
-brew cask install sourcetree
-brew cask install vlc
+brew install alacritty
+brew install appcleaner
+brew install coconutbattery
+brew install font-hack-nerd-font
+brew install google-chrome
+brew install hammerspoon
+brew install keepassxc
+brew install keepingyouawake
+brew install macvim
+brew install slack
+brew install vlc
