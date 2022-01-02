@@ -10,6 +10,6 @@ brew install google-chrome
 brew install hammerspoon
 brew install keepassxc
 brew install keepingyouawake
-brew install macvim
+brew install homebrew/cask/macvim
 brew install slack
 brew install vlc
