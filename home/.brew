@@ -36,7 +36,6 @@ fi;
 # Install more recent versions of some macOS tools.
 brew install git
 brew install grep
-brew install openssh
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # Install other useful binaries.
