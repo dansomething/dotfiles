@@ -5,14 +5,25 @@ set -o pipefail
 
 # BLACKLIST="https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
 BLACKLIST="https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
-TMPFILE="${TMPDIR}"/hosts_blacklist
 HOSTS="/etc/hosts"
+HOSTS_LOCAL="/etc/hosts.local"
 
-curl -sSL "${BLACKLIST}" -o "${TMPFILE}"
+TMPDIR=${TMPDIR:-$(dirname "$(mktemp --directory)")/}
+HOSTS_BLACKLIST="${TMPDIR}"/hosts_blacklist
 
-if [ -f "${TMPFILE}" ]; then
-  sudo cp -f /etc/hosts.local "${HOSTS}"
+if [ ! -f "${HOSTS_LOCAL}" ]; then
+  echo "${HOSTS_LOCAL} file is missing. Please create one with your defaults. i.e. sudo cp ${HOSTS} ${HOSTS_LOCAL}"
+  exit 1
+fi
+
+echo -n "Downloading hosts blacklist..."
+curl -sSfL "${BLACKLIST}" -o "${HOSTS_BLACKLIST}"
+
+if [ -f "${HOSTS_BLACKLIST}" ]; then
+  sudo cp -f "${HOSTS_LOCAL}" "${HOSTS}"
   printf "\n# %s\n" "${BLACKLIST}" | sudo tee -a "${HOSTS}" >/dev/null
-  grep 0.0.0.0 "${TMPFILE}" | sudo tee -a "${HOSTS}" >/dev/null
+  grep 0.0.0.0 "${HOSTS_BLACKLIST}" | sudo tee -a "${HOSTS}" >/dev/null
   sudo cp "${HOSTS}" "${HOSTS}.blacklist"
+  rm "${HOSTS_BLACKLIST}"
+  echo "${HOSTS} updated!"
 fi
