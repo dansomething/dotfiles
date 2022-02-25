@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# BLACKLIST="https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
+BLACKLIST="https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+TMPFILE="${TMPDIR}"/hosts_blacklist
+HOSTS="/etc/hosts"
+
+curl -sSL "${BLACKLIST}" -o "${TMPFILE}"
+
+if [ -f "${TMPFILE}" ]; then
+  sudo cp -f /etc/hosts.local "${HOSTS}"
+  printf "\n# %s\n" "${BLACKLIST}" | sudo tee -a "${HOSTS}" >/dev/null
+  grep 0.0.0.0 "${TMPFILE}" | sudo tee -a "${HOSTS}" >/dev/null
+  sudo cp "${HOSTS}" "${HOSTS}.blacklist"
+fi
