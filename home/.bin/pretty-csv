@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ "$(command -v bat)" ]; then
+  viewer="bat -l csv"
+else
+  viewer="exec less -FSXK"
+fi
+
+perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | $viewer
