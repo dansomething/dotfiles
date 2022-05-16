@@ -1,3 +1,7 @@
+# Backups #
+###########
+*.bak
+
 # Compiled source #
 ###################
 *.class
