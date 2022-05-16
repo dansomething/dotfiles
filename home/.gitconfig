@@ -55,9 +55,9 @@
 
   # Delete already merged branches
   m = !sh -c 'git branch --merged master | grep -v master'
-  mr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2'
+  mr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f 2-'
   rmm = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
-  rmmr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f2 | xargs -n 1 git push origin --delete'
+  rmmr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f 2- | xargs -n 1 git push origin --delete'
 
   # Credit an author on the latest commit
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
