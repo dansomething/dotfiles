@@ -3,7 +3,6 @@
   "diagnostic.infoSign": "i",
   "diagnostic.warningSign": "⚠",
   "diagnostic.hintSign": "➤",
-  "snippets.priority": 100,
   "suggest.autoTrigger": "trigger",
   "suggest.triggerCompletionWait": 60
 }
