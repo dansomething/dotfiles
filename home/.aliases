@@ -213,6 +213,6 @@ if [[ "$PLATFORM" == 'osx' ]]; then
 fi
 
 _ssh_auth_save() {
-  ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
+  ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$USER"
 }
-alias tmux='_ssh_auth_save ; export HOSTNAME=$(hostname) ; tmux'
+alias tmux='_ssh_auth_save; tmux'
