@@ -54,6 +54,9 @@ cursor:
   # Cursor blinking interval in milliseconds.
   blink_interval: 500
 
+env:
+  TERM: xterm-256color
+
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
