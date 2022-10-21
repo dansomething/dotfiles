@@ -94,7 +94,13 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  #
+  # This setting is removed in 0.11.0. Use AppleFontSmooting instead.
+  # $ defaults write -g AppleFontSmoothing -int 0
+  # See also:
+  #   https://github.com/alacritty/alacritty/blob/master/CHANGELOG.md#removed
+  #   https://github.com/alacritty/alacritty/issues/4616#issuecomment-1236413444
+  # use_thin_strokes: true
 
 shell:
   program: /usr/local/bin/bash
