@@ -43,7 +43,6 @@ brew install bash-git-prompt
 brew install bat
 brew install cmake
 brew install exa
-brew install fasd
 brew install fzf && "${BREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
 brew install git-delta
@@ -72,6 +71,7 @@ brew install watch
 brew install watchman
 brew install yamllint
 brew install yarn
+brew install zoxide
 
 # Symlink bash-git-prompt for cross-platform convenience
 ln -s "${BREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt

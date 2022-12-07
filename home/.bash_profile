@@ -79,15 +79,20 @@ hash fzf >/dev/null 2>&1 && {
 }
 
 # https://github.com/clvv/fasd
-hash fasd >/dev/null 2>&1 && {
+if hash fasd >/dev/null 2>&1; then
   fasd_cache="$HOME/.fasd-init-bash"
   if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
     fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
   fi
+  # shellcheck source=/dev/null
   source "$fasd_cache"
   unset fasd_cache
   _fasd_bash_hook_cmd_complete v m j o
-}
+
+# https://github.com/ajeetdsouza/zoxide
+elif hash zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 if [ "$(uname)" == 'Darwin' ]; then

@@ -30,7 +30,6 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   build-essential \
   cmake \
   exa \
-  fasd \
   fzf \
   gawk \
   gnome-tweak-tool \
@@ -60,6 +59,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   xcape \
   xclip \
   yamllint \
+  zoxide
 
 sudo apt-get autoremove
 
