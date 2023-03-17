@@ -116,7 +116,7 @@
   autocrlf = input
   # Treat spaces before tabs, lines that are indented with 4 or more spaces, and all kinds of trailing whitespace as an error
   whitespace = space-before-tab,trailing-space,tabwidth=4
-  pager = delta
+  #pager = delta
 
 [delta]
   navigate = true
@@ -140,7 +140,7 @@
   defaultBranch = main
 
 [interactive]
-  diffFilter = delta --color-only
+  #diffFilter = delta --color-only
 
 [merge]
   # Include summaries of merged commits in newly created merge commit messages

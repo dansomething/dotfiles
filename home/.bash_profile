@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
+# Ensure entware profile is loaded first
+if [[ ! $PATH == *"/opt/bin"* ]]; then
+  return
+fi
+
 if [ -f /etc/profile ]; then
   # Prevent duplication of paths in tmux on macos
   if [ -n "$TMUX" ] && [ "$(uname)" == 'Darwin' ]; then
     # shellcheck disable=SC2123
     PATH=""
   fi
-  # shellcheck source=/dev/null
+
   source /etc/profile
 fi
 
@@ -36,7 +41,7 @@ unset file
 set -o noclobber
 
 # Enable VI mode
-set -o vi
+#set -o vi
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
