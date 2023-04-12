@@ -210,6 +210,9 @@ alias pg="pgrep -fl"
 
 if [[ "$PLATFORM" == 'osx' ]]; then
   alias top="top -ocpu -O+rsize -s 5 -n 20"
+elif [[ "$PLATFORM" == 'linux' ]] && hash xclip >/dev/null 2>&1; then
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
 fi
 
 _ssh_auth_save() {
