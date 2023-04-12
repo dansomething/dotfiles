@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eou pipefail
 
 DOTFILES="https://github.com/dansomething/dotfiles.git"
 CMDS="git"
@@ -13,7 +14,7 @@ done
 
 # Install Homeshick
 echo "Installing Homeshick to manage dotfiles..."
-git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 # Install dotfiles
