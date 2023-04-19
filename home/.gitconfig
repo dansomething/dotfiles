@@ -24,7 +24,7 @@
   mt = mergetool
 
   # Pull in remote changes for the current repository and all its submodules
-  um = !"git pull; git submodule foreach git pull origin master"
+  um = !"git pull; git submodule foreach git pull origin main"
 
   # Prune branches removed from remote and update fast-forward only
   u = "!git remote update -p; git merge --ff-only @{u}"
@@ -54,10 +54,10 @@
   aliases = config --get-regexp alias
 
   # Delete already merged branches
-  m = !sh -c 'git branch --merged master | grep -v master'
-  mr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f 2-'
-  rmm = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
-  rmmr = !sh -c 'git branch -r --merged master | grep -v master | cut -d / -f 2- | xargs -n 1 git push origin --delete'
+  m = !sh -c 'git branch --merged main | grep -v main'
+  mr = !sh -c 'git branch -r --merged main | grep -v main | cut -d / -f 2-'
+  rmm = !sh -c 'git branch --merged main | grep -v main | xargs -n 1 git branch -d'
+  rmmr = !sh -c 'git branch -r --merged main | grep -v main | cut -d / -f 2- | xargs -n 1 git push origin --delete'
 
   # Credit an author on the latest commit
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
@@ -83,7 +83,7 @@
   # Clean with out removing my local config files
   xclean = clean -fdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore -e .settings -e .project -e .classpath -e rebel.xml
   nxclean = clean -nfdx -e .vimrc -e Session.vim -e .ctagsignore -e .agignore -e .settings -e .project -e .classpath -e rebel.xml
-  oldest-ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
+  oldest-ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-main}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 
   cpr = !hub pull-request -a dansomething
 
@@ -122,6 +122,9 @@
 [ghi]
   token = !security find-internet-password -a dansomething -s github.com -l 'ghi token' -w
 
+[init]
+  defaultBranch = main
+
 [interactive]
   diffFilter = delta --color-only
 
@@ -129,6 +132,9 @@
   # Include summaries of merged commits in newly created merge commit messages
   log = true
   tool = diffconflicts
+
+[mergetool]
+  keepBackup = false
 
 [mergetool "diffconflicts"]
   cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
@@ -163,6 +169,3 @@
 [user]
   name = Dan Hansen
   email = hansendanr+git@gmail.com
-
-[mergetool]
-  keepBackup = false
