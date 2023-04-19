@@ -43,6 +43,7 @@ brew install bash-git-prompt
 brew install bat
 brew install cmake
 brew install exa
+brew install font-hack-nerd-font
 brew install fzf && "${BREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
 brew install git-delta
