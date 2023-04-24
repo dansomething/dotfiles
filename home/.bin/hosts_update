@@ -8,7 +8,7 @@ BLACKLIST="https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates
 HOSTS="/etc/hosts"
 HOSTS_LOCAL="/etc/hosts.local"
 
-TMPDIR=${TMPDIR:-$(dirname "$(mktemp --directory)")/}
+TMPDIR=${TMPDIR:-$(dirname "$(mktemp -d)")/}
 HOSTS_BLACKLIST="${TMPDIR}"/hosts_blacklist
 
 if [ ! -f "${HOSTS_LOCAL}" ]; then
