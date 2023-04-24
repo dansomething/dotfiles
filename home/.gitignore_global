@@ -41,6 +41,7 @@ Thumbs.db
 .ccls-cache/
 project.properties
 .notags
+.vim/
 .vimrc
 Session.vim
 tags*
