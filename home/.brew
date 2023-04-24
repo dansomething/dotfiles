@@ -43,7 +43,6 @@ brew install bash-git-prompt
 brew install bat
 brew install cmake
 brew install exa
-brew install font-hack-nerd-font
 brew install fzf && "${BREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
 brew install git-delta
@@ -52,8 +51,10 @@ brew install grc
 brew install gron
 brew install htop
 brew install hub
+brew install iperf3
 brew install jq
 brew install ncdu
+brew install ncftp
 brew install neomutt
 brew install neovim
 brew install nodejs
@@ -80,3 +81,7 @@ ln -s "${BREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt
 # Remove outdated versions from the cellar.
 brew cleanup
 unset BREW_PREFIX
+
+# install python support for neovim
+# TODO This isn't brew specific. Consider a more appropriate place.
+pip3 install pynvim --upgrade --user
