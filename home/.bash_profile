@@ -114,7 +114,9 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 hash brew >/dev/null 2>&1 && {
   HOMEBREW_PREFIX=$(brew --prefix)
 
+  # shellcheck source=/dev/null
   [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  # shellcheck source=/dev/null
   [[ -r "${HOMEBREW_PREFIX}/etc/grc.bashrc" ]] && . "${HOMEBREW_PREFIX}/etc/grc.bashrc"
 
   unset HOMEBREW_PREFIX
@@ -122,10 +124,19 @@ hash brew >/dev/null 2>&1 && {
 
 HOMESHICK="$HOME/.homesick/repos/homeshick"
 [[ -r "${HOMESHICK}/homeshick.sh" ]] && {
+  # shellcheck source=/dev/null
   . "${HOMESHICK}/homeshick.sh"
+  # shellcheck source=/dev/null
   . "${HOMESHICK}/completions/homeshick-completion.bash"
 
   hash git >/dev/null 2>&1 && {
     homeshick --quiet refresh 2
   }
+}
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] &&  {
+  export SDKMAN_DIR="$HOME/.sdkman"
+  # shellcheck source=/dev/null
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
 }
