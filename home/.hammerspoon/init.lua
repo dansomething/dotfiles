@@ -1,6 +1,8 @@
 -- Install these to ~/.hammerspoon/Spoons
--- https://github.com/jasonrudolph/ControlEscape.spoon
--- https://github.com/miromannino/miro-windows-manager
+-- Enable Hammerspoon in Privacy & Security > Accessibility
+-- git clone https://github.com/jasonrudolph/ControlEscape.spoon
+-- git clone https://github.com/miromannino/miro-windows-manager
+-- ln -s ~/.hammerspoon/Spoons/miro-windows-manager/MiroWindowsManager.spoon ~/.hammerspoon/Spoons
 
 -- ControlEscape.spoon
 hs.loadSpoon('ControlEscape'):start()
@@ -16,5 +18,6 @@ spoon.MiroWindowsManager:bindHotkeys({
   right = {hyper, "right"},
   down = {hyper, "down"},
   left = {hyper, "left"},
-  fullscreen = {hyper, "f"}
+  fullscreen = {hyper, "f"},
+  nextscreen = {hyper, "n"}
 })
