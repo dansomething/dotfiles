@@ -44,5 +44,7 @@ project.properties
 .vim/
 .vimrc
 Session.vim
-tags*
+tags
+tags.lock
+tags.temp
 !tags/
