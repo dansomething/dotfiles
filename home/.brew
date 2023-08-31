@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eou pipefail
 
 # Install command-line tools using Homebrew.
 
@@ -7,14 +8,18 @@ hash brew >/dev/null 2>&1 || {
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
+# Configure the shell for brew
+if [[ -r "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -r "/usr/local/bin/brew" ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # Make sure we’re using the latest Homebrew.
 brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade
-
-# Save Homebrew’s installed location.
-BREW_PREFIX=$(brew --prefix)
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -28,9 +33,9 @@ brew install bash
 brew install bash-completion@2
 
 # Switch to using brew-installed bash as default shell
-if ! grep -F -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/bash";
+if ! grep -F -q "${HOMEBREW_PREFIX}/bin/bash" /etc/shells; then
+  echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
+  chsh -s "${HOMEBREW_PREFIX}/bin/bash";
 fi;
 
 # Install more recent versions of some macOS tools.
@@ -43,7 +48,7 @@ brew install bash-git-prompt
 brew install bat
 brew install cmake
 brew install exa
-brew install fzf && "${BREW_PREFIX}/opt/fzf/install"
+brew install fzf && "${HOMEBREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
 brew install git-delta
 brew install gnu-sed # for vim mergetool diffconflicts script
@@ -76,11 +81,10 @@ brew install yarn
 brew install zoxide
 
 # Symlink bash-git-prompt for cross-platform convenience
-ln -s "${BREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt
+ln -sf "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt
 
 # Remove outdated versions from the cellar.
 brew cleanup
-unset BREW_PREFIX
 
 # install python support for neovim
 # TODO This isn't brew specific. Consider a more appropriate place.

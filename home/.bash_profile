@@ -10,6 +10,12 @@ if [ -f /etc/profile ]; then
   source /etc/profile
 fi
 
+if [[ -r "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -r "/usr/local/bin/brew" ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don't want to commit.
@@ -112,14 +118,10 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # These require Brew
 hash brew >/dev/null 2>&1 && {
-  HOMEBREW_PREFIX=$(brew --prefix)
-
   # shellcheck source=/dev/null
   [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
   # shellcheck source=/dev/null
   [[ -r "${HOMEBREW_PREFIX}/etc/grc.bashrc" ]] && . "${HOMEBREW_PREFIX}/etc/grc.bashrc"
-
-  unset HOMEBREW_PREFIX
 }
 
 HOMESHICK="$HOME/.homesick/repos/homeshick"
