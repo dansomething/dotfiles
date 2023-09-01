@@ -1,8 +1,6 @@
--- Install these to ~/.hammerspoon/Spoons
+-- Run ~/.hammerspoon/install
+-- Open Hammerspoon app
 -- Enable Hammerspoon in Privacy & Security > Accessibility
--- git clone https://github.com/jasonrudolph/ControlEscape.spoon
--- git clone https://github.com/miromannino/miro-windows-manager
--- ln -s ~/.hammerspoon/Spoons/miro-windows-manager/MiroWindowsManager.spoon ~/.hammerspoon/Spoons
 
 -- ControlEscape.spoon
 hs.loadSpoon('ControlEscape'):start()

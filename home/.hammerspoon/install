@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eou pipefail
+
+mkdir -p ~/.hammerspoon/Spoons
+pushd ~/.hammerspoon/Spoons >/dev/null || exit 1
+git clone https://github.com/jasonrudolph/ControlEscape.spoon
+git clone https://github.com/miromannino/miro-windows-manager
+ln -s ~/.hammerspoon/Spoons/miro-windows-manager/MiroWindowsManager.spoon ~/.hammerspoon/Spoons
+popd >/dev/null
