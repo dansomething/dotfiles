@@ -33,17 +33,24 @@ hash bat >/dev/null 2>&1 && alias cat='bat'
 # https://www.colordiff.org/
 hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 
+# exa is deprecated, but eza is not yet available in apt
 # https://github.com/ogham/exa
 if [ "$(command -v exa)" ]; then
-  alias ls='exa -G --color auto --icons -a -s type'
-  alias lsd='exa -G --color auto --icons -a -D'
-  alias ll='exa -l -g --color always --icons -a -s type'
+  alias eza="exa"
+fi
+
+# https://github.com/eza-community/eza
+if [ "$(command -v eza)" ]; then
+  alias ls='eza -G --color auto --icons -a -s type'
+  alias lsd='eza -G --color auto --icons -a -D'
+  alias ll='eza -l -g --color always --icons -a -s type'
 else
   # Detect which `ls` flavor is in use
   if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
   else # macOS `ls`
     colorflag="-G"
+    # TODO Make these more like jellybeans colors
     export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
   fi
 
