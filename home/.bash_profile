@@ -122,8 +122,12 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 hash brew >/dev/null 2>&1 && {
   # shellcheck source=/dev/null
   [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+
+  # https://github.com/garabik/grc
+  # shellcheck disable=SC2034
+  GRC_ALIASES=true
   # shellcheck source=/dev/null
-  [[ -r "${HOMEBREW_PREFIX}/etc/grc.bashrc" ]] && . "${HOMEBREW_PREFIX}/etc/grc.bashrc"
+  [[ -r "${HOMEBREW_PREFIX}/etc/grc.sh" ]] && . "${HOMEBREW_PREFIX}/etc/grc.sh"
 }
 
 HOMESHICK="$HOME/.homesick/repos/homeshick"
