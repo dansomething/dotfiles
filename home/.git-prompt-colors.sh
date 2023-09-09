@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2154,SC2034
+
 # These are the defaults from the "Default" theme
 
 # Only show username/host if not default
