@@ -82,6 +82,11 @@ hash fzf >/dev/null 2>&1 && {
   }
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+  TMUX_VERSION=$(tmux -V | sed -En "s/^tmux[^0-9]*([.0-9]+).*/\1/p")
+  if [ "$(echo "$TMUX_VERSION >= 3.2" | bc)" = 1 ]; then
+    export FZF_TMUX_OPTS='-p 80%,60%' # Requires Tmux 3.2+
+  fi
+
   # shellcheck source=/dev/null
   [ -r "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 }
