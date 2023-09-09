@@ -7,9 +7,16 @@
 default_usernames=("dan" "dan.hansen")
 default_hostnames=("lucky" "pearly" "bloom.local")
 
+if [[ -v PROMPT_USERS_IGNORE[@] ]]; then
+  default_usernames=("${default_usernames[@]}" "${PROMPT_USERS_IGNORE[@]}")
+fi
+if [[ -v PROMPT_HOSTS_IGNORE[@] ]]; then
+  default_hostnames=("${default_hostnames[@]}" "${PROMPT_HOSTS_IGNORE[@]}")
+fi
+
 function get_username() {
   for user in "${default_usernames[@]}"; do
-    if [ $USER == $user ]; then
+    if [ "${USER}" == "${user}" ]; then
       return
     fi
   done
@@ -17,7 +24,7 @@ function get_username() {
 }
 function get_hostname() {
   for host in "${default_hostnames[@]}"; do
-    if [ $HOSTNAME == $host ]; then
+    if [ "${HOSTNAME}" == "${host}" ]; then
       return
     fi
   done
