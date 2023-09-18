@@ -43,6 +43,7 @@ project.properties
 .notags
 .vim/
 .vimrc
+.vimspector.json
 Session.vim
 tags
 tags.lock
