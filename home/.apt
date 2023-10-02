@@ -56,7 +56,7 @@ hash fc-cache >/dev/null 2>&1 && {
     pushd ~/.local/share/fonts &>/dev/null || exit
     echo "Installing Hack font..."
     curl -fsSLo "Hack Regular Nerd Font Complete.ttf" \
-      https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
+      https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf
     fc-cache -f
     popd &>/dev/null || exit
   fi
