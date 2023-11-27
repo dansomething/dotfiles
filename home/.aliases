@@ -82,6 +82,11 @@ alias mkdir='mkdir -pv'
 # Enable SQL syntax highlighting when using edit, \e
 alias mysql="EDITOR=\"vim -c 'set ft=sql'\" mysql "
 
+# Enable dark theme for ncdu
+if [ "$(command -v ncdu)" ]; then
+  alias ncdu="ncdu --color dark"
+fi
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
