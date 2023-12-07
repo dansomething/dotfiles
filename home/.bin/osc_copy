@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eou pipefail
+# See also - https://github.com/theimpostor/osc
+
+stdin=$(cat /dev/stdin; echo .)
+stdin=${stdin%.}
+encoded=$(printf %s "$stdin" | base64 | tr -d '\n')
+printf "\e]52;c;%s\a" "$encoded" >/dev/tty
