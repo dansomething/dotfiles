@@ -1,0 +1,62 @@
+# https://alacritty.org/config-alacritty.html
+# Colors (Jellybeans)
+[colors.bright]
+black = "0xc8c8c8"
+blue = "0xbddff7"
+cyan = "0x0bbdb6"
+green = "0xc8e2b9"
+magenta = "0xfce2ff"
+red = "0xffb2b0"
+white = "0xfeffff"
+yellow = "0xffe1af"
+
+[colors.cursor]
+cursor = "0xffb964"
+text = "0xe8e8d3"
+
+[colors.normal]
+black = "0x888888"
+blue = "0x8197bf"
+cyan = "0xc6b6ee"
+green = "0x99ad6a"
+magenta = "0xf0a0c0"
+red = "0xcf6a4c"
+white = "0xe8e8d3"
+yellow = "0xfad07a"
+
+[colors.primary]
+background = "0x151515"
+foreground = "0xe8e8d3"
+
+[colors.selection]
+background = "0xf6f6f6"
+text = "0x5963a2"
+
+[cursor]
+blink_interval = 500
+
+[cursor.style]
+blinking = "Always"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "Hack Nerd Font"
+
+[font.italic]
+family = "Hack Nerd Font"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[shell]
+args = ["-S", "bash", "-l", "-c", "tmux attach || tmux"]
+program = "/usr/bin/env"
+
+[window]
+startup_mode = "Fullscreen"
