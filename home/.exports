@@ -5,7 +5,7 @@
 #------------------------
 unamestr=$(uname)
 case "$unamestr" in
-    Darwin) PLATFORM='osx' ;;
+    Darwin) PLATFORM='macos' ;;
     Linux) PLATFORM='linux' ;;
     *) PLATFORM='windows' ;;
 esac
@@ -47,7 +47,7 @@ fi
 export MANPAGER="less -X"
 
 # Exports for macOS
-if [[ "$PLATFORM" == 'osx' ]]; then
+if [[ "$PLATFORM" == 'macos' ]]; then
     PATH="/usr/local/sbin:$PATH"
     export PATH
 

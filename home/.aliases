@@ -220,7 +220,7 @@ alias waiting="ps ax | sed '1p;/ [U] /!d'"
 # Grep running processes
 alias pg="pgrep -fl"
 
-if [[ "$PLATFORM" == 'osx' ]]; then
+if [[ "$PLATFORM" == 'macos' ]]; then
   alias top="top -ocpu -O+rsize -s 5 -n 20"
 elif [[ "$PLATFORM" == 'linux' ]] && hash xclip >/dev/null 2>&1; then
   alias pbcopy="xclip -selection clipboard"
