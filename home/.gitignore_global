@@ -44,6 +44,7 @@ project.properties
 .vim/
 .vimrc
 .vimspector.json
+.vimspector.session
 Session.vim
 tags
 tags.lock
