@@ -72,6 +72,9 @@ parse_params() {
   if [ -z "${HOSTNAME}" ]; then
     fatal "Please specify a hostname or IP address with -H"
   fi
+  if [ ! -d "${OUT_PATH}" ]; then
+    fatal "The output directory '-o ${OUT_PATH}' doesn't exist. Please create it."
+  fi
 
   return 0
 }
