@@ -7,20 +7,22 @@ OUT_PATH="."
 TRANSCODE="heavy"
 CHANNEL=""
 HOSTNAME=""
+PORT="5004"
 
 #/ Usage: hdhr_dvr [-h] [-n] [-d] [-o] -c
 #/
 #/ Create a TV channel recording using HDHomeRun.
 #/
 #/ Available Options:
-#/   -h, --help          : Display this help message
-#/   -v, --verbose       : Print script debug info.
-#/   -H, --hostname      : The required hostname or IP of the HDHomeRun device.
-#/   -c, --channel       : The required channel to record on.
-#/   -n, --name          : The optional name of the recording. Default: current datetime
-#/   -d, --duration      : The optional duration of the recording in hours. Default: 30
-#/   -o, --outpath       : The optional output destination directory. Default: .
-#/   -t, --transcode     : The optional transcode level (heavy, mobile, internet720). Default: heavy
+#/   -h, --help      : Display this help message
+#/   -v, --verbose   : Print script debug info.
+#/   -H, --hostname  : The required hostname or IP of the HDHomeRun device.
+#/   -p, --port      : The optional port of the HDHomeRun device. Default: 5004
+#/   -c, --channel   : The required channel to record on.
+#/   -n, --name      : The optional name of the recording. Default: current datetime
+#/   -d, --duration  : The optional duration of the recording in hours. Default: 30
+#/   -o, --outpath   : The optional output destination directory. Default: .
+#/   -t, --transcode : The optional transcode level (heavy, mobile, internet720). Default: heavy
 usage() { grep '^#/' "$0" | cut -c4- ; exit 0 ; }
 
 log()   { printf "%s\n" "$*" >&2 ; }
@@ -38,7 +40,10 @@ parse_params() {
       HOSTNAME="${2-}"
       shift
       ;;
-
+    -p | --port)
+      PORT="${2-}"
+      shift
+      ;;
     -c | --channel)
       CHANNEL="${2-}"
       shift
@@ -59,7 +64,6 @@ parse_params() {
       TRANSCODE="${2-}"
       shift
       ;;
-
     -?*) fatal "Unknown option: ${1}" ;;
     *) break ;;
     esac
@@ -90,7 +94,7 @@ main() {
     --connect-timeout 10 \
     -w "%{http_code}" \
     -o "${file}" \
-    "http://${HOSTNAME}:5004/auto/v${CHANNEL}?transcode=${TRANSCODE}&duration=${dur}")
+    "http://${HOSTNAME}:${PORT}/auto/v${CHANNEL}?transcode=${TRANSCODE}&duration=${dur}")
 
   if [ "${r}" -ge 200 ] && [ "${r}" -lt 300 ]; then
     info "Recording saved to: ${file}"
