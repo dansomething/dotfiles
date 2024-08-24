@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+set -eou pipefail
+
+USERNAME="user@host"
+PASSWORD="secret"
+HOSTNAME="myhost"
+UPDATELINK="https://updates.opendns.com/nic/update"
+PROVIDER="OpenDNS"
+
+#/ Usage: opendns_update [-h] -u username -p password
+#/
+#/ Update public IP address on OpenDNS.
+#/
+#/ Available Options:
+#/   -h, --help     : Display this help message
+#/   -u, --username : The username of your OpenDNS account.
+#/   -p, --password : The password of your OpenDNS account.
+#/   -H, --hostname : The hostname or IP of your OpenDNS account.
+usage() {
+  grep '^#/' "$0" | cut -c4-
+  exit 0
+}
+
+log() { printf "[$(date +%Y-%m-%dT%H:%M:%S)] %s\n" "$*" >&2; }
+info() { log "[INFO] $*"; }
+warn() { log "[WARNING] $*"; }
+error() { log "[ERROR] $*"; }
+fatal() {
+  log "[FATAL] $*"
+  exit 1
+}
+
+parse_params() {
+  while :; do
+    case "${1-}" in
+    -h | --help) usage ;;
+    -v | --verbose) set -x ;;
+    -u | --username)
+      USERNAME="${2-}"
+      shift
+      ;;
+    -p | --password)
+      PASSWORD="${2-}"
+      shift
+      ;;
+
+    -H | --hostname)
+      HOSTNAME="${2-}"
+      shift
+      ;;
+    -?*) fatal "Unknown option: ${1}" ;;
+    *) break ;;
+    esac
+    shift
+  done
+
+  return 0
+}
+
+## Shorthand function to update the IP address
+update_ip_address () {
+  # if this fails with error 60 your certificate store does not contain the certificate,
+  # either add it or use -k (disable certificate check
+  # protocol dydns2
+  # https://support.opendns.com/hc/en-us/articles/227986527-FAQ-OpenDNS-Developer-Resources
+  ret=$(curl \
+    -s \
+    -u "$USERNAME:$PASSWORD" \
+    "${UPDATELINK}?hostname=${HOSTNAME}")
+
+  # On success returns "good ${IP}"
+  # ret="${ret//[[:space:]]/}"
+  read -ra parts <<<"$ret"
+  echo "${parts[0]}"
+}
+
+main() {
+  parse_params "$@"
+
+  current_ip=""
+
+  if [[ -n $HOSTNAME ]]; then
+    LASTIP_FILE="/tmp/ddns_last_ip_${HOSTNAME// /_}"
+  fi
+
+  if [[ -z $current_ip ]]; then
+    # Retrieve current public IP address
+    # Alternative https://ipv4.nsupdate.info/myip
+    current_ip=$(curl -s https://ydns.io/api/v1/ip)
+
+    if [[ -z $current_ip ]]; then
+      fatal "Error: Unable to retrieve current public IP address."
+    fi
+  fi
+
+  info "Current IP: $current_ip"
+
+  # Get last known IP address that was stored locally
+  if [[ -f $LASTIP_FILE ]]; then
+    last_ip=$(head -n 1 "$LASTIP_FILE")
+  else
+    last_ip=""
+  fi
+
+  if [[ "$current_ip" != "$last_ip" ]]; then
+    ret=$(update_ip_address)
+
+    # https://support.opendns.com/hc/en-us/articles/227986527-FAQ-OpenDNS-Developer-Resources
+    case "$ret" in
+    badauth)
+      fatal "$PROVIDER host updated failed: $HOSTNAME (authentication failed)"
+      ;;
+
+    good)
+      info "$PROVIDER host updated successfully: $HOSTNAME ($current_ip)"
+      echo "$current_ip" > "$LASTIP_FILE"
+      exit 0
+      ;;
+
+    abuse)
+      fatal "$PROVIDER host updated failed: $HOSTNAME more than one update per minute"
+      ;;
+
+    *)
+      fatal "$PROVIDER host update failed: $HOSTNAME ($ret)"
+      ;;
+    esac
+  else
+    info "Not updating $PROVIDER for $HOSTNAME: IP address unchanged"
+  fi
+}
+
+main "$@"
