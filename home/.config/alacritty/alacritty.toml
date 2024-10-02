@@ -59,4 +59,5 @@ args = ["-S", "bash", "-l", "-c", "tmux attach || tmux"]
 program = "/usr/bin/env"
 
 [window]
+option_as_alt = "Both"
 startup_mode = "Fullscreen"
