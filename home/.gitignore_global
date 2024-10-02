@@ -39,6 +39,7 @@ Thumbs.db
 # Project specific config #
 ###########################
 .ccls-cache/
+.ignore
 project.properties
 .notags
 .vim/
