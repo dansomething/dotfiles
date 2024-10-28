@@ -54,10 +54,12 @@ family = "Hack Nerd Font"
 family = "Hack Nerd Font"
 style = "Regular"
 
-[shell]
+[terminal.shell]
 args = ["-S", "bash", "-l", "-c", "tmux attach || tmux"]
 program = "/usr/bin/env"
 
 [window]
 option_as_alt = "Both"
 startup_mode = "Fullscreen"
+
+[terminal]
