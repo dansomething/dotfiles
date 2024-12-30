@@ -16,8 +16,12 @@ hash fasd >/dev/null 2>&1 && alias v='f -e nvim'
 alias vi="vim"
 alias vis="vim -S Session.vim"
 alias vs="vim -u NONE"
-alias nv="nvim"
-alias nvs="nvim -S Session.vim"
+hash nvim >/dev/null 2>&1 && {
+  alias v='f -e nvim'
+  alias nv="nvim"
+  alias nvs="nvim -S Session.vim"
+  alias vimdiff="nvim -d"
+}
 alias o="open"
 alias oo="open ."
 alias se="sudo -e"
