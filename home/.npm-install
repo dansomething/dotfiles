@@ -1,1 +1,6 @@
-npm install -g neovim
+#!/usr/bin/env bash
+set -eou pipefail
+
+npm install -g \
+  neovim
+  npm-check-updates
