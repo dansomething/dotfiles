@@ -232,6 +232,9 @@ elif [[ "$PLATFORM" == 'linux' ]] && hash xclip >/dev/null 2>&1; then
 fi
 
 _ssh_auth_save() {
+  [ -z "$SSH_AUTH_SOCK" ] && return
+  [ -z "$USER" ] && return
+  [ -e "$HOME/.ssh/ssh-auth-sock.$USER" ] && return
   ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$USER"
 }
 alias tmux='_ssh_auth_save; tmux'
