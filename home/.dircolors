@@ -42,7 +42,7 @@ FILE 00
 RESET 0
 
 # Directory
-DIR 0;38;5;2
+DIR 1;38;5;4
 
 # Symbolic link. (If you set this to 'target' instead of a
 # numerical value, the color is as for the file pointed to.)
@@ -85,7 +85,7 @@ OTHER_WRITABLE 38;5;110
 STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 
 # This is for files with execute permission:
-EXEC 0;38;5;154
+EXEC 1;38;5;2
 
 # Code
 .s               01;38;5;123
@@ -99,15 +99,22 @@ EXEC 0;38;5;154
 .lua             01;38;5;025
 .js              01;38;5;003
 .sh              01;38;5;067
+.zig             00;38;5;214
+.zig.zon         00;38;5;202
+.wasmp           01;38;5;064
+.typ             03;38;5;032
 
-*Makefile        0;38;5;243
-*Rakefile        0;38;5;124
+# Binary
+.wasm            01;38;5;209
+
+*Makefile        0;38;5;3
+*Rakefile        0;38;5;3
 *Gemfile         0;38;5;3
 *Gemfile.lock    0;38;5;239
 .gemspec         0;38;5;3
 *Procfile        0;38;5;244
-*Gopkg.toml      0;38;5;3
-*Gopkg.lock      0;38;5;239
+*go.mod          0;38;5;3
+*go.sum          0;38;5;239
 .gitignore       0;38;5;243
 .gitattributes   0;38;5;243
 
@@ -142,10 +149,10 @@ EXEC 0;38;5;154
 .pdf             01;38;5;5
 .markdown        01;38;5;5
 .md              01;38;5;5
-*README          01;38;5;200
-*README.md       01;38;5;200
-*README.txt      01;38;5;200
-*readme.txt      01;38;5;200
+*README          01;38;5;176
+*README.md       01;38;5;176
+*README.txt      01;38;5;176
+*readme.txt      01;38;5;176
 *LICENSE         01;38;5;165
 *LICENSE.txt     01;38;5;165
 *AUTHORS         01;38;5;165
@@ -247,6 +254,7 @@ EXEC 0;38;5;154
 .eps             00;38;5;215
 .CR2             00;38;5;215
 .ico             00;38;5;215
+.webp            00;38;5;215
 
 # Disk images
 .iso             01;38;5;209
