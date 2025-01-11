@@ -11,18 +11,18 @@ white = "0xfeffff"
 yellow = "0xffe1af"
 
 [colors.cursor]
-cursor = "0xffb964"
-text = "0xe8e8d3"
+cursor = "0xffb472"
+text = "0xfeffff"
 
 [colors.normal]
-black = "0x888888"
-blue = "0x8197bf"
-cyan = "0xc6b6ee"
-green = "0x99ad6a"
-magenta = "0xf0a0c0"
-red = "0xcf6a4c"
-white = "0xe8e8d3"
-yellow = "0xfad07a"
+black = "0xa3a3a3"
+blue = "0xa6cae2"
+cyan = "0x00a69f"
+green = "0xa3c38b"
+magenta = "0xe7cdfb"
+red = "0xe98885"
+white = "0xe4e4e4"
+yellow = "0xffc68d"
 
 [colors.primary]
 background = "0x151515"
