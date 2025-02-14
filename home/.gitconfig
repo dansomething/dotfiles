@@ -24,7 +24,7 @@
   mt = mergetool
 
   # Pull in remote changes for the current repository and all its submodules.
-  um = !"git pull; git submodule foreach git pull origin main"
+  um = !"git pull; git submodule foreach git pull origin $(git rev-parse --abbrev-ref origin/HEAD)"
 
   # Prune branches removed from remote and update fast-forward only
   u = "!git remote update -p; git merge --ff-only @{u}"
@@ -56,11 +56,13 @@
   # Amend the currently staged files to the latest commit.
   amend = commit --amend --reuse-message=HEAD
 
-  # Delete already merged branches
-  m = !sh -c 'git branch --merged main | grep -v main'
-  mr = !sh -c 'git branch -r --merged main | grep -v main | cut -d / -f 2-'
-  rmm = !sh -c 'git branch --merged main | grep -v main | xargs -n 1 git branch -d'
-  rmmr = !sh -c 'git branch -r --merged main | grep -v main | cut -d / -f 2- | xargs -n 1 git push origin --delete'
+  # Remove branches that have already been merged.
+  # list merged
+  m = "!git branch --merged | grep -v '\\*'"
+  mr = "!git branch --remotes --merged | grep -v $(git rev-parse --abbrev-ref origin/HEAD) | cut -d / -f 2-"
+  # a.k.a. ‘delete merged’
+  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  dmr = "!git branch --remotes --merged | grep -v $(git rev-parse --abbrev-ref origin/HEAD) | cut -d / -f 2- | xargs -n 1 git push origin --delete"
 
   # Credit an author on the latest commit.
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
