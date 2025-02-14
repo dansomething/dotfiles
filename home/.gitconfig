@@ -1,11 +1,11 @@
 [alias]
   b = branch
 
-  # View abbreviated SHA, description, and history graph of the latest 20 commits
+  # View abbreviated SHA, description, and history graph of the latest 20 commits.
   ld = log --pretty=oneline -n 20 --graph --abbrev-commit
   l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
-  # View the current working tree status using the short format
+  # View the current working tree status using the short format.
   s = status -s
   sl = stash list
   ss = stash save
@@ -14,16 +14,16 @@
   sa = !sh -c 'git stash apply stash@{$1}' -
   sd = !sh -c 'git stash drop stash@{$1}' -
 
-  # Show the diff between the latest commit and the current state
+  # Show the diff between the latest commit and the current state.
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   dt = difftool
 
-  # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+  # `git di $number` shows the diff between the state `$number` revisions ago and the current state.
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
   mt = mergetool
 
-  # Pull in remote changes for the current repository and all its submodules
+  # Pull in remote changes for the current repository and all its submodules.
   um = !"git pull; git submodule foreach git pull origin main"
 
   # Prune branches removed from remote and update fast-forward only
@@ -34,14 +34,14 @@
 
   p = !"git push"
 
-  # Clone a repository including all submodules
+  # Clone a repository including all submodules.
   c = clone --recursive
 
   # Commit all changes
   ca = !git add -A && git commit -av
   ci = commit
 
-  # Switch to a branch, creating it if necessary
+  # Switch to a branch, creating it if necessary.
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
   co = checkout
 
@@ -50,8 +50,11 @@
   branches = branch -a
   remotes = remote -v
 
-  # List aliases
+  # List aliases.
   aliases = config --get-regexp alias
+
+  # Amend the currently staged files to the latest commit.
+  amend = commit --amend --reuse-message=HEAD
 
   # Delete already merged branches
   m = !sh -c 'git branch --merged main | grep -v main'
@@ -59,10 +62,10 @@
   rmm = !sh -c 'git branch --merged main | grep -v main | xargs -n 1 git branch -d'
   rmmr = !sh -c 'git branch -r --merged main | grep -v main | cut -d / -f 2- | xargs -n 1 git push origin --delete'
 
-  # Credit an author on the latest commit
+  # Credit an author on the latest commit.
   credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 
-  # Interactive rebase with the given number of latest commits
+  # Interactive rebase with the given number of latest commits.
   reb = "!r() { git rebase -i HEAD~$1; }; r"
 
   # Find branches containing commit
