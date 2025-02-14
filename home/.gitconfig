@@ -92,6 +92,12 @@
 
   patch = !git --no-pager diff --no-color
 
+  # List contributors with number of commits.
+  contributors = shortlog --summary --numbered
+
+  # Show the user email for the current repository.
+  whoami = config user.email
+
 [apply]
   whitespace = warn
 
