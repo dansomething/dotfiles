@@ -2,5 +2,4 @@
 set -eou pipefail
 
 npm install -g \
-  neovim
   npm-check-updates
