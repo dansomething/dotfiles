@@ -41,12 +41,10 @@ fi;
 # Install more recent versions of some macOS tools.
 brew install git
 brew install grep
-brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # Install other useful binaries.
 brew install bash-git-prompt
 brew install bat
-brew install cmake
 brew install eza
 brew install fzf && "${HOMEBREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
@@ -59,8 +57,6 @@ brew install hub
 brew install iperf3
 brew install jq
 brew install ncdu
-brew install ncftp
-brew install neomutt
 brew install neovim
 brew install nodejs
 brew install pv
@@ -68,17 +64,13 @@ brew install reattach-to-user-namespace
 brew install rename
 brew install ripgrep
 brew install shellcheck
-brew install sqlparse
 brew install terminal-notifier
-brew install tidy-html5
 brew install tmux
 brew install tree
-brew install urlview # for viewing attachements from mutt/neomutt
 brew install vivid
 brew install watch
 brew install watchman
 brew install yamllint
-brew install yarn
 brew install zoxide
 
 # Symlink bash-git-prompt for cross-platform convenience
