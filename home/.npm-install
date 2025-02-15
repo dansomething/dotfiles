@@ -2,4 +2,7 @@
 set -eou pipefail
 
 npm install -g \
-  npm-check-updates
+  fixjson \
+  markdownlint-cli \
+  npm-check-updates \
+  prettier
