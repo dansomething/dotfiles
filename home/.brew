@@ -78,7 +78,3 @@ ln -sf "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt
 
 # Remove outdated versions from the cellar.
 brew cleanup
-
-# install python support for neovim
-# TODO This isn't brew specific. Consider a more appropriate place.
-pip3 install pynvim --upgrade --user
