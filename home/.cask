@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-brew tap homebrew/cask-fonts
-
 brew install --cask alacritty
 brew install --cask appcleaner
 brew install --cask coconutbattery
