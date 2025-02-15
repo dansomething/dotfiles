@@ -45,6 +45,7 @@ brew install grep
 # Install other useful binaries.
 brew install bash-git-prompt
 brew install bat
+brew install cmake # for tmux-mem-cpu-load
 brew install eza
 brew install fzf && "${HOMEBREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
