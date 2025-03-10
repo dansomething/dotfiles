@@ -5,7 +5,7 @@
 
 # Only show username/host if not default
 default_usernames=("dan" "dan.hansen")
-default_hostnames=("lucky" "pearly" "bloom.local" "bones.local")
+default_hostnames=("pearly")
 
 if [[ -v PROMPT_USERS_IGNORE[@] ]]; then
   default_usernames=("${default_usernames[@]}" "${PROMPT_USERS_IGNORE[@]}")
