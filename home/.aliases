@@ -32,7 +32,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 # https://github.com/sharkdp/bat
-hash bat >/dev/null 2>&1 && alias cat='bat'
+(hash bat >/dev/null 2>&1 && [[ "$TERM_PROGRAM" != "vscode" ]]) && alias cat='bat'
 
 # https://www.colordiff.org/
 hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
