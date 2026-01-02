@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<EOF
+Usage: pdf_compress [input file] [output file] [quality]
+
+Compress PDF files using Ghostscript.
+
+Arguments:
+  input file    Path to the input PDF file
+  output file   Path to the output PDF file
+  quality       Compression quality (default: ebook)
+                  screen    - Lowest quality, smallest file
+                  ebook     - Medium quality (default)
+                  printer   - High quality
+                  prepress  - Highest quality, largest file
+
+Options:
+  -h, --help    Show this help message
+
+Examples:
+  pdf_compress input.pdf output.pdf
+  pdf_compress input.pdf output.pdf screen
+  pdf_compress input.pdf output.pdf printer
+EOF
+}
+
+check_dependencies() {
+  if ! command -v gs &>/dev/null; then
+    echo "Error: Ghostscript (gs) is not installed." >&2
+    echo "" >&2
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      echo "On macOS, install it with:" >&2
+      echo "  brew install ghostscript" >&2
+    elif [[ -f /etc/os-release ]]; then
+      # shellcheck disable=SC1091
+      source /etc/os-release
+      if [[ "$ID" == "ubuntu" || "$ID" == "debian" ]]; then
+        echo "On Debian/Ubuntu, install it with:" >&2
+        echo "  sudo apt-get install ghostscript" >&2
+      elif [[ "$ID" == "fedora" || "$ID" == "rhel" || "$ID" == "centos" ]]; then
+        echo "On Fedora/RHEL/CentOS, install it with:" >&2
+        echo "  sudo dnf install ghostscript" >&2
+      fi
+    fi
+    exit 1
+  fi
+}
+
+if [[ ${1:-} == "-h" || ${1:-} == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+check_dependencies
+
+if [[ $# -lt 2 ]]; then
+  usage >&2
+  exit 1
+fi
+
+gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/"${3:-"ebook"}" -dCompatibilityLevel=1.4 -sOutputFile="$2" "$1"
