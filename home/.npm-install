@@ -3,6 +3,5 @@ set -eou pipefail
 
 npm install -g \
   fixjson \
-  markdownlint-cli \
-  npm-check-updates \
-  prettier
+  neovim \
+  npm-check-updates
