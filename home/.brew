@@ -55,14 +55,15 @@ brew install grc
 brew install gron
 brew install htop
 brew install hub
-brew install iperf3
 brew install jq
+brew install markdownlint-cli
 brew install ncdu
 brew install neovim
 brew install nodejs
+brew install prettier
 brew install pv
 brew install reattach-to-user-namespace
-brew install rename
+brew install rename # for convenience
 brew install ripgrep
 brew install shellcheck
 brew install shfmt
