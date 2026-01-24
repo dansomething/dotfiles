@@ -66,6 +66,7 @@ brew install rename # for convenience
 brew install ripgrep
 brew install shellcheck
 brew install shfmt
+brew install stylua
 brew install tmux
 brew install tree
 brew install vivid # generator for LS_COLORS
