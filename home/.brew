@@ -49,11 +49,11 @@ brew install cmake # for tmux-mem-cpu-load
 brew install eza
 brew install fzf && "${HOMEBREW_PREFIX}/opt/fzf/install"
 brew install gawk # for Morantron/tmux-fingers
+brew install gh
 brew install git-delta
 brew install gnu-sed # for vim mergetool diffconflicts script
 brew install grc     # colourize log files and command output
 brew install htop
-brew install hub
 brew install jq
 brew install markdownlint-cli
 brew install ncdu
