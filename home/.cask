@@ -7,7 +7,7 @@ brew install --cask font-hack-nerd-font
 brew install --cask google-chrome
 brew install --cask google-drive
 brew install --cask hammerspoon
-brew install --cask handbrake
+brew install --cask handbrake-app
 brew install --cask keepassxc
 brew install --cask keepingyouawake
 brew install --cask macvim
