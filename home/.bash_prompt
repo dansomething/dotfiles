@@ -8,19 +8,19 @@ if [ -f "${HOME}/.bash-git-prompt/gitprompt.sh" ]; then
   : "${GIT_PROMPT_THEME:=Custom}"
 
   function prompt_callback {
-      # Count running jobs
-      if (( r = $(jobs -r | wc -l) )); then
-          [[ -n "$ret" ]] && ret+='/'
-          ret+=" ${r}&"
-      fi
+    # Count running jobs
+    if ((r = $(jobs -r | wc -l))); then
+      [[ -n "$ret" ]] && ret+='/'
+      ret+=" ${r}&"
+    fi
 
-      # Count stopped jobs
-      if (( s = $(jobs -s | wc -l) )); then
-          [[ -n "$ret" ]] && ret+='/'
-          ret+=" ${s}z"
-      fi
+    # Count stopped jobs
+    if ((s = $(jobs -s | wc -l))); then
+      [[ -n "$ret" ]] && ret+='/'
+      ret+=" ${s}z"
+    fi
 
-      echo -nE "${Yellow}${ret}${ResetColor}"
+    echo -nE "${Yellow}${ret}${ResetColor}"
   }
 
   # Set a default user for windows
