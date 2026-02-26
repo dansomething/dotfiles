@@ -4,48 +4,16 @@ set -eou pipefail
 echo "Installing APT packages..."
 echo
 
-# Install additional Apt repositories to support more current tool installs.
-sudo add-apt-repository -y ppa:neovim-ppa/stable
-
-# https://github.com/nodesource/distributions?tab=readme-ov-file#using-ubuntu-nodejs-22
-curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && \
-sudo -E bash nodesource_setup.sh && \
-rm nodesource_setup.sh
-
 # Install additional command-line tools using Apt.
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-  bat \
   build-essential \
   cmake \
-  eza \
-  fzf \
   gnome-tweaks \
-  grc \
-  gron \
-  htop \
-  hub \
-  jq \
-  ncdu \
-  neovim \
-  nodejs \
-  pv \
-  python3-neovim \
-  python3-pip \
-  python3-sqlparse \
-  rename \
-  ripgrep \
-  shellcheck \
-  tidy \
-  tmux \
-  universal-ctags \
   urlview \
-  vim-gtk3 \
   xcape \
   xclip \
-  yamllint \
-  zoxide \
-  && sudo apt-get autoremove \
-  && echo
+  sudo apt-get autoremove &&
+  echo
 
 # Install Hack Nerd font
 hash fc-cache >/dev/null 2>&1 && {
@@ -63,54 +31,11 @@ hash fc-cache >/dev/null 2>&1 && {
   echo
 }
 
-# Install git-delta
-mkdir -p ~/Downloads
-pushd ~/Downloads &>/dev/null || exit
-git_delta_url="$(curl -s https://api.github.com/repos/dandavison/delta/releases/latest | jq -r '.assets[] | select(.name | match("delta_\\d+\\.\\d+\\.\\d+_amd64.deb$")) .browser_download_url')"
-echo "Downloading latest Git Delta - ${git_delta_url} ..."
-curl -fsSLo git-delta.deb "${git_delta_url}"
-echo "Installing latest Git Delta..."
-sudo dpkg -i git-delta.deb
-echo
-popd &>/dev/null || exit
-
-# Install bash-git-prompt
-if [[ -d ~/.bash-git-prompt ]]; then
-  echo "bash-git-prompt found. Updating..."
-  pushd ~/.bash-git-prompt &>/dev/null || exit
-  git pull
-  echo
-  popd &>/dev/null || exit
-else
-  echo "Installing bash-git-prompt..."
-  git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-  echo
-fi
-
-# Enable fzf bash completion and key bindings
-echo "Enabling fzf bash completion..."
-cat << EOF > ~/.fzf.bash
-[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
-[ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf
-EOF
-echo
-
-# Enable node.js for nvim
-echo "Installing neovim for Node.js..."
-sudo npm install -g neovim
-echo
-
 # Gnome Terminal Jellybeans profile
 echo "Installing gnome terminal config..."
 hash dconf >/dev/null 2>&1 && {
-  dconf load /org/gnome/terminal/legacy/profiles:/ < ~/.gnome/gnome-terminal-profiles.dconf
+  dconf load /org/gnome/terminal/legacy/profiles:/ <~/.gnome/gnome-terminal-profiles.dconf
 }
 echo
 
-# Symlink batcat as cat
-echo "Enable batcat in place of cat..."
-mkdir -p ~/.bin
-ln -sf /usr/bin/batcat ~/.bin/cat
-
-echo
 echo "Linux packages installed."

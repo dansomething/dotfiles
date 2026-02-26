@@ -8,75 +8,24 @@ hash brew >/dev/null 2>&1 || {
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
+Brewfile="$HOME/.Brewfile"
+
 # Configure the shell for brew
 if [[ -r "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -r "/usr/local/bin/brew" ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
+elif [[ -r "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# Make sure we’re using the latest Homebrew.
-brew update
-
-# Upgrade any already-installed formulae.
-brew upgrade
-
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion@2
+brew bundle --file="$Brewfile"
 
 # Switch to using brew-installed bash as default shell
 if ! grep -F -q "${HOMEBREW_PREFIX}/bin/bash" /etc/shells; then
   echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
   chsh -s "${HOMEBREW_PREFIX}/bin/bash"
 fi
-
-# Install more recent versions of some macOS tools.
-brew install git
-brew install grep
-
-# Install other useful binaries.
-brew install bash-git-prompt
-brew install bat
-brew install cmake # for tmux-mem-cpu-load
-brew install eza
-brew install fzf && "${HOMEBREW_PREFIX}/opt/fzf/install"
-brew install gawk # for Morantron/tmux-fingers
-brew install gh
-brew install git-delta
-brew install gnu-sed # for vim mergetool diffconflicts script
-brew install grc     # colourize log files and command output
-brew install htop
-brew install jq
-brew install markdownlint-cli
-brew install ncdu
-brew install neovim
-brew install nodejs
-brew install prettier
-brew install pv
-brew install reattach-to-user-namespace
-brew install rename # for convenience
-brew install ripgrep
-brew install shellcheck
-brew install shfmt
-brew install stylua
-brew install tmux
-brew install tree
-brew install vivid # generator for LS_COLORS
-brew install watch
-brew install watchman
-brew install yamllint
-brew install zoxide
-
-# Symlink bash-git-prompt for cross-platform convenience
-ln -sf "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share" ~/.bash-git-prompt
 
 # Remove outdated versions from the cellar.
 brew cleanup
