@@ -20,7 +20,7 @@ brew "bash-git-prompt", postinstall: "ln -sf ${HOMEBREW_PREFIX}/opt/bash-git-pro
 brew "bat"
 brew "cmake" if OS.mac? # for tmux-mem-cpu-load
 brew "eza"
-brew "fzf", postinstall: "${HOMEBREW_PREFIX}/opt/fzf/install"
+brew "fzf", postinstall: "${HOMEBREW_PREFIX}/opt/fzf/install --no-update-rc"
 brew "gawk" if OS.mac? # for Morantron/tmux-fingers
 brew "gh"
 brew "git-delta"
