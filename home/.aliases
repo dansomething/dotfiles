@@ -37,12 +37,6 @@ alias mv="mv -i"
 # https://www.colordiff.org/
 hash colordiff >/dev/null 2>&1 && alias diff="colordiff"
 
-# exa is deprecated, but eza is not yet available in apt
-# https://github.com/ogham/exa
-if [ "$(command -v exa)" ]; then
-  alias eza="exa"
-fi
-
 # https://github.com/eza-community/eza
 if [ "$(command -v eza)" ]; then
   alias ls='eza -G --color auto --icons -a -s type'
