@@ -2,6 +2,5 @@
 set -eou pipefail
 
 npm install -g \
-  fixjson \
   neovim \
   npm-check-updates
