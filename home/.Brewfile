@@ -6,7 +6,7 @@ brew "moreutils" if OS.mac?
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew "findutils" if OS.mac?
 # Install a modern version of Bash.
-brew "bash" if OS.mac?
+brew "bash", postinstall: 'if ! grep -F -q "${HOMEBREW_PREFIX}/bin/bash" /etc/shells; then echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells; chsh -s "${HOMEBREW_PREFIX}/bin/bash"; fi' if OS.mac?
 brew "bash-completion@2" if OS.mac?
 
 # Install more recent versions of some macOS tools.

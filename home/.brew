@@ -2,15 +2,12 @@
 set -eou pipefail
 
 # Install command-line tools using Homebrew.
-
 hash brew >/dev/null 2>&1 || {
   echo "Installing Homebrew..."
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
-Brewfile="$HOME/.Brewfile"
-
-# Configure the shell for brew
+# Configure the shell for brew for each possible OS location.
 if [[ -r "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -r "/usr/local/bin/brew" ]]; then
@@ -19,13 +16,7 @@ elif [[ -r "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-brew bundle --file="$Brewfile"
-
-# Switch to using brew-installed bash as default shell
-if ! grep -F -q "${HOMEBREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
-  chsh -s "${HOMEBREW_PREFIX}/bin/bash"
-fi
+brew bundle --file="$HOME/.Brewfile"
 
 # Remove outdated versions from the cellar.
 brew cleanup
