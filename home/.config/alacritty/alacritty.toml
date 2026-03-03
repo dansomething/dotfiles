@@ -49,7 +49,7 @@ family = "Hack Nerd Font"
 style = "Regular"
 
 [terminal.shell]
-args = ["-S", "bash", "-l", "-c", "tmux attach || tmux"]
+args = ["bash", "-l", "-c", "command -v tmux >/dev/null && tmux new-session -A -s main || { echo 'tmux is not installed. Install it with: brew install tmux'; exec bash; }"]
 program = "/usr/bin/env"
 
 [window]
