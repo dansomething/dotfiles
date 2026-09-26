@@ -1,0 +1,29 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "plugin": [
+  ],
+  "autoupdate": true,
+  "lsp": {
+    "gopls": {
+      "disabled": true
+    },
+    "gopls-remote": {
+      "command": ["gopls","--remote=auto"],
+      "extensions": [".go",".mod",".sum"]
+    }
+  },
+  "permission": {
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "bash": {
+      "*": "allow",
+      "git commit *": "ask",
+      "git push *": "ask",
+      "rm *": "ask",
+    }
+  }
+}
