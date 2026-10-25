@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -eou pipefail
+
+brew install \
+  bat \
+  bash-git-prompt \
+  git-delta \
+  eza \
+  fzf \
+  htop \
+  jq \
+  ncdu \
+  neovim \
+  node \
+  ripgrep \
+  shellcheck \
+  shfmt \
+  tmux \
+  tmux-mem-cpu-load
+  yamllint \
+  zoxide \
+  && echo
+
+mkdir -p ~/.bash-git-prompt
+ln -sf /home/linuxbrew/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh ~/.bash-git-prompt/gitprompt.sh
+ln -sf /home/linuxbrew/.linuxbrew/bin/tmux-mem-cpu-load ~/.tmux/plugins/tmux-mem-cpu-load/tmux-mem-cpu-load
