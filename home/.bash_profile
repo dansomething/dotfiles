@@ -51,7 +51,7 @@ shopt -s cdspell
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
 for option in autocd globstar; do
-  shopt -s "$option" 2> /dev/null
+  shopt -s "$option" 2>/dev/null
 done
 
 # ------------------------------------------
@@ -84,7 +84,8 @@ hash fzf >/dev/null 2>&1 && {
 
   TMUX_VERSION=$(tmux -V | sed -En "s/^tmux[^0-9]*([.0-9]+).*/\1/p")
   if hash bc >/dev/null 2>&1 && [ "$(echo "$TMUX_VERSION >= 3.2" | bc)" = 1 ]; then
-    export FZF_TMUX_OPTS='-p 80%,60%' # Requires Tmux 3.2+
+    # Match background color to jellybeans theme
+    export FZF_TMUX_OPTS='-p 80%,60% --color=bg:#151515' # Requires Tmux 3.2+
   fi
 
   # shellcheck source=/dev/null
@@ -95,7 +96,7 @@ hash fzf >/dev/null 2>&1 && {
 if hash fasd >/dev/null 2>&1; then
   fasd_cache="$HOME/.fasd-init-bash"
   if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >|"$fasd_cache"
   fi
   # shellcheck source=/dev/null
   source "$fasd_cache"
