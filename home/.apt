@@ -10,26 +10,9 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   cmake \
   gnome-tweaks \
   urlview \
-  xcape \
   xclip \
   sudo apt-get autoremove &&
   echo
-
-# Install Hack Nerd font
-hash fc-cache >/dev/null 2>&1 && {
-  if fc-list | grep Hack; then
-    echo "  Hack font found."
-  else
-    mkdir -p ~/.local/share/fonts
-    pushd ~/.local/share/fonts &>/dev/null || exit
-    echo "Installing Hack font..."
-    curl -fsSLo "Hack Regular Nerd Font Complete.ttf" \
-      https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf
-    fc-cache -f
-    popd &>/dev/null || exit
-  fi
-  echo
-}
 
 # Gnome Terminal Jellybeans profile
 echo "Installing gnome terminal config..."
@@ -37,5 +20,33 @@ hash dconf >/dev/null 2>&1 && {
   dconf load /org/gnome/terminal/legacy/profiles:/ <~/.gnome/gnome-terminal-profiles.dconf
 }
 echo
+
+echo "Installing keyd"
+hash keyd >/dev/null 2>&1 && {
+  if [[ ! -d ~/co/keyd ]]; then
+    mkdir -p ~/co
+    git clone https://github.com/rvaiya/keyd ~/co/keyd
+  fi
+  pushd ~/co/keyd > /dev/null 2>&1
+  make && sudo make install
+  popd > /dev/null 2>&1
+
+  sudo systemctl enable --now keyd
+  sudo tee /etc/keyd/default.conf << 'EOF' > /dev/null
+[ids]
+
+*
+
+[main]
+
+# Maps capslock to escape when pressed and control when held.
+capslock = overload(control, esc)
+
+# Remaps the escape key to capslock
+#esc = capslock
+EOF
+
+  sudo keyd reload
+}
 
 echo "Linux packages installed."
