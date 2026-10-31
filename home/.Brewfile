@@ -21,6 +21,7 @@ brew "bat"
 brew "cmake" if OS.mac? # for tmux-mem-cpu-load
 brew "direnv"
 brew "eza"
+brew "font-iosevka-term-nerd-font"
 brew "fzf", postinstall: "${HOMEBREW_PREFIX}/opt/fzf/install --no-update-rc"
 brew "gawk" if OS.mac? # for Morantron/tmux-fingers
 brew "gh"
@@ -61,7 +62,7 @@ cask "keepassxc"
 cask "keepingyouawake"
 cask "macvim-app"
 cask "paragon-extfs"
-cask "private-internet-access"
+cask "private-internet-access" if OS.mac? # Manual install for linux
 cask "silentknight"
 cask "slack"
 cask "the-unarchiver"
