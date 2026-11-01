@@ -3,4 +3,5 @@ set -eou pipefail
 
 npm install -g \
   neovim \
-  npm-check-updates
+  npm-check-updates \
+  typescript-language-server
