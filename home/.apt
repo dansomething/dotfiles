@@ -22,7 +22,7 @@ hash dconf >/dev/null 2>&1 && {
 echo
 
 echo "Installing keyd"
-hash keyd >/dev/null 2>&1 && {
+hash keyd >/dev/null 2>&1 || {
   if [[ ! -d ~/co/keyd ]]; then
     mkdir -p ~/co
     git clone https://github.com/rvaiya/keyd ~/co/keyd
