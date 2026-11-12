@@ -1,36 +1,36 @@
 # https://alacritty.org/config-alacritty.html
 # Colors (Jellybeans)
 [colors.bright]
-black = "0xc8c8c8"
-blue = "0xbddff7"
-cyan = "0x0bbdb6"
-green = "0xc8e2b9"
-magenta = "0xfce2ff"
-red = "0xffb2b0"
-white = "0xfeffff"
-yellow = "0xffe1af"
+black = "#c8c8c8"
+blue = "#bddff7"
+cyan = "#0bbdb6"
+green = "#c8e2b9"
+magenta = "#fce2ff"
+red = "#ffb2b0"
+white = "#feffff"
+yellow = "#ffe1af"
 
 [colors.cursor]
-cursor = "0xffb472"
-text = "0xfeffff"
+cursor = "#ffb472"
+text = "#feffff"
 
 [colors.normal]
-black = "0xa3a3a3"
-blue = "0xa6cae2"
-cyan = "0x00a69f"
-green = "0xa3c38b"
-magenta = "0xe7cdfb"
-red = "0xe98885"
-white = "0xe4e4e4"
-yellow = "0xffc68d"
+black = "#a3a3a3"
+blue = "#a6cae2"
+cyan = "#00a69f"
+green = "#a3c38b"
+magenta = "#e7cdfb"
+red = "#e98885"
+white = "#e4e4e4"
+yellow = "#ffc68d"
 
 [colors.primary]
-background = "0x151515"
-foreground = "0xe8e8d3"
+background = "#151515"
+foreground = "#e8e8d3"
 
 [colors.selection]
-background = "0xf6f6f6"
-text = "0x5963a2"
+background = "#f6f6f6"
+text = "#5963a2"
 
 [cursor]
 blink_interval = 500
