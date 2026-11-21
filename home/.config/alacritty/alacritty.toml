@@ -45,7 +45,7 @@ TERM = "xterm-256color"
 size = 12.0
 
 [font.normal]
-family = "IosevkaTerm Nerd Font"
+family = "Iosevka Nerd Font"
 style = "Regular"
 
 [terminal.shell]
