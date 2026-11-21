@@ -21,7 +21,7 @@ brew "bat"
 brew "cmake" if OS.mac? # for tmux-mem-cpu-load
 brew "direnv"
 brew "eza"
-brew "font-iosevka-term-nerd-font"
+brew "font-iosevka-nerd-font"
 brew "fzf", postinstall: "${HOMEBREW_PREFIX}/opt/fzf/install --no-update-rc"
 brew "gawk" if OS.mac? # for Morantron/tmux-fingers
 brew "gh"
